@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BuildResume</string>
+    <string name="log_in">SignIn</string>
 </resources>
