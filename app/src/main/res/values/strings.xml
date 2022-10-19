@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">BuildResume</string>
-    <string name="log_in">SignIn</string>
+    <string name="sign_in">oogle Sign in</string>
+    <string name="easy_way_to_make_your_resume">Easy way to make your resume</string>
 </resources>
