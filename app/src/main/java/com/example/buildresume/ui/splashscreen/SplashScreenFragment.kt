@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.example.buildresume.R
 
-class SplashScreen : Fragment() {
+class SplashScreenFragment : Fragment() {
 
     private var splashScreenDelay: Long = 2000
 
@@ -26,7 +26,7 @@ class SplashScreen : Fragment() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             view.findNavController()
-                .navigate(SplashScreenDirections.actionSplashScreenToLoginScreen())
+                .navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToLoginScreenFragment())
         }, splashScreenDelay)
 
     }

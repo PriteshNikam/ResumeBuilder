@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_google_login.xml" value="0.324" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_dash_board.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_login_screen.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_splash_screen.xml" value="0.23891625615763548" />
       </map>

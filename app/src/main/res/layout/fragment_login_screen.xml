@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/secondaryColor"
-    tools:context=".ui.loginscreen.LoginScreen">
+    tools:context=".ui.loginscreen.LoginScreenFragment">
 
     <TextView
         android:id="@+id/textView_welcomeText_loginScreen"
