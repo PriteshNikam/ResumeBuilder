@@ -12,5 +12,13 @@
     <string name="to_add_new_resume">to add new resume</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_profile">User profile</string>
+    <string name="edit_your_form">Edit your form</string>
+    <string name="edit_profile_details">Edit profile Details</string>
+    <string name="edit_education_details">Edit Education details</string>
+    <string name="edit_project_details">Edit project details</string>
+    <string name="edit_skills">edit skills</string>
+    <string name="edit_experience">edit experience</string>
+    <string name="optional_info">optional Info</string>
 </resources>
 

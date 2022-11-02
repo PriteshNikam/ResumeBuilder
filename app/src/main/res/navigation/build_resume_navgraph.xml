@@ -40,6 +40,21 @@
             android:name="user"
             app:argType="com.google.firebase.auth.FirebaseUser"
             app:nullable="true"/>
+        <action
+            android:id="@+id/action_homeScreenFragment_to_formEditorScreenFragment"
+            app:destination="@id/formEditorScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/formEditorScreenFragment"
+        android:name="com.example.buildresume.ui.formeditorscreen.FormEditorScreenFragment"
+        android:label="fragment_form_editor_screen"
+        tools:layout="@layout/fragment_form_editor_screen" >
+
+        <argument
+            android:name="userID"
+            app:argType="string"
+            app:nullable="true"
+            />
     </fragment>
 
 </navigation>

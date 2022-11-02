@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.buildresume.databinding.FragmentHomeScreenBinding
-import com.example.buildresume.ui.loginscreen.LoginScreenFragmentDirections
+import java.util.*
 
 class HomeScreenFragment : Fragment() {
 
@@ -56,6 +56,8 @@ class HomeScreenFragment : Fragment() {
 
         binding.floatingButtonAddResumeHomeScreen.setOnClickListener{
             createToast("add new resume")
+            val uniqueID = UUID.randomUUID().toString()
+            view?.findNavController()?.navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment(uniqueID))
         }
     }
 
