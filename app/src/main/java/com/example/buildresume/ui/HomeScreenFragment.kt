@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.buildresume.databinding.FragmentHomeScreenBinding
+import com.example.buildresume.ui.loginscreen.LoginScreenFragmentDirections
 
 class HomeScreenFragment : Fragment() {
 
@@ -56,7 +58,6 @@ class HomeScreenFragment : Fragment() {
             createToast("add new resume")
         }
     }
-
 
     companion object{
         private var storedResumeKey = "storedResume"
