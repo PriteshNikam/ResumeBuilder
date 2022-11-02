@@ -1,15 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.HomeScreenFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView_homeScreen"
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.HomeScreenFragment">
 
-</FrameLayout>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayout_homeScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:background="@color/secondaryColor"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView_profile_homeScreen"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_account"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_welcomeText_homeScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/imageView_profile_homeScreen"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_userName_homeScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/username"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/textView_welcomeText_homeScreen"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_homeScreen"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout_homeScreen" />
+
+        <TextView
+            android:id="@+id/textView_emptyText_homeScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_new_resume"
+            android:textSize="20sp"
+            android:layout_marginTop="450dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:visibility="gone"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingButton_addResume_homeScreen"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="49dp"
+            android:backgroundTint="@color/primaryDarkColor"
+            android:foreground="@drawable/ic_svg_viewer_add"
+            android:foregroundGravity="center"
+            app:borderWidth="0dp"
+            app:fabCustomSize="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:contentDescription="@string/to_add_new_resume" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
