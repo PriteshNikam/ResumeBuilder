@@ -55,6 +55,14 @@
             app:argType="string"
             app:nullable="true"
             />
+        <action
+            android:id="@+id/action_formEditorScreenFragment_to_editProfileDetailsFragment"
+            app:destination="@id/editProfileDetailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/editProfileDetailsFragment"
+        android:name="com.example.buildresume.ui.formeditorscreen.EditProfileDetailsFragment"
+        android:label="fragment_edit_profile_details"
+        tools:layout="@layout/fragment_edit_profile_details" />
 
 </navigation>

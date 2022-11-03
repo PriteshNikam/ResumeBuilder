@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.buildresume.databinding.FragmentFormEditorScreenBinding
 
 class FormEditorScreenFragment : Fragment() {
@@ -35,6 +36,10 @@ class FormEditorScreenFragment : Fragment() {
         binding = FragmentFormEditorScreenBinding.inflate(inflater,container,false)
 
         Log.d("id",fragmentArgs.userID.toString()) // store uid to sharedPreference
+
+        binding.buttonEditProfileFormEditorScreen.setOnClickListener{
+            view?.findNavController()?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProfileDetailsFragment())
+        }
 
         binding.textViewFormEditorScreen.text = fragmentArgs.userID.toString()
 
