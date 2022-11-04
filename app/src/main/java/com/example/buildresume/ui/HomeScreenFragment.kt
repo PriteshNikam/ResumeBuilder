@@ -55,7 +55,6 @@ class HomeScreenFragment : Fragment() {
         }
 
         binding.floatingButtonAddResumeHomeScreen.setOnClickListener{
-            createToast("add new resume")
             val uniqueID = UUID.randomUUID().toString()
             view?.findNavController()?.navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment(uniqueID))
         }
@@ -63,9 +62,7 @@ class HomeScreenFragment : Fragment() {
 
     companion object{
         private var storedResumeKey = "storedResume"
-        private var TAG = "homeScreen"
         private var PREF_FILE_NAME = "com.example.buildresume_preferences"
-        private var TOKEN_KEY = "token_key"
     }
 
     private fun createToast(message: String = "") {

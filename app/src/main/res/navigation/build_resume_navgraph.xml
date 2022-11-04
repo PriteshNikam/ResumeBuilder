@@ -16,6 +16,9 @@
             app:destination="@id/loginScreenFragment"
             app:popUpTo="@id/splashScreenFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
     </fragment>
 
     <fragment
@@ -58,11 +61,27 @@
         <action
             android:id="@+id/action_formEditorScreenFragment_to_editProfileDetailsFragment"
             app:destination="@id/editProfileDetailsFragment" />
+        <action
+            android:id="@+id/action_formEditorScreenFragment_to_editEducationDetailsFragment"
+            app:destination="@id/editEducationDetailsFragment" />
+        <action
+            android:id="@+id/action_formEditorScreenFragment_to_editSkillsDetailsFragment"
+            app:destination="@id/editSkillsDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileDetailsFragment"
         android:name="com.example.buildresume.ui.formeditorscreen.EditProfileDetailsFragment"
         android:label="fragment_edit_profile_details"
         tools:layout="@layout/fragment_edit_profile_details" />
+    <fragment
+        android:id="@+id/editEducationDetailsFragment"
+        android:name="com.example.buildresume.ui.formeditorscreen.EditEducationDetailsFragment"
+        android:label="fragment_edit_education_details"
+        tools:layout="@layout/fragment_edit_education_details" />
+    <fragment
+        android:id="@+id/editSkillsDetailsFragment"
+        android:name="com.example.buildresume.ui.formeditorscreen.EditSkillsDetailsFragment"
+        android:label="fragment_edit_skills_details"
+        tools:layout="@layout/fragment_edit_skills_details" />
 
 </navigation>

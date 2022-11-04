@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.formeditorscreen.EditEducationDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-93dp">
+
+        <TextView
+            android:id="@+id/textView_fillEducation_EditEducationDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:fontFamily="@font/alice_regular"
+            android:text="@string/fill_all_details"
+            android:textColor="@color/primaryDarkColor"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_schoolName_EditEducationDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/alice_regular"
+            android:text="Enter 10th School name and percentage :"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_20"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_fillEducation_EditEducationDetails" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText_schoolName_EditEducationDetails"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/custom_edittext_shape"
+            android:fontFamily="@font/alice_regular"
+            android:hint="School name"
+            android:padding="@dimen/dp_10"
+            android:textColorHint="@color/secondaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_schoolName_EditEducationDetails" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText_schoolMarks_EditEducationDetails"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/custom_edittext_shape"
+            android:fontFamily="@font/alice_regular"
+            android:hint="99.99"
+            android:padding="@dimen/dp_10"
+            android:textColorHint="@color/secondaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_schoolName_EditEducationDetails" />
+
+
+        <TextView
+            android:id="@+id/textView_collegeName_EditEducationDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/alice_regular"
+            android:text="Enter 12th School name and percentage :"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_20"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_schoolMarks_EditEducationDetails" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText_collegeName_EditEducationDetails"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/custom_edittext_shape"
+            android:fontFamily="@font/alice_regular"
+            android:hint="College name"
+            android:padding="@dimen/dp_10"
+            android:textColorHint="@color/secondaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_collegeName_EditEducationDetails" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText_collegeMarks_EditEducationDetails"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/custom_edittext_shape"
+            android:fontFamily="@font/alice_regular"
+            android:hint="99.99"
+            android:padding="@dimen/dp_10"
+            android:textColorHint="@color/secondaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_collegeName_EditEducationDetails" />
+
+
+        <TextView
+            android:id="@+id/textView_diplomaCollegeName_EditEducationDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/alice_regular"
+            android:text="Enter diploma college name and percentage:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_20"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_collegeMarks_EditEducationDetails" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText_diplomaCollegeName_EditEducationDetails"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/custom_edittext_shape"
+            android:fontFamily="@font/alice_regular"
+            android:hint="College name"
+            android:padding="@dimen/dp_10"
+            android:textColorHint="@color/secondaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_diplomaCollegeName_EditEducationDetails" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText_diplomaMarks_EditEducationDetails"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/custom_edittext_shape"
+            android:fontFamily="@font/alice_regular"
+            android:hint="99.99"
+            android:padding="@dimen/dp_10"
+            android:textColorHint="@color/secondaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_diplomaCollegeName_EditEducationDetails" />
+
+
+        <TextView
+            android:id="@+id/textView_degreeCollegeName_EditEducationDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/alice_regular"
+            android:text="Enter degree college name and percentage :"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_20"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_diplomaMarks_EditEducationDetails" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText_degreeCollegeName_EditEducationDetails"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/custom_edittext_shape"
+            android:fontFamily="@font/alice_regular"
+            android:hint="College name"
+            android:padding="@dimen/dp_10"
+            android:textColorHint="@color/secondaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_degreeCollegeName_EditEducationDetails" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText_degreeMarks_EditEducationDetails"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/custom_edittext_shape"
+            android:fontFamily="@font/alice_regular"
+            android:hint="99.99"
+            android:padding="@dimen/dp_10"
+            android:textColorHint="@color/secondaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_degreeCollegeName_EditEducationDetails" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_saveEducationDetails_EditEducationDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            app:layout_constraintTop_toBottomOf="@id/editText_degreeMarks_EditEducationDetails"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

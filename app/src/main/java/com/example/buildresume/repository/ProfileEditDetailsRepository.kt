@@ -1,10 +1,10 @@
-package com.example.buildresume
+package com.example.buildresume.repository
 import android.content.Context
 import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
+import com.example.buildresume.UserProfileDetails
 import com.example.buildresume.data.Profile
-import com.example.buildresume.repository.DataStoreProfile
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 // repository
-class ProfileEditDetails @Inject constructor
+class ProfileEditDetailsRepository @Inject constructor
     (@ApplicationContext private val context: Context){
     private val Context.datastore : DataStore<UserProfileDetails> by dataStore(
         fileName = "UserProfile",

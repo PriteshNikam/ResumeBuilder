@@ -29,5 +29,10 @@
     <string name="a_p_vimanagar_pune_maharashtra_1234">a/p Vimanagar, Pune Maharashtra, 1234</string>
     <string name="abc123_gmail_com">abc123@gmail.com</string>
     <string name="enter_user_email">Enter user Email</string>
+    <string name="enter_school_name">Enter school name :</string>
+    <string name="school_name">school name</string>
+    <string name="fill_education_details">fill education details :</string>
+    <string name="enter_diploma_college_name">Enter diploma college name :</string>
+    <string name="enter_degree_college_name">Enter Degree college name :</string>
 </resources>
 

@@ -33,7 +33,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editText_userName_EditProfileDetails"
+        android:id="@+id/editText_enterName_EditProfileDetails"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:padding="@dimen/dp_10"
@@ -56,7 +56,7 @@
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="@color/black"
         android:fontFamily="@font/alice_regular"
-        app:layout_constraintTop_toBottomOf="@id/editText_userName_EditProfileDetails"
+        app:layout_constraintTop_toBottomOf="@id/editText_enterName_EditProfileDetails"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -136,8 +136,6 @@
         app:layout_constraintTop_toBottomOf="@id/editText_userEmail_EditProfileDetails"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="save"
-        android:background="@color/secondaryDarkColor"
-        />
+        android:text="save" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -94,6 +94,11 @@ dependencies {
     // Lifecycles only (without ViewModel or LiveData)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 
+    implementation 'com.github.pritesh-coditas:generatePDF_library:1.0'
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+
 }
 
 protobuf {

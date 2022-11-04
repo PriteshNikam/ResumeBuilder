@@ -1,9 +1,7 @@
 package com.example.buildresume.repository
 
 import androidx.datastore.core.Serializer
-import com.example.buildresume.ProfileEditDetails
 import com.example.buildresume.UserProfileDetails
-import com.example.buildresume.data.Profile
 import java.io.InputStream
 import java.io.OutputStream
 

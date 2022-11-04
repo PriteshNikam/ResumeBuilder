@@ -13,7 +13,9 @@
         <entry key="app/src/main/res/layout-v23/fragment_home_screen.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_dash_board.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_edit_education_details.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_profile_details.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/fragment_edit_skills_details.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_form_editor_screen.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_login_screen.xml" value="0.33" />
