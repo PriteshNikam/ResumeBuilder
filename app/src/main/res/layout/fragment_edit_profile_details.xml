@@ -129,4 +129,15 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_enterEmail_EditProfileDetails" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_saveProfiledata_editProfileDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/editText_userEmail_EditProfileDetails"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="save"
+        android:background="@color/secondaryDarkColor"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
