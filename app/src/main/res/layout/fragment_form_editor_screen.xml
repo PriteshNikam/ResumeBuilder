@@ -1,244 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.formeditorscreen.FormEditorScreenFragment"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.formeditorscreen.FormEditorScreenFragment">
 
-    <androidx.appcompat.widget.AppCompatCheckedTextView
-        android:id="@+id/textView_formEditorScreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/edit_your_form"
-        android:textSize="@dimen/sp_20"
-        android:textStyle="bold"
-        android:layout_marginStart="@dimen/dp_10"
-        android:fontFamily="@font/alice_regular"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/divider_1" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_generatePdf_formEditorScreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="generate pdf"
-        android:textSize="20sp"
-        android:background="@color/primaryDarkColor"
-        app:layout_constraintLeft_toRightOf="@id/textView_formEditorScreen"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/divider_1"
-        />
-
-    <View
-        android:id="@+id/divider_1"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:background="@color/primaryDarkColor"
-        app:layout_constraintBottom_toTopOf="@id/button_editProfile_formEditorScreen"
-        app:layout_constraintTop_toBottomOf="@+id/textView_formEditorScreen" />
+        android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView_profileInfo_editorFormScreen"
-        android:layout_width="@dimen/dp_50"
-        android:layout_height="@dimen/dp_50"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_4"
-        android:src="@drawable/ic_svg_viewer_info"
-        app:layout_constraintRight_toLeftOf="@id/button_editProfile_formEditorScreen"
-        app:layout_constraintBottom_toTopOf="@id/divider_2"
-        app:layout_constraintTop_toBottomOf="@id/divider_1" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_editProfile_formEditorScreen"
-        android:text="@string/edit_profile_details"
-        android:textSize="@dimen/sp_20"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:layout_marginStart="@dimen/dp_55"
-        android:background="@drawable/custom_button_shape"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_1"
-        app:layout_constraintLeft_toRightOf="@id/imageView_profileInfo_editorFormScreen"
-        app:layout_constraintBottom_toTopOf="@id/divider_2"
-        />
+        <androidx.appcompat.widget.AppCompatCheckedTextView
+            android:id="@+id/textView_formEditorScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:fontFamily="@font/alice_regular"
+            android:text="Resume form"
+            android:textColor="@color/primaryDarkColor"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <View
-        android:id="@+id/divider_2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:background="@color/primaryDarkColor"
-        app:layout_constraintTop_toBottomOf="@id/button_editProfile_formEditorScreen"
-        app:layout_constraintBottom_toTopOf="@id/button_editEducation_formEditorScreen"
-        />
+        <View
+            android:id="@+id/divider_1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@+id/textView_formEditorScreen"
+            tools:layout_editor_absoluteX="-16dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView_profileInfo_editorFormScreen"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:padding="5dp"
+            android:layout_marginTop="@dimen/dp_40"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_4"
+            android:src="@drawable/ic_svg_viewer_info"
+            app:layout_constraintRight_toLeftOf="@id/button_editProfile_formEditorScreen"
+            app:layout_constraintTop_toBottomOf="@id/divider_1" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_editProfile_formEditorScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_55"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/custom_button_shape"
+            android:text="@string/edit_profile_details"
+            android:textSize="@dimen/sp_20"
+            app:layout_constraintLeft_toRightOf="@id/imageView_profileInfo_editorFormScreen"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/dp_40"
+            app:layout_constraintTop_toBottomOf="@id/divider_1" />
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView_education_editorFormScreen"
-        android:layout_width="@dimen/dp_50"
-        android:layout_height="@dimen/dp_50"
-        app:layout_constraintBottom_toTopOf="@id/divider_3"
-        android:src="@drawable/ic_svg_viewer_education"
-        app:layout_constraintRight_toLeftOf="@id/button_editEducation_formEditorScreen"
-        app:layout_constraintTop_toBottomOf="@id/divider_2" />
+        <View
+            android:id="@+id/divider_2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_40"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@id/button_editProfile_formEditorScreen" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView_education_editorFormScreen"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:padding="5dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_4"
+            android:layout_marginTop="@dimen/dp_40"
+            android:src="@drawable/ic_svg_viewer_education"
+            app:layout_constraintRight_toLeftOf="@id/button_editEducation_formEditorScreen"
+            app:layout_constraintTop_toBottomOf="@id/divider_2" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_editEducation_formEditorScreen"
-        android:text="@string/edit_education_details"
-        android:textSize="@dimen/sp_20"
-        android:layout_marginStart="@dimen/dp_55"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_button_shape"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_editEducation_formEditorScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_55"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="@dimen/dp_40"
+            android:background="@drawable/custom_button_shape"
+            android:text="@string/edit_education_details"
+            android:textSize="@dimen/sp_20"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_2" />
 
-        android:layout_marginEnd="10dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_2"
-        app:layout_constraintBottom_toTopOf="@id/divider_3" />
+        <View
+            android:id="@+id/divider_3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_40"
+            android:paddingTop="@dimen/dp_40"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@id/button_editEducation_formEditorScreen" />
 
-    <View
-        android:id="@+id/divider_3"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginTop="@dimen/dp_10"
-        android:background="@color/primaryDarkColor"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
-        app:layout_constraintTop_toBottomOf="@id/button_editEducation_formEditorScreen"
-        app:layout_constraintBottom_toTopOf="@id/button_editSkills_formEditorScreen" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView_skills_editorFormScreen"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginEnd="@dimen/dp_4"
+            android:padding="5dp"
+            android:layout_marginTop="@dimen/dp_40"
+            android:src="@drawable/ic_svg_viewer_skills"
+            app:layout_constraintRight_toLeftOf="@id/button_editSkills_formEditorScreen"
+            app:layout_constraintTop_toBottomOf="@id/divider_3" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView_skills_editorFormScreen"
-        android:layout_width="@dimen/dp_50"
-        android:layout_height="@dimen/dp_50"
-        android:layout_marginEnd="@dimen/dp_4"
-        android:src="@drawable/ic_svg_viewer_skills"
-        app:layout_constraintBottom_toTopOf="@id/divider_4"
-        app:layout_constraintRight_toLeftOf="@id/button_editSkills_formEditorScreen"
-        app:layout_constraintTop_toBottomOf="@id/divider_3" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_editSkills_formEditorScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/custom_button_shape"
+            android:text="@string/edit_skills"
+            android:textSize="@dimen/sp_20"
+            android:layout_marginTop="@dimen/dp_40"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_3" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_editSkills_formEditorScreen"
-        android:text="@string/edit_skills"
-        android:textSize="@dimen/sp_20"
-        android:layout_width="match_parent"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/custom_button_shape"
+        <View
+            android:id="@+id/divider_4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_40"
+            android:background="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@id/button_editSkills_formEditorScreen" />
 
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_3"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/divider_4" />
+        <androidx.appcompat.widget.AppCompatCheckedTextView
+            android:id="@+id/textView_optionalText_formEditorScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:fontFamily="@font/alice_regular"
+            android:text="@string/optional_info"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/dp_40"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_4" />
 
-    <View
-        android:id="@+id/divider_4"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:background="@color/primaryDarkColor"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
-        app:layout_constraintTop_toBottomOf="@id/button_editSkills_formEditorScreen"
-        app:layout_constraintBottom_toTopOf="@id/textView_optionalText_formEditorScreen" />
-
-    <androidx.appcompat.widget.AppCompatCheckedTextView
-        android:id="@+id/textView_optionalText_formEditorScreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/optional_info"
-        android:textStyle="bold"
-        android:layout_marginStart="@dimen/dp_10"
-        android:fontFamily="@font/alice_regular"
-        android:textSize="@dimen/sp_20"
-        app:layout_constraintTop_toBottomOf="@id/divider_4"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/divider_5" />
-
-    <View
-        android:id="@+id/divider_5"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:background="@color/primaryDarkColor"
-        app:layout_constraintTop_toBottomOf="@id/textView_optionalText_formEditorScreen"
-        app:layout_constraintBottom_toTopOf="@id/button_editProject_formEditorScreen" />
-
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView_project_editorFormScreen"
-        android:layout_width="@dimen/dp_50"
-        android:layout_height="@dimen/dp_50"
-        android:layout_marginEnd="@dimen/dp_4"
-        android:src="@drawable/ic_svg_viewer_experience"
-        app:layout_constraintBottom_toTopOf="@id/divider_6"
-        app:layout_constraintRight_toLeftOf="@id/button_editProject_formEditorScreen"
-        app:layout_constraintTop_toBottomOf="@id/divider_5" />
+        <View
+            android:id="@+id/divider_5"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_40"
+            android:background="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@id/textView_optionalText_formEditorScreen" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_editProject_formEditorScreen"
-        android:text="@string/edit_project_details"
-        android:textSize="@dimen/sp_20"
-        android:layout_width="match_parent"
-        android:layout_marginStart="@dimen/dp_55"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:background="@drawable/custom_button_shape"
-
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/divider_6" />
-
-    <View
-        android:id="@+id/divider_6"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:background="@color/primaryDarkColor"
-        app:layout_constraintTop_toBottomOf="@id/button_editProject_formEditorScreen"
-        app:layout_constraintBottom_toTopOf="@id/button_experience_formEditorScreen"/>
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView_experience_editorFormScreen"
-        android:layout_width="@dimen/dp_50"
-        android:layout_height="@dimen/dp_50"
-        android:layout_marginEnd="@dimen/dp_4"
-        android:src="@drawable/ic_svg_viewer_project"
-        app:layout_constraintRight_toLeftOf="@id/button_experience_formEditorScreen"
-        app:layout_constraintTop_toBottomOf="@id/divider_6"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_experience_formEditorScreen"
-        android:text="@string/edit_experience"
-        android:textSize="@dimen/sp_20"
-        android:layout_width="match_parent"
-        android:layout_marginStart="@dimen/dp_55"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_button_shape"
-
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_6"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView_project_editorFormScreen"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginEnd="@dimen/dp_4"
+            android:padding="5dp"
+            android:src="@drawable/ic_svg_viewer_experience"
+            android:layout_marginTop="@dimen/dp_40"
+            app:layout_constraintRight_toLeftOf="@id/button_editProject_formEditorScreen"
+            app:layout_constraintTop_toBottomOf="@id/divider_5" />
 
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_editProject_formEditorScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_55"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/custom_button_shape"
+            android:text="@string/edit_project_details"
+            android:textSize="@dimen/sp_20"
+            android:layout_marginTop="@dimen/dp_40"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_5" />
 
+        <View
+            android:id="@+id/divider_6"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@color/primaryDarkColor"
+            android:layout_marginTop="@dimen/dp_40"
+            app:layout_constraintTop_toBottomOf="@id/button_editProject_formEditorScreen" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView_experience_editorFormScreen"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginEnd="@dimen/dp_4"
+            android:padding="5dp"
+            android:src="@drawable/ic_svg_viewer_project"
+            android:layout_marginTop="@dimen/dp_40"
+            app:layout_constraintRight_toLeftOf="@id/button_experience_formEditorScreen"
+            app:layout_constraintTop_toBottomOf="@id/divider_6" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_experience_formEditorScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_55"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/custom_button_shape"
+            android:text="@string/edit_experience"
+            android:textSize="@dimen/sp_20"
+            android:layout_marginTop="@dimen/dp_40"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_6" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_generatePdf_formEditorScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="generate pdf"
+            android:textSize="@dimen/sp_20"
+            android:layout_marginTop="@dimen/dp_40"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/textView_formEditorScreen"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_experience_formEditorScreen" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

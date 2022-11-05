@@ -8,9 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-93dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/textView_fillEducation_EditEducationDetails"

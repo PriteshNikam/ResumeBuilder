@@ -77,7 +77,7 @@ class FormEditorScreenFragment : Fragment() {
             view?.findNavController()?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditSkillsDetailsFragment())
         }
 
-        binding.textViewFormEditorScreen.text = fragmentArgs.userID.toString()
+        //binding.textViewFormEditorScreen.text = fragmentArgs.userID.toString()
 
         readStoredData()
 
