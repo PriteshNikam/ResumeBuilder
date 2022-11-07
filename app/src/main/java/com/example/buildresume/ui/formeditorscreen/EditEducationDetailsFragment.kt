@@ -45,26 +45,24 @@ class EditEducationDetailsFragment : Fragment() {
             if (!TextUtils.isEmpty(editTextSchoolNameEditEducationDetails.text.toString()) &&
                 !TextUtils.isEmpty(editTextSchoolMarksEditEducationDetails.text.toString()) &&
                 !TextUtils.isEmpty(editTextCollegeNameEditEducationDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextCollegeMarksEditEducationDetails.text.toString())) {
+                !TextUtils.isEmpty(editTextCollegeMarksEditEducationDetails.text.toString()) &&
+                !TextUtils.isEmpty(editTextDiplomaCollegeNameEditEducationDetails.text.toString()) &&
+                !TextUtils.isEmpty(editTextDiplomaMarksEditEducationDetails.text.toString()) &&
+            !TextUtils.isEmpty(editTextDegreeCollegeNameEditEducationDetails.text.toString()) &&
+            !TextUtils.isEmpty(editTextDegreeMarksEditEducationDetails.text.toString())) {
 
-                resumeViewModel.writeToLocal(resumeViewModel.readUserName.value.toString(),
-                    resumeViewModel.readUserMobile.value.toString(),
-                    resumeViewModel.readUserAddress.value.toString(),
-                    resumeViewModel.readUserEmail.value.toString(),
+                resumeViewModel.form.run {
+                    schoolName = editTextSchoolNameEditEducationDetails.text.toString()
+                    schoolMarks =  editTextSchoolMarksEditEducationDetails.text.toString()
+                    collegeName = editTextCollegeNameEditEducationDetails.text.toString()
+                    collegeMarks = editTextCollegeMarksEditEducationDetails.text.toString()
+                    diplomaCollegeName = editTextDiplomaCollegeNameEditEducationDetails.text.toString()
+                    diplomaCollegeMarks = editTextDiplomaMarksEditEducationDetails.text.toString()
+                    degreeCollegeName = editTextDegreeCollegeNameEditEducationDetails.text.toString()
+                    degreeMarks = editTextDegreeMarksEditEducationDetails.text.toString()
 
-                    editTextSchoolNameEditEducationDetails.text.toString(),
-                    editTextSchoolMarksEditEducationDetails.text.toString(),
-                    editTextCollegeNameEditEducationDetails.text.toString(),
-                    editTextCollegeMarksEditEducationDetails.text.toString(),
-                    editTextDiplomaCollegeNameEditEducationDetails.text.toString(),
-                    editTextDiplomaMarksEditEducationDetails.text.toString(),
-                    editTextDegreeCollegeNameEditEducationDetails.text.toString(),
-                    editTextDegreeMarksEditEducationDetails.text.toString(),
-
-                    resumeViewModel.readProgrammingLanguage.value.toString(),
-                    resumeViewModel.readSoftwareTools.value.toString(),
-                    resumeViewModel.readCertification.value.toString(),
-                    resumeViewModel.readOtherSkills.value.toString())
+                }
+                resumeViewModel.saveDataToLocal()
                 createToast("data saved")
             } else {
                 Toast.makeText(requireContext(), "empty data", Toast.LENGTH_SHORT).show()
@@ -76,43 +74,22 @@ class EditEducationDetailsFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 resumeViewModel.readToLocal.collect() { resume ->
-                    if(resume.userName.isNotEmpty()) {
+                    if(resume.schoolName.isNotEmpty()) {
                         binding.textViewFillEducationEditEducationDetails.text = "data saved"
                     }
-                    Log.d(
-                        "saved_data_education",
-                        "${resume.userName} ${resume.userMobile} ${resume.userEmail} ${resume.userAddress}"
-                    )
                     binding.apply {
-                        editTextSchoolNameEditEducationDetails.setText(resume.schoolName)
-                        editTextSchoolMarksEditEducationDetails.setText(resume.schoolMarks)
-                        editTextCollegeNameEditEducationDetails.setText(resume.collegeName)
-                        editTextCollegeMarksEditEducationDetails.setText(resume.collegeMarks)
-                        editTextDiplomaCollegeNameEditEducationDetails.setText(resume.diplomaCollegeName)
-                        editTextDiplomaMarksEditEducationDetails.setText(resume.diplomaCollegeMarks)
-                        editTextDegreeCollegeNameEditEducationDetails.setText(resume.degreeCollegeName)
-                        editTextDegreeMarksEditEducationDetails.setText(resume.degreeMarks)
+                        resumeViewModel.form.run {
+                            editTextSchoolNameEditEducationDetails.setText(schoolName)
+                            editTextSchoolMarksEditEducationDetails.setText(schoolMarks)
+                            editTextCollegeNameEditEducationDetails.setText(collegeName)
+                            editTextCollegeMarksEditEducationDetails.setText(collegeMarks)
+                            editTextDiplomaCollegeNameEditEducationDetails.setText(diplomaCollegeName)
+                            editTextDiplomaMarksEditEducationDetails.setText(diplomaCollegeMarks)
+                            editTextDegreeCollegeNameEditEducationDetails.setText(degreeCollegeName)
+                            editTextDegreeMarksEditEducationDetails.setText(degreeMarks)
+                        }
                     }
 
-                    resumeViewModel.setUserName(resume.userName)
-                    resumeViewModel.setUserMobile(resume.userMobile)
-                    resumeViewModel.setUserAddress(resume.userAddress)
-                    resumeViewModel.setUserEmail(resume.userEmail)
-                    resumeViewModel.setSchoolName(resume.schoolName)
-                    resumeViewModel.setSchoolMarks(resume.schoolMarks)
-                    resumeViewModel.setCollegeName(resume.collegeName)
-                    resumeViewModel.setCollegeMarks(resume.collegeMarks)
-                    resumeViewModel.setCollegeName(resume.collegeName)
-                    resumeViewModel.setCollegeMarks(resume.collegeMarks)
-                    resumeViewModel.setDiplomaCollegeName(resume.diplomaCollegeName)
-                    resumeViewModel.setDiplomaMarks(resume.diplomaCollegeMarks)
-                    resumeViewModel.setDegreeCollegeName(resume.degreeCollegeName)
-                    resumeViewModel.setDegreeMarks(resume.degreeMarks)
-                    resumeViewModel.setDegreeMarks(resume.degreeMarks)
-                    resumeViewModel.setProgrammingLanguage(resume.programmingLanguage)
-                    resumeViewModel.setSoftwareTools(resume.softwareTools)
-                    resumeViewModel.setCertification(resume.certification)
-                    resumeViewModel.setOtherSkills(resume.otherSkills)
 
                 }
             }
@@ -123,7 +100,7 @@ class EditEducationDetailsFragment : Fragment() {
     }
     override fun onPause() {
         super.onPause()
-        viewLifecycleOwner.lifecycleScope.cancel()
+       // viewLifecycleOwner.lifecycleScope.cancel()
     }
 
 }

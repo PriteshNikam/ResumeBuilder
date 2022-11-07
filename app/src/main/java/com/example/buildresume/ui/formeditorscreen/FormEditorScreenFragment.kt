@@ -32,11 +32,6 @@ class FormEditorScreenFragment : Fragment() {
 
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
-    private var name = ""
-    private var mobile = ""
-    private var address = ""
-    private var email = ""
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -58,7 +53,6 @@ class FormEditorScreenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentFormEditorScreenBinding.inflate(inflater, container, false)
 
         Log.d("id", fragmentArgs.userID.toString()) // store uid to sharedPreference
@@ -81,36 +75,13 @@ class FormEditorScreenFragment : Fragment() {
         readStoredData()
 
         binding.buttonGeneratePdfFormEditorScreen.setOnClickListener{
-            GeneratePdf.build(requireContext(),
-                resumeViewModel.readUserName.value.toString(),
-                resumeViewModel.readUserMobile.value.toString(),
-                resumeViewModel.readUserAddress.value.toString(),
-                resumeViewModel.readUserEmail.value.toString(),
-
-                resumeViewModel.readSchoolName.value.toString(),
-                resumeViewModel.readSchoolMarks.value.toString(),
-                resumeViewModel.readCollegeName.value.toString(),
-                resumeViewModel.readCollegeMarks.value.toString(),
-                resumeViewModel.readDiplomaCollegeName.value.toString(),
-                resumeViewModel.readDiplomaCollegeMarks.value.toString(),
-                resumeViewModel.readDegreeCollegeName.value.toString(),
-                resumeViewModel.readDegreeMarks.value.toString(),
-
-                resumeViewModel.readProgrammingLanguage.value.toString(),
-                resumeViewModel.readSoftwareTools.value.toString(),
-                resumeViewModel.readCertification.value.toString(),
-                resumeViewModel.readOtherSkills.value.toString())
+            resumeViewModel.generatePdf(requireContext())
         }
 
         return  binding.root
     }
     private fun createToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
-
-    companion object {
-        private var storedResumeKey = "storedResume"
-        private var PREF_FILE_NAME = "com.example.buildresume_preferences"
     }
 
     private fun readStoredData(){
@@ -122,29 +93,33 @@ class FormEditorScreenFragment : Fragment() {
                         "saved_data",
                         "${resume.userName} ${resume.userMobile} ${resume.userEmail} ${resume.userAddress}"
                     )
-                    resumeViewModel.setUserName(resume.userName)
-                    resumeViewModel.setUserMobile(resume.userMobile)
-                    resumeViewModel.setUserAddress(resume.userAddress)
-                    resumeViewModel.setUserEmail(resume.userEmail)
-                    resumeViewModel.setSchoolName(resume.schoolName)
-                    resumeViewModel.setSchoolMarks(resume.schoolMarks)
-                    resumeViewModel.setCollegeName(resume.collegeName)
-                    resumeViewModel.setCollegeMarks(resume.collegeMarks)
-                    resumeViewModel.setCollegeName(resume.collegeName)
-                    resumeViewModel.setCollegeMarks(resume.collegeMarks)
-                    resumeViewModel.setDiplomaCollegeName(resume.diplomaCollegeName)
-                    resumeViewModel.setDiplomaMarks(resume.diplomaCollegeMarks)
-                    resumeViewModel.setDegreeCollegeName(resume.degreeCollegeName)
-                    resumeViewModel.setDegreeMarks(resume.degreeMarks)
-                    resumeViewModel.setDegreeMarks(resume.degreeMarks)
-                    resumeViewModel.setProgrammingLanguage(resume.programmingLanguage)
-                    resumeViewModel.setSoftwareTools(resume.softwareTools)
-                    resumeViewModel.setCertification(resume.certification)
-                    resumeViewModel.setOtherSkills(resume.otherSkills)
-
+                    resumeViewModel.apply {
+                        resume.run {
+                            form.userName = userName
+                            form.userMobile = userMobile
+                            form.userAddress = userAddress
+                            form.userEmail = userEmail
+                            form.schoolName = schoolName
+                            form.schoolMarks = schoolMarks
+                            form.collegeName = collegeName
+                            form.collegeMarks = collegeMarks
+                            form.diplomaCollegeName = diplomaCollegeName
+                            form.diplomaCollegeMarks = diplomaCollegeMarks
+                            form.degreeCollegeName = degreeCollegeName
+                            form.degreeMarks = degreeMarks
+                            form.programmingLanguage = programmingLanguage
+                            form.softwareTools = softwareTools
+                            form.certification = certification
+                            form.otherSkills = otherSkills
+                        }
+                    }
 
                 }
             }
         }
+    }
+    companion object {
+        private var storedResumeKey = "storedResume"
+        private var PREF_FILE_NAME = "com.example.buildresume_preferences"
     }
 }

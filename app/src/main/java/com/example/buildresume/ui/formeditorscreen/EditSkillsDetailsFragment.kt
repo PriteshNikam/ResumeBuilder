@@ -24,13 +24,11 @@ class EditSkillsDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentEditSkillsDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
-    
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentEditSkillsDetailsBinding.inflate(layoutInflater,container,false)
 
         defaultFormFill()
@@ -49,24 +47,13 @@ class EditSkillsDetailsFragment : Fragment() {
                 !TextUtils.isEmpty(editTextCertificatesEditSkillsDetails.text.toString()) &&
                 !TextUtils.isEmpty(editTextOtherSkillsEditSkillsDetails.text.toString())) {
 
-                resumeViewModel.writeToLocal(resumeViewModel.readUserName.value.toString(),
-                    resumeViewModel.readUserMobile.value.toString(),
-                    resumeViewModel.readUserAddress.value.toString(),
-                    resumeViewModel.readUserEmail.value.toString(),
-
-                    resumeViewModel.readSchoolName.value.toString(),
-                    resumeViewModel.readSchoolMarks.value.toString(),
-                    resumeViewModel.readCollegeName.value.toString(),
-                    resumeViewModel.readCollegeMarks.value.toString(),
-                    resumeViewModel.readDiplomaCollegeName.value.toString(),
-                    resumeViewModel.readDiplomaCollegeMarks.value.toString(),
-                    resumeViewModel.readDegreeCollegeName.value.toString(),
-                    resumeViewModel.readDegreeMarks.value.toString(),
-
-                    editTextProgramLangEditSkillsDetails.text.toString(),
-                    editTextToolsEditSkillsDetails.text.toString(),
-                    editTextCertificatesEditSkillsDetails.text.toString(),
-                    editTextOtherSkillsEditSkillsDetails.text.toString())
+                resumeViewModel.form.run{
+                    programmingLanguage = editTextProgramLangEditSkillsDetails.text.toString()
+                    softwareTools = editTextToolsEditSkillsDetails.text.toString()
+                    certification = editTextCertificatesEditSkillsDetails.text.toString()
+                    otherSkills = editTextOtherSkillsEditSkillsDetails.text.toString()
+                }
+                resumeViewModel.saveDataToLocal()
                 createToast("data saved")
             } else {
                 Toast.makeText(requireContext(), "empty data", Toast.LENGTH_SHORT).show()
@@ -81,36 +68,14 @@ class EditSkillsDetailsFragment : Fragment() {
                     if(resume.programmingLanguage.isNotEmpty()) {
                         binding.textViewFillSkillsEditSkillsDetails.text = "data saved"
                     }
-                    Log.d(
-                        "saved_data_Skills",
-                        "${resume.userName} ${resume.userMobile} ${resume.userEmail} ${resume.userAddress}"
-                    )
                     binding.apply {
-                        editTextProgramLangEditSkillsDetails.setText(resume.programmingLanguage)
-                        editTextToolsEditSkillsDetails.setText(resume.softwareTools)
-                        editTextCertificatesEditSkillsDetails.setText(resume.certification)
-                        editTextOtherSkillsEditSkillsDetails.setText(resume.otherSkills)
+                        resumeViewModel.form.run {
+                            editTextProgramLangEditSkillsDetails.setText(programmingLanguage)
+                            editTextToolsEditSkillsDetails.setText(softwareTools)
+                            editTextCertificatesEditSkillsDetails.setText(certification)
+                            editTextOtherSkillsEditSkillsDetails.setText(otherSkills)
+                        }
                     }
-
-                    resumeViewModel.setUserName(resume.userName)
-                    resumeViewModel.setUserMobile(resume.userMobile)
-                    resumeViewModel.setUserAddress(resume.userAddress)
-                    resumeViewModel.setUserEmail(resume.userEmail)
-                    resumeViewModel.setSchoolName(resume.schoolName)
-                    resumeViewModel.setSchoolMarks(resume.schoolMarks)
-                    resumeViewModel.setCollegeName(resume.collegeName)
-                    resumeViewModel.setCollegeMarks(resume.collegeMarks)
-                    resumeViewModel.setCollegeName(resume.collegeName)
-                    resumeViewModel.setCollegeMarks(resume.collegeMarks)
-                    resumeViewModel.setDiplomaCollegeName(resume.diplomaCollegeName)
-                    resumeViewModel.setDiplomaMarks(resume.diplomaCollegeMarks)
-                    resumeViewModel.setDegreeCollegeName(resume.degreeCollegeName)
-                    resumeViewModel.setDegreeMarks(resume.degreeMarks)
-                    resumeViewModel.setDegreeMarks(resume.degreeMarks)
-                    resumeViewModel.setProgrammingLanguage(resume.programmingLanguage)
-                    resumeViewModel.setSoftwareTools(resume.softwareTools)
-                    resumeViewModel.setCertification(resume.certification)
-                    resumeViewModel.setOtherSkills(resume.otherSkills)
 
                 }
             }
@@ -122,7 +87,7 @@ class EditSkillsDetailsFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        viewLifecycleOwner.lifecycleScope.cancel()
+       // viewLifecycleOwner.lifecycleScope.cancel()
     }
 
 }
