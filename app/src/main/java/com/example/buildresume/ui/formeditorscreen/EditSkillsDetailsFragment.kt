@@ -32,7 +32,6 @@ class EditSkillsDetailsFragment : Fragment() {
         binding.buttonSaveSkillsDetailsEditEducationDetails.setOnClickListener {
             writeToLocal()
         }
-
         return binding.root
      }
 

@@ -2,6 +2,7 @@ package com.example.buildresume.ui.formeditorscreen
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,16 +42,17 @@ class EditEducationDetailsFragment : Fragment() {
 
     private fun writeToLocal() {
         binding.apply {
-            if (!TextUtils.isEmpty(editTextSchoolNameEditEducationDetails.text.toString()) &&
+            if (editTextSchoolNameEditEducationDetails.text.isNullOrEmpty().not() &&
                 !TextUtils.isEmpty(editTextSchoolMarksEditEducationDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextCollegeNameEditEducationDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextCollegeMarksEditEducationDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextDiplomaCollegeNameEditEducationDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextDiplomaMarksEditEducationDetails.text.toString()) &&
             !TextUtils.isEmpty(editTextDegreeCollegeNameEditEducationDetails.text.toString()) &&
             !TextUtils.isEmpty(editTextDegreeMarksEditEducationDetails.text.toString())) {
 
                 resumeViewModel.form.run {
+                    Log.d("education edit: ","${editTextSchoolNameEditEducationDetails.text} || ${editTextSchoolMarksEditEducationDetails.text} || ${editTextCollegeNameEditEducationDetails.text} " +
+                            "${editTextCollegeMarksEditEducationDetails.text}" +
+                            "${editTextDiplomaCollegeNameEditEducationDetails.text}" +
+                            "${editTextDiplomaMarksEditEducationDetails.text} || ${editTextDegreeCollegeNameEditEducationDetails.text} || ${editTextDegreeMarksEditEducationDetails.text}")
+
                     schoolName = editTextSchoolNameEditEducationDetails.text.toString()
                     schoolMarks =  editTextSchoolMarksEditEducationDetails.text.toString()
                     collegeName = editTextCollegeNameEditEducationDetails.text.toString()
@@ -59,7 +61,6 @@ class EditEducationDetailsFragment : Fragment() {
                     diplomaCollegeMarks = editTextDiplomaMarksEditEducationDetails.text.toString()
                     degreeCollegeName = editTextDegreeCollegeNameEditEducationDetails.text.toString()
                     degreeMarks = editTextDegreeMarksEditEducationDetails.text.toString()
-
                 }
                 resumeViewModel.saveDataToLocal()
                 createToast("data saved")
@@ -72,12 +73,13 @@ class EditEducationDetailsFragment : Fragment() {
     private fun defaultFormFill() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                resumeViewModel.readToLocal.collect() { resume ->
+                resumeViewModel.readToLocal.collect { resume ->
                     if(resume.schoolName.isNotEmpty()) {
                         binding.textViewFillEducationEditEducationDetails.text = getString(R.string.data_stored)
                     }
                     binding.apply {
                         resumeViewModel.form.run {
+                            Log.d("education education: ","$schoolName || $schoolMarks || $collegeName || $collegeMarks || $diplomaCollegeName || $diplomaCollegeMarks || $degreeCollegeName || $degreeMarks")
                             editTextSchoolNameEditEducationDetails.setText(schoolName)
                             editTextSchoolMarksEditEducationDetails.setText(schoolMarks)
                             editTextCollegeNameEditEducationDetails.setText(collegeName)

@@ -74,41 +74,42 @@ class FormEditorScreenFragment : Fragment() {
         readStoredData()
 
         binding.buttonGeneratePdfFormEditorScreen.setOnClickListener{
-            resumeViewModel.generatePdf(requireContext())
+            //resumeViewModel.generatePdf(requireContext())
+            resumeViewModel.localGeneratePDF(requireContext())
         }
 
         return  binding.root
-    }
-    private fun createToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     private fun readStoredData(){
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                resumeViewModel.readToLocal.collect() { resume ->
-                    createToast(resume.userName)
+                resumeViewModel.readToLocal.collect { resume ->
                     resumeViewModel.apply {
-                        resume.run {
-                            form.userName = userName
-                            form.userMobile = userMobile
-                            form.userAddress = userAddress
-                            form.userEmail = userEmail
-                            form.schoolName = schoolName
-                            form.schoolMarks = schoolMarks
-                            form.collegeName = collegeName
-                            form.collegeMarks = collegeMarks
-                            form.diplomaCollegeName = diplomaCollegeName
-                            form.diplomaCollegeMarks = diplomaCollegeMarks
-                            form.degreeCollegeName = degreeCollegeName
-                            form.degreeMarks = degreeMarks
-                            form.programmingLanguage = programmingLanguage
-                            form.softwareTools = softwareTools
-                            form.certification = certification
-                            form.otherSkills = otherSkills
-                        }
-                    }
 
+                            form.userName = resume.userName
+                            form.userMobile = resume.userMobile
+                            form.userAddress = resume.userAddress
+                            form.userEmail = resume.userEmail
+                            form.schoolName = resume.schoolName
+                            form.schoolMarks = resume.schoolMarks
+                            form.collegeName = resume.collegeName
+                            form.collegeMarks = resume.collegeMarks
+                            form.diplomaCollegeName = resume.diplomaCollegeName
+                            form.diplomaCollegeMarks = resume.diplomaCollegeMarks
+                            form.degreeCollegeName = resume.degreeCollegeName
+                            form.degreeMarks = resume.degreeMarks
+                            form.programmingLanguage = resume.programmingLanguage
+                            form.softwareTools = resume.softwareTools
+                            form.certification = resume.certification
+                            form.otherSkills = resume.otherSkills
+                    }
+                    resumeViewModel.form.run {
+                        Log.d(
+                            "education Form: ",
+                            "$schoolName || $schoolMarks || $collegeName || $collegeMarks || $diplomaCollegeName || $diplomaCollegeMarks || $degreeCollegeName || $degreeMarks"
+                        )
+                    }
                 }
             }
         }
