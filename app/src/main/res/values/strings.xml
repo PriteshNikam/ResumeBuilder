@@ -34,5 +34,7 @@
     <string name="fill_education_details">fill education details :</string>
     <string name="enter_diploma_college_name">Enter diploma college name :</string>
     <string name="enter_degree_college_name">Enter Degree college name :</string>
+    <string name="data_stored">data saved</string>
+    <string name="empty_data">empty data</string>
 </resources>
 

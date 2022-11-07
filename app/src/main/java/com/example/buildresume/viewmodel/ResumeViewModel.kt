@@ -11,10 +11,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ResumeViewModel @Inject constructor(private val editDetailsRepository: EditDetailsRepository) :
-    ViewModel() {
+class ResumeViewModel @Inject constructor(private val editDetailsRepository: EditDetailsRepository) : ViewModel() {
 
     val form = Form()
+
     fun generatePdf(context: Context) {
         form.run {
             GeneratePdf.build(

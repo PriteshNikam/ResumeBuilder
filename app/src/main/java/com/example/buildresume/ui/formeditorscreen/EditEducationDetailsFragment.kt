@@ -2,7 +2,6 @@ package com.example.buildresume.ui.formeditorscreen
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +11,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.buildresume.R
 import com.example.buildresume.databinding.FragmentEditEducationDetailsBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 
@@ -65,7 +64,7 @@ class EditEducationDetailsFragment : Fragment() {
                 resumeViewModel.saveDataToLocal()
                 createToast("data saved")
             } else {
-                Toast.makeText(requireContext(), "empty data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.empty_data, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -75,7 +74,7 @@ class EditEducationDetailsFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 resumeViewModel.readToLocal.collect() { resume ->
                     if(resume.schoolName.isNotEmpty()) {
-                        binding.textViewFillEducationEditEducationDetails.text = "data saved"
+                        binding.textViewFillEducationEditEducationDetails.text = getString(R.string.data_stored)
                     }
                     binding.apply {
                         resumeViewModel.form.run {
@@ -89,18 +88,12 @@ class EditEducationDetailsFragment : Fragment() {
                             editTextDegreeMarksEditEducationDetails.setText(degreeMarks)
                         }
                     }
-
-
                 }
             }
         }
     }
     private fun createToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
-    override fun onPause() {
-        super.onPause()
-       // viewLifecycleOwner.lifecycleScope.cancel()
     }
 
 }

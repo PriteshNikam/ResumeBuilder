@@ -1,9 +1,7 @@
 package com.example.buildresume.ui.formeditorscreen
 
-import android.location.Address
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +11,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.buildresume.R
 import com.example.buildresume.databinding.FragmentEditProfileDetailsBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -58,7 +56,7 @@ class EditProfileDetailsFragment : Fragment() {
                 resumeViewModel.saveDataToLocal()
                 createToast("data saved")
             } else {
-                Toast.makeText(requireContext(), "empty data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.empty_data), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -68,7 +66,7 @@ class EditProfileDetailsFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 resumeViewModel.readToLocal.collect() { resume ->
                     if (resume.userName.isNotEmpty()) {
-                        binding.textViewFillFormEditProfileDetails.text = "data saved"
+                        binding.textViewFillFormEditProfileDetails.text = getString(R.string.data_stored)
                     }
                     binding.apply {
                         resumeViewModel.form.run {
@@ -86,10 +84,5 @@ class EditProfileDetailsFragment : Fragment() {
 
     private fun createToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onPause() {
-        super.onPause()
-       // viewLifecycleOwner.lifecycleScope.cancel()
     }
 }

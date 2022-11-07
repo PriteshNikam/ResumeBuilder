@@ -18,7 +18,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import com.example.buildresume.databinding.FragmentFormEditorScreenBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
-import com.example.generatepdf.GeneratePdf
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -89,10 +88,6 @@ class FormEditorScreenFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 resumeViewModel.readToLocal.collect() { resume ->
                     createToast(resume.userName)
-                    Log.d(
-                        "saved_data",
-                        "${resume.userName} ${resume.userMobile} ${resume.userEmail} ${resume.userAddress}"
-                    )
                     resumeViewModel.apply {
                         resume.run {
                             form.userName = userName
