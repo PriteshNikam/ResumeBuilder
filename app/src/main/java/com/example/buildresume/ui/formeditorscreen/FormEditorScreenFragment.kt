@@ -52,7 +52,6 @@ class FormEditorScreenFragment : Fragment() {
             arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
             PackageManager.PERMISSION_GRANTED
         )
-
     }
 
     override fun onCreateView(
@@ -82,7 +81,25 @@ class FormEditorScreenFragment : Fragment() {
         readStoredData()
 
         binding.buttonGeneratePdfFormEditorScreen.setOnClickListener{
-            GeneratePdf.build(requireContext(),name,mobile,address,email)
+            GeneratePdf.build(requireContext(),
+                resumeViewModel.readUserName.value.toString(),
+                resumeViewModel.readUserMobile.value.toString(),
+                resumeViewModel.readUserAddress.value.toString(),
+                resumeViewModel.readUserEmail.value.toString(),
+
+                resumeViewModel.readSchoolName.value.toString(),
+                resumeViewModel.readSchoolMarks.value.toString(),
+                resumeViewModel.readCollegeName.value.toString(),
+                resumeViewModel.readCollegeMarks.value.toString(),
+                resumeViewModel.readDiplomaCollegeName.value.toString(),
+                resumeViewModel.readDiplomaCollegeMarks.value.toString(),
+                resumeViewModel.readDegreeCollegeName.value.toString(),
+                resumeViewModel.readDegreeMarks.value.toString(),
+
+                resumeViewModel.readProgrammingLanguage.value.toString(),
+                resumeViewModel.readSoftwareTools.value.toString(),
+                resumeViewModel.readCertification.value.toString(),
+                resumeViewModel.readOtherSkills.value.toString())
         }
 
         return  binding.root
@@ -99,12 +116,33 @@ class FormEditorScreenFragment : Fragment() {
     private fun readStoredData(){
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                resumeViewModel.readToLocal.collect() { profile ->
-                    createToast(profile.userName)
+                resumeViewModel.readToLocal.collect() { resume ->
+                    createToast(resume.userName)
                     Log.d(
                         "saved_data",
-                        "${profile.userName} ${profile.userMobile} ${profile.userEmail} ${profile.userAddress}"
+                        "${resume.userName} ${resume.userMobile} ${resume.userEmail} ${resume.userAddress}"
                     )
+                    resumeViewModel.setUserName(resume.userName)
+                    resumeViewModel.setUserMobile(resume.userMobile)
+                    resumeViewModel.setUserAddress(resume.userAddress)
+                    resumeViewModel.setUserEmail(resume.userEmail)
+                    resumeViewModel.setSchoolName(resume.schoolName)
+                    resumeViewModel.setSchoolMarks(resume.schoolMarks)
+                    resumeViewModel.setCollegeName(resume.collegeName)
+                    resumeViewModel.setCollegeMarks(resume.collegeMarks)
+                    resumeViewModel.setCollegeName(resume.collegeName)
+                    resumeViewModel.setCollegeMarks(resume.collegeMarks)
+                    resumeViewModel.setDiplomaCollegeName(resume.diplomaCollegeName)
+                    resumeViewModel.setDiplomaMarks(resume.diplomaCollegeMarks)
+                    resumeViewModel.setDegreeCollegeName(resume.degreeCollegeName)
+                    resumeViewModel.setDegreeMarks(resume.degreeMarks)
+                    resumeViewModel.setDegreeMarks(resume.degreeMarks)
+                    resumeViewModel.setProgrammingLanguage(resume.programmingLanguage)
+                    resumeViewModel.setSoftwareTools(resume.softwareTools)
+                    resumeViewModel.setCertification(resume.certification)
+                    resumeViewModel.setOtherSkills(resume.otherSkills)
+
+
                 }
             }
         }

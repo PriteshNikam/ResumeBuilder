@@ -1,0 +1,20 @@
+package com.example.buildresume.data
+
+data class Form(
+    var userName:String = "",
+    var userMobile:String = "",
+    var userAddress:String = "",
+    var userEmail:String = "",
+    var schoolName:String = "",
+    var schoolMarks:String = "",
+    var collegeName:String = "",
+    var collegeMarks:String = "",
+    var diplomaCollegeName:String = "",
+    var diplomaCollegeMarks:String = "",
+    var degreeCollegeName:String  = "",
+    var degreeMarks:String = "",
+    var programmingLanguage:String = "",
+    var softwareTools:String = "",
+    var certification:String = "",
+    var otherSkills:String= ""
+)

@@ -1,0 +1,27 @@
+// schema to store data.
+
+syntax = "proto3";
+
+ option java_package = "com.example.buildresume";
+ option java_multiple_files = true;
+
+ message ResumeDetails{ // using message keyword we create schema to store data.
+   string userName = 1; // unique number for identification.
+   string userMobile = 2;
+   string userEmail = 3;
+   string userAddress = 4;
+
+   string schoolName = 5;
+   string schoolMarks = 6;
+   string collegeName = 7;
+   string collegeMarks = 8;
+   string diplomaCollegeName = 9;
+   string diplomaMarks = 10;
+   string degreeCollegeName = 11;
+   string degreeMarks = 12;
+
+   string programmingLanguage = 13;
+   string softwareTools = 14;
+   string certification = 15;
+   string otherSkills = 16;
+ }

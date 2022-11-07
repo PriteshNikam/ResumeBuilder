@@ -1,5 +1,6 @@
 package com.example.buildresume.ui.formeditorscreen
 
+import android.location.Address
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -25,12 +26,11 @@ class EditProfileDetailsFragment : Fragment() {
 
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d("lifeCycle", "onCreateView")
-
         // Inflate the layout for this fragment
         binding = FragmentEditProfileDetailsBinding.inflate(inflater, container, false)
 
@@ -49,11 +49,25 @@ class EditProfileDetailsFragment : Fragment() {
                 !TextUtils.isEmpty(editTextUserMobileNumberEditProfileDetails.text.toString()) &&
                 !TextUtils.isEmpty(editTextUserAddressEditProfileDetails.text.toString()) &&
                 !TextUtils.isEmpty(editTextUserEmailEditProfileDetails.text.toString())) {
-                val name = editTextEnterNameEditProfileDetails.text.toString()
-                val mobile = editTextUserMobileNumberEditProfileDetails.text.toString()
-                val address = editTextUserAddressEditProfileDetails.text.toString()
-                val email = editTextUserEmailEditProfileDetails.text.toString()
-                resumeViewModel.writeToLocal(name, mobile, address, email)
+
+                resumeViewModel.writeToLocal(editTextEnterNameEditProfileDetails.text.toString(),
+                    editTextUserMobileNumberEditProfileDetails.text.toString(),
+                    editTextUserAddressEditProfileDetails.text.toString(),
+                    editTextUserEmailEditProfileDetails.text.toString(),
+
+                    resumeViewModel.readSchoolName.value.toString(),
+                    resumeViewModel.readSchoolMarks.value.toString(),
+                    resumeViewModel.readCollegeName.value.toString(),
+                    resumeViewModel.readCollegeMarks.value.toString(),
+                    resumeViewModel.readDiplomaCollegeName.value.toString(),
+                    resumeViewModel.readDiplomaCollegeMarks.value.toString(),
+                    resumeViewModel.readDegreeCollegeName.value.toString(),
+                    resumeViewModel.readDegreeMarks.value.toString(),
+
+                    resumeViewModel.readProgrammingLanguage.value.toString(),
+                    resumeViewModel.readSoftwareTools.value.toString(),
+                    resumeViewModel.readCertification.value.toString(),
+                    resumeViewModel.readOtherSkills.value.toString())
                 createToast("data saved")
             } else {
                 Toast.makeText(requireContext(), "empty data", Toast.LENGTH_SHORT).show()
@@ -64,18 +78,41 @@ class EditProfileDetailsFragment : Fragment() {
     private fun defaultFormFill() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                resumeViewModel.readToLocal.collect() { profile ->
-                    binding.textViewFillFormEditProfileDetails.text = "data saved"
+                resumeViewModel.readToLocal.collect() { resume ->
+                    if(resume.userName.isNotEmpty()) {
+                        binding.textViewFillFormEditProfileDetails.text = "data saved"
+                    }
                     Log.d(
-                        "saved_data",
-                        "${profile.userName} ${profile.userMobile} ${profile.userEmail} ${profile.userAddress}"
+                        "saved_data_profile",
+                        "${resume.userName} ${resume.userMobile} ${resume.userEmail} ${resume.userAddress}"
                     )
                     binding.apply {
-                        editTextEnterNameEditProfileDetails.setText(profile.userName)
-                        editTextUserMobileNumberEditProfileDetails.setText(profile.userMobile)
-                        editTextUserAddressEditProfileDetails.setText(profile.userAddress)
-                        editTextUserEmailEditProfileDetails.setText(profile.userEmail)
+                        editTextEnterNameEditProfileDetails.setText(resume.userName)
+                        editTextUserMobileNumberEditProfileDetails.setText(resume.userMobile)
+                        editTextUserAddressEditProfileDetails.setText(resume.userAddress)
+                        editTextUserEmailEditProfileDetails.setText(resume.userEmail)
                     }
+
+                    resumeViewModel.setUserName(resume.userName)
+                    resumeViewModel.setUserMobile(resume.userMobile)
+                    resumeViewModel.setUserAddress(resume.userAddress)
+                    resumeViewModel.setUserEmail(resume.userEmail)
+                    resumeViewModel.setSchoolName(resume.schoolName)
+                    resumeViewModel.setSchoolMarks(resume.schoolMarks)
+                    resumeViewModel.setCollegeName(resume.collegeName)
+                    resumeViewModel.setCollegeMarks(resume.collegeMarks)
+                    resumeViewModel.setCollegeName(resume.collegeName)
+                    resumeViewModel.setCollegeMarks(resume.collegeMarks)
+                    resumeViewModel.setDiplomaCollegeName(resume.diplomaCollegeName)
+                    resumeViewModel.setDiplomaMarks(resume.diplomaCollegeMarks)
+                    resumeViewModel.setDegreeCollegeName(resume.degreeCollegeName)
+                    resumeViewModel.setDegreeMarks(resume.degreeMarks)
+                    resumeViewModel.setDegreeMarks(resume.degreeMarks)
+                    resumeViewModel.setProgrammingLanguage(resume.programmingLanguage)
+                    resumeViewModel.setSoftwareTools(resume.softwareTools)
+                    resumeViewModel.setCertification(resume.certification)
+                    resumeViewModel.setOtherSkills(resume.otherSkills)
+
                 }
             }
         }

@@ -1,22 +1,28 @@
 package com.example.buildresume.ui.formeditorscreen
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.buildresume.R
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.buildresume.databinding.FragmentEditEducationDetailsBinding
+import com.example.buildresume.viewmodel.ResumeViewModel
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 
 
 class EditEducationDetailsFragment : Fragment() {
 
     private lateinit var binding :FragmentEditEducationDetailsBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private val resumeViewModel: ResumeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,6 +30,100 @@ class EditEducationDetailsFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentEditEducationDetailsBinding.inflate(inflater,container,false)
+
+        defaultFormFill()
+
+        binding.buttonSaveEducationDetailsEditEducationDetails.setOnClickListener {
+            writeToLocal()
+        }
+
         return binding.root
     }
+
+    private fun writeToLocal() {
+        binding.apply {
+            if (!TextUtils.isEmpty(editTextSchoolNameEditEducationDetails.text.toString()) &&
+                !TextUtils.isEmpty(editTextSchoolMarksEditEducationDetails.text.toString()) &&
+                !TextUtils.isEmpty(editTextCollegeNameEditEducationDetails.text.toString()) &&
+                !TextUtils.isEmpty(editTextCollegeMarksEditEducationDetails.text.toString())) {
+
+                resumeViewModel.writeToLocal(resumeViewModel.readUserName.value.toString(),
+                    resumeViewModel.readUserMobile.value.toString(),
+                    resumeViewModel.readUserAddress.value.toString(),
+                    resumeViewModel.readUserEmail.value.toString(),
+
+                    editTextSchoolNameEditEducationDetails.text.toString(),
+                    editTextSchoolMarksEditEducationDetails.text.toString(),
+                    editTextCollegeNameEditEducationDetails.text.toString(),
+                    editTextCollegeMarksEditEducationDetails.text.toString(),
+                    editTextDiplomaCollegeNameEditEducationDetails.text.toString(),
+                    editTextDiplomaMarksEditEducationDetails.text.toString(),
+                    editTextDegreeCollegeNameEditEducationDetails.text.toString(),
+                    editTextDegreeMarksEditEducationDetails.text.toString(),
+
+                    resumeViewModel.readProgrammingLanguage.value.toString(),
+                    resumeViewModel.readSoftwareTools.value.toString(),
+                    resumeViewModel.readCertification.value.toString(),
+                    resumeViewModel.readOtherSkills.value.toString())
+                createToast("data saved")
+            } else {
+                Toast.makeText(requireContext(), "empty data", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun defaultFormFill() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                resumeViewModel.readToLocal.collect() { resume ->
+                    if(resume.userName.isNotEmpty()) {
+                        binding.textViewFillEducationEditEducationDetails.text = "data saved"
+                    }
+                    Log.d(
+                        "saved_data_education",
+                        "${resume.userName} ${resume.userMobile} ${resume.userEmail} ${resume.userAddress}"
+                    )
+                    binding.apply {
+                        editTextSchoolNameEditEducationDetails.setText(resume.schoolName)
+                        editTextSchoolMarksEditEducationDetails.setText(resume.schoolMarks)
+                        editTextCollegeNameEditEducationDetails.setText(resume.collegeName)
+                        editTextCollegeMarksEditEducationDetails.setText(resume.collegeMarks)
+                        editTextDiplomaCollegeNameEditEducationDetails.setText(resume.diplomaCollegeName)
+                        editTextDiplomaMarksEditEducationDetails.setText(resume.diplomaCollegeMarks)
+                        editTextDegreeCollegeNameEditEducationDetails.setText(resume.degreeCollegeName)
+                        editTextDegreeMarksEditEducationDetails.setText(resume.degreeMarks)
+                    }
+
+                    resumeViewModel.setUserName(resume.userName)
+                    resumeViewModel.setUserMobile(resume.userMobile)
+                    resumeViewModel.setUserAddress(resume.userAddress)
+                    resumeViewModel.setUserEmail(resume.userEmail)
+                    resumeViewModel.setSchoolName(resume.schoolName)
+                    resumeViewModel.setSchoolMarks(resume.schoolMarks)
+                    resumeViewModel.setCollegeName(resume.collegeName)
+                    resumeViewModel.setCollegeMarks(resume.collegeMarks)
+                    resumeViewModel.setCollegeName(resume.collegeName)
+                    resumeViewModel.setCollegeMarks(resume.collegeMarks)
+                    resumeViewModel.setDiplomaCollegeName(resume.diplomaCollegeName)
+                    resumeViewModel.setDiplomaMarks(resume.diplomaCollegeMarks)
+                    resumeViewModel.setDegreeCollegeName(resume.degreeCollegeName)
+                    resumeViewModel.setDegreeMarks(resume.degreeMarks)
+                    resumeViewModel.setDegreeMarks(resume.degreeMarks)
+                    resumeViewModel.setProgrammingLanguage(resume.programmingLanguage)
+                    resumeViewModel.setSoftwareTools(resume.softwareTools)
+                    resumeViewModel.setCertification(resume.certification)
+                    resumeViewModel.setOtherSkills(resume.otherSkills)
+
+                }
+            }
+        }
+    }
+    private fun createToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+    override fun onPause() {
+        super.onPause()
+        viewLifecycleOwner.lifecycleScope.cancel()
+    }
+
 }
