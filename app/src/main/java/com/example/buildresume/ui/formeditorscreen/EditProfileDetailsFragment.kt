@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.buildresume.R
+import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentEditProfileDetailsBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -54,9 +55,9 @@ class EditProfileDetailsFragment : Fragment() {
                     userEmail = editTextUserEmailEditProfileDetails.text.toString()
                 }
                 resumeViewModel.saveDataToLocal()
-                createToast("data saved")
+                showToast(requireContext(),R.string.data_saved)
             } else {
-                Toast.makeText(requireContext(), getString(R.string.empty_data), Toast.LENGTH_SHORT).show()
+                showToast(requireContext(),R.string.empty_data)
             }
         }
     }
@@ -66,7 +67,7 @@ class EditProfileDetailsFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 resumeViewModel.readToLocal.collect() { resume ->
                     if (resume.userName.isNotEmpty()) {
-                        binding.textViewFillFormEditProfileDetails.text = getString(R.string.data_stored)
+                        binding.textViewFillFormEditProfileDetails.text = getString(R.string.data_saved)
                     }
                     binding.apply {
                         resumeViewModel.form.run {
@@ -82,7 +83,4 @@ class EditProfileDetailsFragment : Fragment() {
         }
     }
 
-    private fun createToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
 }

@@ -1,25 +1,31 @@
 package com.example.buildresume.ui.formeditorscreen
 
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.findNavController
+import com.example.buildresume.UtilClass.onClick
+import com.example.buildresume.UtilClass.showLog
 import com.example.buildresume.databinding.FragmentFormEditorScreenBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.io.File
+
 
 @AndroidEntryPoint
 class FormEditorScreenFragment : Fragment() {
@@ -54,29 +60,28 @@ class FormEditorScreenFragment : Fragment() {
     ): View {
         binding = FragmentFormEditorScreenBinding.inflate(inflater, container, false)
 
-        Log.d("id", fragmentArgs.userID.toString()) // store uid to sharedPreference
+        showLog("id", fragmentArgs.userID.toString()) // store uid to sharedPreference
 
-        binding.buttonEditProfileFormEditorScreen.setOnClickListener {
-            view?.findNavController()
-                ?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProfileDetailsFragment())
-        }
+        binding.apply {
+            buttonEditProfileFormEditorScreen.setOnClickListener {
+                onClick(view,FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProfileDetailsFragment())
+            }
 
-        binding.buttonEditEducationFormEditorScreen.setOnClickListener {
-            view?.findNavController()
-                ?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditEducationDetailsFragment())
-        }
+            buttonEditEducationFormEditorScreen.setOnClickListener {
+                onClick(view,FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditEducationDetailsFragment())
+            }
 
-        binding.buttonEditSkillsFormEditorScreen.setOnClickListener {
-            view?.findNavController()
-                ?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditSkillsDetailsFragment())
-        }
+            buttonEditSkillsFormEditorScreen.setOnClickListener {
+                onClick(view,FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditSkillsDetailsFragment())
+            }
 
-        binding.buttonEditProjectFormEditorScreen.setOnClickListener{
-            view?.findNavController()?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProjectDetailsFragment())
-        }
+            buttonEditProjectFormEditorScreen.setOnClickListener {
+                onClick(view,FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProjectDetailsFragment())
+            }
 
-        binding.buttonExperienceFormEditorScreen.setOnClickListener{
-            view?.findNavController()?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditExperienceDetailsFragment())
+            buttonExperienceFormEditorScreen.setOnClickListener {
+                onClick(view,FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditExperienceDetailsFragment())
+            }
         }
 
         //binding.textViewFormEditorScreen.text = fragmentArgs.userID.toString()
@@ -84,8 +89,9 @@ class FormEditorScreenFragment : Fragment() {
         readStoredData()
 
         binding.buttonGeneratePdfFormEditorScreen.setOnClickListener {
-            //resumeViewModel.generatePdf(requireContext())
-            resumeViewModel.localGeneratePDF(requireContext())
+            //resumeViewModel.generatePdf(requireContext()) // library function
+            resumeViewModel.localGeneratePDF(requireContext()) // local function for testing
+            showPdf()
         }
 
         return binding.root
@@ -126,6 +132,30 @@ class FormEditorScreenFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun showPdf() {
+
+        ActivityCompat.requestPermissions(
+            requireActivity(),
+            arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+            PackageManager.PERMISSION_GRANTED
+        )
+
+        val file = File(Environment.getExternalStorageDirectory().absolutePath + "/resumePDF.pdf")
+
+        val target = Intent(Intent.ACTION_VIEW)
+        target.data = Uri.fromFile(file)
+        target.type = "application/pdf"
+        //target.setDataAndType(Uri.fromFile(file), "application/pdf")
+       // target.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+
+        val intent = Intent.createChooser(target, "Open File")
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            // Instruct the user to install a PDF reader here, or something
         }
     }
 

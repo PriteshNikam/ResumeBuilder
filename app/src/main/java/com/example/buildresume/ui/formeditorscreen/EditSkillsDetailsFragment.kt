@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.buildresume.R
+import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentEditSkillsDetailsBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import kotlinx.coroutines.launch
@@ -49,9 +50,9 @@ class EditSkillsDetailsFragment : Fragment() {
                     otherSkills = editTextOtherSkillsEditSkillsDetails.text.toString()
                 }
                 resumeViewModel.saveDataToLocal()
-                createToast("data saved")
+                showToast(requireContext(),R.string.data_saved)
             } else {
-                Toast.makeText(requireContext(), "empty data", Toast.LENGTH_SHORT).show()
+                showToast(requireContext(),R.string.empty_data)
             }
         }
     }
@@ -61,7 +62,7 @@ class EditSkillsDetailsFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 resumeViewModel.readToLocal.collect() { resume ->
                     if(resume.programmingLanguage.isNotEmpty()) {
-                        binding.textViewFillSkillsEditSkillsDetails.text = getString(R.string.data_stored)
+                        binding.textViewFillSkillsEditSkillsDetails.text = getString(R.string.data_saved)
                     }
                     binding.apply {
                         resumeViewModel.form.run {
@@ -76,8 +77,4 @@ class EditSkillsDetailsFragment : Fragment() {
             }
         }
     }
-    private fun createToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
-
 }

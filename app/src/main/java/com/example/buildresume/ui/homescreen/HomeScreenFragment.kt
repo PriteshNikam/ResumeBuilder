@@ -1,4 +1,4 @@
-package com.example.buildresume.ui
+package com.example.buildresume.ui.homescreen
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -6,9 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.buildresume.UtilClass.onClick
+import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentHomeScreenBinding
 import java.util.*
 
@@ -22,7 +23,8 @@ class HomeScreenFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        fragmentArgs = HomeScreenFragmentArgs.fromBundle(requireArguments())
+        fragmentArgs =
+            HomeScreenFragmentArgs.fromBundle(requireArguments())
 
         sharedPreferences = requireActivity().getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE)
         sharedPreferencesEditor = sharedPreferences.edit()
@@ -36,27 +38,31 @@ class HomeScreenFragment : Fragment() {
         binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
         binding.textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
 
-        storedResume()
+        prepareRecyclerView()
 
         return binding.root
     }
 
-    private fun storedResume(){
+    private fun prepareRecyclerView(){
         if(sharedPreferences.getString(storedResumeKey,"").isNullOrEmpty()){
-            binding.textViewEmptyTextHomeScreen.visibility = View.VISIBLE
-            binding.recyclerViewHomeScreen.visibility = View.GONE
+            binding.run {
+                textViewEmptyTextHomeScreen.visibility = View.VISIBLE
+                recyclerViewHomeScreen.visibility = View.GONE
+            }
         }else {
-            binding.recyclerViewHomeScreen.visibility = View.VISIBLE
-            binding.textViewEmptyTextHomeScreen.visibility = View.GONE
+            binding.run {
+                recyclerViewHomeScreen.visibility = View.VISIBLE
+                textViewEmptyTextHomeScreen.visibility = View.GONE
+            }
         }
 
         binding.imageViewProfileHomeScreen.setOnClickListener{
-            createToast(fragmentArgs.user?.displayName.toString())
+            showToast(requireContext(),fragmentArgs.user?.displayName.toString().toInt())
         }
 
         binding.floatingButtonAddResumeHomeScreen.setOnClickListener{
             val uniqueID = UUID.randomUUID().toString()
-            view?.findNavController()?.navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment(uniqueID))
+            onClick(view,HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment(uniqueID))
         }
     }
 
@@ -65,8 +71,6 @@ class HomeScreenFragment : Fragment() {
         private var PREF_FILE_NAME = "com.example.buildresume_preferences"
     }
 
-    private fun createToast(message: String = "") {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
+
 
 }

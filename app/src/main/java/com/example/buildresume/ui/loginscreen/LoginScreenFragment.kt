@@ -8,13 +8,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.buildresume.R
+import com.example.buildresume.UtilClass.showLog
+import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentLoginScreenBinding
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
@@ -81,7 +82,7 @@ class LoginScreenFragment : Fragment() {
             .build()
 
         binding.linearLayoutLoginScreen.setOnClickListener {
-            createToast(R.string.click)
+            showToast(requireContext(),R.string.click)
             displaySignIn()
         }
     }
@@ -116,13 +117,13 @@ class LoginScreenFragment : Fragment() {
                     }
                     else -> {
                         // Shouldn't happen.
-                        Log.d(TAG, "No ID token!")
+                        showLog(TAG, "No ID token!")
                     }
                 }
             } catch (e: ApiException) {
                 when (e.statusCode) {
                     CommonStatusCodes.CANCELED -> {
-                        Log.d(TAG, "One-tap dialog was closed.")
+                        showLog(TAG, "One-tap dialog was closed.")
                         // Don't re-prompt the user.
                         Snackbar.make(
                             binding.root,
@@ -131,7 +132,7 @@ class LoginScreenFragment : Fragment() {
                         ).show()
                     }
                     CommonStatusCodes.NETWORK_ERROR -> {
-                        Log.d(TAG, "One-tap encountered a network error.")
+                        showLog(TAG, "One-tap encountered a network error.")
                         // Try again or just ignore.
                         Snackbar.make(
                             binding.root,
@@ -140,7 +141,7 @@ class LoginScreenFragment : Fragment() {
                         ).show()
                     }
                     else -> {
-                        Log.d(
+                        showLog(
                             TAG, "Couldn't get credential from result." +
                                     " (${e.localizedMessage})"
                         )
@@ -163,12 +164,8 @@ class LoginScreenFragment : Fragment() {
             }
         }.addOnFailureListener(requireActivity()) { e ->
             // No Google Accounts found. Just continue presenting the signed-out UI.
-            Log.d(TAG, e.localizedMessage!!)
+            showLog(TAG, e.localizedMessage!!)
         }
-    }
-
-    private fun createToast(message: Int) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     companion object{

@@ -13,6 +13,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.buildresume.R
+import com.example.buildresume.UtilClass.showLog
+import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentEditEducationDetailsBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import kotlinx.coroutines.launch
@@ -48,12 +50,7 @@ class EditEducationDetailsFragment : Fragment() {
             !TextUtils.isEmpty(editTextDegreeMarksEditEducationDetails.text.toString())) {
 
                 resumeViewModel.form.run {
-                    Log.d("education edit: ","${editTextSchoolNameEditEducationDetails.text} || ${editTextSchoolMarksEditEducationDetails.text} || ${editTextCollegeNameEditEducationDetails.text} " +
-                            "${editTextCollegeMarksEditEducationDetails.text}" +
-                            "${editTextDiplomaCollegeNameEditEducationDetails.text}" +
-                            "${editTextDiplomaMarksEditEducationDetails.text} || ${editTextDegreeCollegeNameEditEducationDetails.text} || ${editTextDegreeMarksEditEducationDetails.text}")
-
-                    schoolName = editTextSchoolNameEditEducationDetails.text.toString()
+                    schoolName =  editTextSchoolNameEditEducationDetails.text.toString()
                     schoolMarks =  editTextSchoolMarksEditEducationDetails.text.toString()
                     collegeName = editTextCollegeNameEditEducationDetails.text.toString()
                     collegeMarks = editTextCollegeMarksEditEducationDetails.text.toString()
@@ -63,9 +60,9 @@ class EditEducationDetailsFragment : Fragment() {
                     degreeMarks = editTextDegreeMarksEditEducationDetails.text.toString()
                 }
                 resumeViewModel.saveDataToLocal()
-                createToast("data saved")
+                showToast(requireContext(),R.string.data_saved)
             } else {
-                Toast.makeText(requireContext(), R.string.empty_data, Toast.LENGTH_SHORT).show()
+                showToast(requireContext(),R.string.empty_data)
             }
         }
     }
@@ -75,11 +72,11 @@ class EditEducationDetailsFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 resumeViewModel.readToLocal.collect { resume ->
                     if(resume.schoolName.isNotEmpty()) {
-                        binding.textViewFillEducationEditEducationDetails.text = getString(R.string.data_stored)
+                        binding.textViewFillEducationEditEducationDetails.text = getString(R.string.data_saved)
                     }
                     binding.apply {
                         resumeViewModel.form.run {
-                            Log.d("education education: ","$schoolName || $schoolMarks || $collegeName || $collegeMarks || $diplomaCollegeName || $diplomaCollegeMarks || $degreeCollegeName || $degreeMarks")
+                            showLog("education education: ","$schoolName || $schoolMarks || $collegeName || $collegeMarks || $diplomaCollegeName || $diplomaCollegeMarks || $degreeCollegeName || $degreeMarks")
                             editTextSchoolNameEditEducationDetails.setText(schoolName)
                             editTextSchoolMarksEditEducationDetails.setText(schoolMarks)
                             editTextCollegeNameEditEducationDetails.setText(collegeName)
@@ -93,9 +90,6 @@ class EditEducationDetailsFragment : Fragment() {
                 }
             }
         }
-    }
-    private fun createToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
 }
