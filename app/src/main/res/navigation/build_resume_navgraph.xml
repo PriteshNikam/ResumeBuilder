@@ -67,6 +67,12 @@
         <action
             android:id="@+id/action_formEditorScreenFragment_to_editSkillsDetailsFragment"
             app:destination="@id/editSkillsDetailsFragment" />
+        <action
+            android:id="@+id/action_formEditorScreenFragment_to_editExperienceDetailsFragment"
+            app:destination="@id/editExperienceDetailsFragment" />
+        <action
+            android:id="@+id/action_formEditorScreenFragment_to_editProjectDetailsFragment"
+            app:destination="@id/editProjectDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileDetailsFragment"
@@ -83,5 +89,15 @@
         android:name="com.example.buildresume.ui.formeditorscreen.EditSkillsDetailsFragment"
         android:label="fragment_edit_skills_details"
         tools:layout="@layout/fragment_edit_skills_details" />
+    <fragment
+        android:id="@+id/editExperienceDetailsFragment"
+        android:name="com.example.buildresume.ui.formeditorscreen.EditExperienceDetailsFragment"
+        android:label="fragment_edit_experience_details"
+        tools:layout="@layout/fragment_edit_experience_details" />
+    <fragment
+        android:id="@+id/editProjectDetailsFragment"
+        android:name="com.example.buildresume.ui.formeditorscreen.EditProjectDetailsFragment"
+        android:label="fragment_edit_project_details"
+        tools:layout="@layout/fragment_edit_project_details" />
 
 </navigation>

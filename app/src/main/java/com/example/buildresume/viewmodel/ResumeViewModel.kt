@@ -6,7 +6,6 @@ import android.graphics.Paint
 import android.graphics.Typeface
 import android.graphics.pdf.PdfDocument
 import android.widget.Toast
-import androidx.compose.ui.graphics.PaintingStyle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.buildresume.data.Form
@@ -45,6 +44,11 @@ class ResumeViewModel @Inject constructor(private val editDetailsRepository: Edi
                 softwareTools,
                 certification,
                 otherSkills,
+                projectTitle,
+                projectDescription,
+                companyName,
+                companyExperienceYear,
+                totalExperience
             )
         }
     }
@@ -65,7 +69,13 @@ class ResumeViewModel @Inject constructor(private val editDetailsRepository: Edi
         programmingLanguage: String,
         softwareTools: String,
         certification: String,
-        otherSkills: String
+        otherSkills: String,
+        projectTitle: String,
+        projectDescription: String,
+        companyName:String,
+        companyExperienceYear:String,
+        totalExperience:String
+
     ) = viewModelScope.launch {
         editDetailsRepository.writeToLocal(
             userName,
@@ -83,7 +93,12 @@ class ResumeViewModel @Inject constructor(private val editDetailsRepository: Edi
             programmingLanguage,
             softwareTools,
             certification,
-            otherSkills
+            otherSkills,
+            projectTitle,
+            projectDescription,
+            companyName,
+            companyExperienceYear,
+            totalExperience
         )
     }
 
@@ -105,7 +120,12 @@ class ResumeViewModel @Inject constructor(private val editDetailsRepository: Edi
                 programmingLanguage,
                 softwareTools,
                 certification,
-                otherSkills
+                otherSkills,
+                projectTitle,
+                projectDescription,
+                companyName,
+                companyExperienceYear,
+                totalExperience
             )
         }
     }
@@ -147,6 +167,8 @@ class ResumeViewModel @Inject constructor(private val editDetailsRepository: Edi
         val page = myPdfDocument.startPage(pageInfo)
         val canvas = page.canvas
 
+        var x = 20F
+        var y = 20F
 
         // userName
         canvas.drawText(form.userName, 20F, 40F, paintHead1)
@@ -171,24 +193,39 @@ class ResumeViewModel @Inject constructor(private val editDetailsRepository: Edi
         canvas.drawText(form.collegeMarks, 300F, 240F, paintBoldText)
 
         if(form.diplomaCollegeName.isNotEmpty()){
-            canvas.drawText("Diploma College Name :", 35F, 280F, paintHead3) //
-            canvas.drawText(form.diplomaCollegeName, 40F, 300F, paintNormalText)
-            canvas.drawText(form.diplomaCollegeMarks, 300F, 300F, paintBoldText)
+            canvas.drawText("Diploma College Name :", 35F, 260F, paintHead3) //
+            canvas.drawText(form.diplomaCollegeName, 40F, 280F, paintNormalText)
+            canvas.drawText(form.diplomaCollegeMarks, 300F, 280F, paintBoldText)
+
+            canvas.drawText("Degree College Name :", 35F, 300F, paintHead3) //
+            canvas.drawText(form.degreeCollegeName, 40F, 320F, paintNormalText)
+            canvas.drawText(form.degreeMarks.toFloat().toString(), 320F, 320F, paintBoldText)
+
+            canvas.drawText("Skills details: ", 30F, 350F, paintHead2)
+            canvas.drawText("Programming languages :", 35F, 370F, paintHead3) //
+            canvas.drawText(form.programmingLanguage, 170F, 370F, paintNormalText)
+            canvas.drawText("Software tools :", 35F, 390F, paintHead3) //
+            canvas.drawText(form.softwareTools, 120F, 390F, paintNormalText)
+            canvas.drawText("Certifications :", 35F, 410F, paintHead3) //
+            canvas.drawText(form.certification, 120F, 410F, paintNormalText)
+            canvas.drawText("Other Skills :", 35F, 430F, paintHead3) //
+            canvas.drawText(form.otherSkills, 110F, 430F, paintNormalText)
         }
+        else{
+            canvas.drawText("Degree College Name :", 35F, 260F, paintHead3) //
+            canvas.drawText(form.degreeCollegeName, 40F, 280F, paintNormalText)
+            canvas.drawText(form.degreeMarks.toFloat().toString(), 320F, 280F, paintBoldText)
 
-        canvas.drawText("Degree College Name :", 35F, 340F, paintHead3) //
-        canvas.drawText(form.degreeCollegeName, 40F, 360F, paintNormalText)
-        canvas.drawText(form.degreeMarks.toFloat().toString(), 320F, 360F, paintBoldText)
-
-        canvas.drawText("Skills details: ", 30F, 420F, paintHead2)
-        canvas.drawText("Programming languages :", 35F, 440F, paintHead3) //
-        canvas.drawText(form.programmingLanguage, 35F, 460F, paintNormalText)
-        canvas.drawText("Software tools :", 35F, 480F, paintHead3) //
-        canvas.drawText(form.softwareTools, 35F, 500F, paintNormalText)
-        canvas.drawText("Certifications :", 35F, 520F, paintHead3) //
-        canvas.drawText(form.certification, 35F, 540F, paintNormalText)
-        canvas.drawText("Other Skills :", 35F, 560F, paintHead3) //
-        canvas.drawText(form.otherSkills, 35F, 580F, paintNormalText)
+            canvas.drawText("Skills details: ", 30F, 310F, paintHead2)
+            canvas.drawText("Programming languages :", 35F, 330F, paintHead3) //
+            canvas.drawText(form.programmingLanguage, 160F, 330F, paintNormalText)
+            canvas.drawText("Software tools :", 35F, 370F, paintHead3) //
+            canvas.drawText(form.softwareTools, 120F, 370F, paintNormalText)
+            canvas.drawText("Certifications :", 35F, 410F, paintHead3) //
+            canvas.drawText(form.certification, 120F, 410F, paintNormalText)
+            canvas.drawText("Other Skills :", 35F, 450F, paintHead3) //
+            canvas.drawText(form.otherSkills, 110F, 450F, paintNormalText)
+        }
 
         myPdfDocument.finishPage(page)
 

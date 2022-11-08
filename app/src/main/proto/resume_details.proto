@@ -24,4 +24,11 @@ syntax = "proto3";
    string softwareTools = 14;
    string certification = 15;
    string otherSkills = 16;
+
+   string projectTitle = 17;
+   string projectDescription = 18;
+
+   string companyName = 19;
+   string companyExperienceYear = 20;
+   string totalExperience = 21;
  }

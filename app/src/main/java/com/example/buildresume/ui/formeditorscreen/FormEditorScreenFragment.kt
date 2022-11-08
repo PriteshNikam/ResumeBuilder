@@ -59,61 +59,76 @@ class FormEditorScreenFragment : Fragment() {
         binding.buttonEditProfileFormEditorScreen.setOnClickListener {
             view?.findNavController()
                 ?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProfileDetailsFragment())
-      }
-
-        binding.buttonEditEducationFormEditorScreen.setOnClickListener{
-            view?.findNavController()?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditEducationDetailsFragment())
         }
 
-        binding.buttonEditSkillsFormEditorScreen.setOnClickListener{
-            view?.findNavController()?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditSkillsDetailsFragment())
+        binding.buttonEditEducationFormEditorScreen.setOnClickListener {
+            view?.findNavController()
+                ?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditEducationDetailsFragment())
+        }
+
+        binding.buttonEditSkillsFormEditorScreen.setOnClickListener {
+            view?.findNavController()
+                ?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditSkillsDetailsFragment())
+        }
+
+        binding.buttonEditProjectFormEditorScreen.setOnClickListener{
+            view?.findNavController()?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProjectDetailsFragment())
+        }
+
+        binding.buttonExperienceFormEditorScreen.setOnClickListener{
+            view?.findNavController()?.navigate(FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditExperienceDetailsFragment())
         }
 
         //binding.textViewFormEditorScreen.text = fragmentArgs.userID.toString()
 
         readStoredData()
 
-        binding.buttonGeneratePdfFormEditorScreen.setOnClickListener{
+        binding.buttonGeneratePdfFormEditorScreen.setOnClickListener {
             //resumeViewModel.generatePdf(requireContext())
             resumeViewModel.localGeneratePDF(requireContext())
         }
 
-        return  binding.root
+        return binding.root
     }
 
-    private fun readStoredData(){
+    private fun readStoredData() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 resumeViewModel.readToLocal.collect { resume ->
                     resumeViewModel.apply {
 
-                            form.userName = resume.userName
-                            form.userMobile = resume.userMobile
-                            form.userAddress = resume.userAddress
-                            form.userEmail = resume.userEmail
-                            form.schoolName = resume.schoolName
-                            form.schoolMarks = resume.schoolMarks
-                            form.collegeName = resume.collegeName
-                            form.collegeMarks = resume.collegeMarks
-                            form.diplomaCollegeName = resume.diplomaCollegeName
-                            form.diplomaCollegeMarks = resume.diplomaCollegeMarks
-                            form.degreeCollegeName = resume.degreeCollegeName
-                            form.degreeMarks = resume.degreeMarks
-                            form.programmingLanguage = resume.programmingLanguage
-                            form.softwareTools = resume.softwareTools
-                            form.certification = resume.certification
-                            form.otherSkills = resume.otherSkills
+                        form.userName = resume.userName
+                        form.userMobile = resume.userMobile
+                        form.userAddress = resume.userAddress
+                        form.userEmail = resume.userEmail
+                        form.schoolName = resume.schoolName
+                        form.schoolMarks = resume.schoolMarks
+                        form.collegeName = resume.collegeName
+                        form.collegeMarks = resume.collegeMarks
+                        form.diplomaCollegeName = resume.diplomaCollegeName
+                        form.diplomaCollegeMarks = resume.diplomaCollegeMarks
+                        form.degreeCollegeName = resume.degreeCollegeName
+                        form.degreeMarks = resume.degreeMarks
+                        form.programmingLanguage = resume.programmingLanguage
+                        form.softwareTools = resume.softwareTools
+                        form.certification = resume.certification
+                        form.otherSkills = resume.otherSkills
+                        form.projectTitle = resume.projectTitle
+                        form.projectDescription = resume.projectDescription
+                        form.companyName = resume.companyName
+                        form.companyExperienceYear = resume.companyExperienceYear
+                        form.totalExperience = resume.totalExperience
                     }
                     resumeViewModel.form.run {
-                        Log.d(
-                            "education Form: ",
-                            "$schoolName || $schoolMarks || $collegeName || $collegeMarks || $diplomaCollegeName || $diplomaCollegeMarks || $degreeCollegeName || $degreeMarks"
-                        )
+                        Log.d("readAllData","$userName || $userMobile || $userAddress || $userEmail || $schoolName || $schoolMarks || $collegeName ||" +
+                                "$collegeMarks || $diplomaCollegeName || $diplomaCollegeMarks || $degreeCollegeName || $degreeMarks ||$programmingLanguage || $softwareTools" +
+                                "$certification || $otherSkills || $projectTitle || $projectDescription || $companyName || $companyExperienceYear || $totalExperience")
                     }
                 }
             }
         }
     }
+
     companion object {
         private var storedResumeKey = "storedResume"
         private var PREF_FILE_NAME = "com.example.buildresume_preferences"

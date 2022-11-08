@@ -16,5 +16,9 @@ data class Form(
     var programmingLanguage:String = "",
     var softwareTools:String = "",
     var certification:String = "",
-    var otherSkills:String= ""
-)
+    var otherSkills:String= "",
+    var projectTitle:String = "",
+    var projectDescription:String = "",
+    var companyName:String = "",
+    var companyExperienceYear:String = "",
+    var totalExperience:String ="")

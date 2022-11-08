@@ -37,6 +37,11 @@ class EditDetailsRepository @Inject constructor
         softwareTools: String,
         certification: String,
         otherSkills: String,
+        projectTitle: String,
+        projectDescription: String,
+        companyName: String,
+        companyExperienceYear: String,
+        totalExperience: String
     ) = context.datastore.updateData { resume ->
         resume.toBuilder()
             .setUserName(userName)
@@ -47,10 +52,19 @@ class EditDetailsRepository @Inject constructor
             .setSchoolMarks(schoolMarks)
             .setCollegeName(collegeName)
             .setCollegeMarks(collegeMarks)
-            .setDiplomaCollegeName(diplomaCollegeName).setDiplomaMarks(diplomaCollegeMarks)
-            .setDegreeCollegeName(degreeCollegeName).setDegreeMarks(degreeMarks)
-            .setProgrammingLanguage(programmingLanguage).setSoftwareTools(softwareTools)
-            .setCertification(certification).setOtherSkills(otherSkills)
+            .setDiplomaCollegeName(diplomaCollegeName)
+            .setDiplomaMarks(diplomaCollegeMarks)
+            .setDegreeCollegeName(degreeCollegeName)
+            .setDegreeMarks(degreeMarks)
+            .setProgrammingLanguage(programmingLanguage)
+            .setSoftwareTools(softwareTools)
+            .setCertification(certification)
+            .setOtherSkills(otherSkills)
+            .setProjectTitle(projectTitle)
+            .setProjectDescription(projectDescription)
+            .setCompanyName(companyName)
+            .setCompanyExperienceYear(companyExperienceYear)
+            .setTotalExperience(totalExperience)
             .build()
     }
 
@@ -77,6 +91,11 @@ class EditDetailsRepository @Inject constructor
                 it.softwareTools,
                 it.certification,
                 it.otherSkills,
+                it.projectTitle,
+                it.projectDescription,
+                it.companyName,
+                it.companyExperienceYear,
+                it.totalExperience
             )
             form
         }
