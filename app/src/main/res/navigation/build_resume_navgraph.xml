@@ -52,12 +52,6 @@
         android:name="com.example.buildresume.ui.formeditorscreen.FormEditorScreenFragment"
         android:label="fragment_form_editor_screen"
         tools:layout="@layout/fragment_form_editor_screen" >
-
-        <argument
-            android:name="userID"
-            app:argType="string"
-            app:nullable="true"
-            />
         <action
             android:id="@+id/action_formEditorScreenFragment_to_editProfileDetailsFragment"
             app:destination="@id/editProfileDetailsFragment" />

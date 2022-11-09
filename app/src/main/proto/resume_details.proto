@@ -31,4 +31,5 @@ syntax = "proto3";
    string companyName = 19;
    string companyExperienceYear = 20;
    string totalExperience = 21;
+
  }

@@ -11,12 +11,15 @@ import android.text.StaticLayout
 import android.text.TextPaint
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.buildresume.data.Form
 import com.example.buildresume.repository.EditDetailsRepository
 import com.example.generatepdf.GeneratePdf
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
@@ -28,6 +31,13 @@ class ResumeViewModel @Inject constructor(private val editDetailsRepository: Edi
     ViewModel() {
 
     val form = Form()
+
+    private var isResumeCreated =  MutableLiveData<Boolean>().apply { postValue(false) }
+    var resumeCreated: LiveData<Boolean> = isResumeCreated
+
+    fun setIsResumeCreated(){
+        isResumeCreated.value = true
+    }
 
     fun generatePdf(context: Context) {
         form.run {
@@ -271,12 +281,12 @@ class ResumeViewModel @Inject constructor(private val editDetailsRepository: Edi
 
         if(form.companyName.isNotEmpty()) {
             canvas.drawText("Experience details: ", 30F, y + 30F, paintHead2)
-            canvas.drawText("Company name :", 35F, y + 30F, paintHead3)
-            canvas.drawText(form.companyName, 120F, y + 30F, paintNormalText)
-            canvas.drawText("Experience in company :", 35F, y + 50F, paintHead3)
-            canvas.drawText(form.companyExperienceYear, 160F, y + 50F, paintNormalText)
-            canvas.drawText("Total Experience :", 35F, y + 70F, paintHead3)
-            canvas.drawText(form.totalExperience, 130F, y + 70F, paintNormalText)
+            canvas.drawText("Company name :", 35F, y + 50F, paintHead3)
+            canvas.drawText(form.companyName, 120F, y + 50F, paintNormalText)
+            canvas.drawText("Experience in company :", 35F, y + 70F, paintHead3)
+            canvas.drawText(form.companyExperienceYear, 160F, y + 70F, paintNormalText)
+            canvas.drawText("Total Experience :", 35F, y + 90F, paintHead3)
+            canvas.drawText(form.totalExperience, 130F, y + 90F, paintNormalText)
         }
 
         myPdfDocument.finishPage(page)

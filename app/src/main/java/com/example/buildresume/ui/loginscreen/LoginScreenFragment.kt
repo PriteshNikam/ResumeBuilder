@@ -1,8 +1,6 @@
 package com.example.buildresume.ui.loginscreen
 
-import android.content.Context
 import android.content.IntentSender
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -35,15 +33,10 @@ class LoginScreenFragment : Fragment() {
     private lateinit var oneTapClient: SignInClient
     private lateinit var signInRequest: BeginSignInRequest
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var sharedPreferencesEditor: SharedPreferences.Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         firebaseAuth = Firebase.auth // entry point for firebase authentication
-        sharedPreferences =
-            requireActivity().getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE)
-        sharedPreferencesEditor = sharedPreferences.edit()
     }
 
     override fun onStart() {
@@ -98,8 +91,6 @@ class LoginScreenFragment : Fragment() {
                         firebaseAuth.signInWithCredential(firebaseCredential)
                             .addOnCompleteListener(requireActivity()) { task ->
                                 if (task.isSuccessful) {
-                                    sharedPreferencesEditor.putBoolean(TOKEN_KEY, true)
-                                    sharedPreferencesEditor.commit()
                                     val currentUser = firebaseAuth.currentUser
                                     findNavController().navigate(
                                         LoginScreenFragmentDirections.actionLoginScreenFragmentToHomeScreen(
@@ -164,13 +155,11 @@ class LoginScreenFragment : Fragment() {
             }
         }.addOnFailureListener(requireActivity()) { e ->
             // No Google Accounts found. Just continue presenting the signed-out UI.
-            showLog(TAG, e.localizedMessage!!)
+            showLog(TAG,"error:" +e.localizedMessage!!)
         }
     }
 
     companion object{
         private var TAG = "google_signIn"
-        private var PREF_FILE_NAME = "com.example.buildresume_preferences"
-        private var TOKEN_KEY = "token_key"
     }
 }

@@ -15,6 +15,7 @@ import javax.inject.Inject
 // repository
 class EditDetailsRepository @Inject constructor
     (@ApplicationContext private val context: Context) {
+
     private val Context.datastore: DataStore<ResumeDetails> by dataStore(
         fileName = "resumeData",
         serializer = DataStoreResume

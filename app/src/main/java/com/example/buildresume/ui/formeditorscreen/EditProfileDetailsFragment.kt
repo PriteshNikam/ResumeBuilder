@@ -50,37 +50,28 @@ class EditProfileDetailsFragment : Fragment() {
             ) {
                 resumeViewModel.form.run {
                     userName = editTextEnterNameEditProfileDetails.text.toString()
-                   userMobile =  editTextUserMobileNumberEditProfileDetails.text.toString()
+                    userMobile = editTextUserMobileNumberEditProfileDetails.text.toString()
                     userAddress = editTextUserAddressEditProfileDetails.text.toString()
                     userEmail = editTextUserEmailEditProfileDetails.text.toString()
                 }
                 resumeViewModel.saveDataToLocal()
-                showToast(requireContext(),R.string.data_saved)
+                showToast(requireContext(), R.string.data_saved)
             } else {
-                showToast(requireContext(),R.string.empty_data)
+                showToast(requireContext(), R.string.empty_data)
             }
         }
     }
 
     private fun defaultFormFill() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                resumeViewModel.readToLocal.collect() { resume ->
-                    if (resume.userName.isNotEmpty()) {
-                        binding.textViewFillFormEditProfileDetails.text = getString(R.string.data_saved)
-                    }
-                    binding.apply {
-                        resumeViewModel.form.run {
-                            editTextEnterNameEditProfileDetails.setText(userName)
-                            editTextUserMobileNumberEditProfileDetails.setText(userMobile)
-                            editTextUserAddressEditProfileDetails.setText(userAddress)
-                            editTextUserEmailEditProfileDetails.setText(userEmail)
-                        }
-                    }
-
-                }
+        binding.apply {
+            resumeViewModel.form.run {
+                editTextEnterNameEditProfileDetails.setText(userName)
+                editTextUserMobileNumberEditProfileDetails.setText(userMobile)
+                editTextUserAddressEditProfileDetails.setText(userAddress)
+                editTextUserEmailEditProfileDetails.setText(userEmail)
             }
         }
+
     }
 
 }
