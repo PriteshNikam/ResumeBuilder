@@ -36,5 +36,6 @@
     <string name="enter_degree_college_name">Enter Degree college name :</string>
     <string name="empty_data">empty data</string>
     <string name="data_saved">data saved</string>
+    <string name="install_wps_app">Install WPS app</string>
 </resources>
 

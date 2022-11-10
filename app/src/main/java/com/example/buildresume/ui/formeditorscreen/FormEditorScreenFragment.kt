@@ -13,8 +13,10 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.buildresume.R
 import com.example.buildresume.UtilClass.onClick
 import com.example.buildresume.UtilClass.showLog
+import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentFormEditorScreenBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -81,30 +83,21 @@ class FormEditorScreenFragment : Fragment() {
 
     private fun showPdf() {
 
-        ActivityCompat.requestPermissions(
-            requireActivity(),
-            arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-            PackageManager.PERMISSION_GRANTED
-        )
-
-        val file = File("${Environment.getExternalStorageDirectory().absolutePath}/resumePDF.pdf")
+        //val file = File("${Environment.getExternalStorageDirectory().absolutePath}/resumePDF.pdf") // works
+        val file =File(requireContext().getExternalFilesDir("/"), "resumePDF.pdf")
 
         val target = Intent(Intent.ACTION_VIEW)
        target.data = Uri.fromFile(file)
-       target.type = "application/pdf"
-        //target.setDataAndType(Uri.fromFile(file), "application/pdf")
+        showLog("uri","${target.data}")
+         target.type = "application/pdf"
+       // target.setDataAndType(Uri.fromFile(file), "application/pdf")
         target.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
 
-        val intent = Intent.createChooser(target, "Open File")
+       val intent = Intent.createChooser(target, "Select app")
         try {
             startActivity(intent)
         } catch (e: ActivityNotFoundException) {
-            // Instruct the user to install a PDF reader here, or something
+            showToast(requireContext(),R.string.install_wps_app)
         }
-    }
-
-    companion object {
-        private var storedResumeKey = "storedResume"
-        private var PREF_FILE_NAME = "com.example.buildresume_preferences"
     }
 }

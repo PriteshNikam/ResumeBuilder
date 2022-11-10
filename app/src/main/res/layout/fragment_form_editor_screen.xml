@@ -38,25 +38,26 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageView_profileInfo_editorFormScreen"
-            android:layout_width="@dimen/dp_50"
-            android:layout_height="@dimen/dp_50"
-            android:padding="5dp"
-            android:layout_marginTop="@dimen/dp_40"
-            android:layout_marginStart="@dimen/dp_10"
-            android:layout_marginEnd="@dimen/dp_4"
-            android:src="@drawable/ic_svg_viewer_info"
-            app:layout_constraintRight_toLeftOf="@id/button_editProfile_formEditorScreen"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="@dimen/dp_30"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="11dp"
+            android:src="@drawable/ic_svg_viewer_account"
             app:layout_constraintTop_toBottomOf="@id/divider_1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_editProfile_formEditorScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_55"
-            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/custom_button_shape"
             android:text="@string/edit_profile_details"
             android:textSize="@dimen/sp_20"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
             app:layout_constraintLeft_toRightOf="@id/imageView_profileInfo_editorFormScreen"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/dp_40"
@@ -77,14 +78,12 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageView_education_editorFormScreen"
-            android:layout_width="@dimen/dp_50"
-            android:layout_height="@dimen/dp_50"
-            android:padding="5dp"
-            android:layout_marginStart="@dimen/dp_10"
-            android:layout_marginEnd="@dimen/dp_4"
-            android:layout_marginTop="@dimen/dp_40"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_marginStart="10dp"
             android:src="@drawable/ic_svg_viewer_education"
-            app:layout_constraintRight_toLeftOf="@id/button_editEducation_formEditorScreen"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider_2" />
 
 
@@ -92,12 +91,16 @@
             android:id="@+id/button_editEducation_formEditorScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_55"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginTop="@dimen/dp_40"
             android:background="@drawable/custom_button_shape"
             android:text="@string/edit_education_details"
             android:textSize="@dimen/sp_20"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintLeft_toRightOf="@id/imageView_education_editorFormScreen"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider_2" />
 
@@ -114,26 +117,28 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageView_skills_editorFormScreen"
-            android:layout_width="@dimen/dp_50"
-            android:layout_height="@dimen/dp_50"
-            android:layout_marginEnd="@dimen/dp_4"
-            android:padding="5dp"
-            android:layout_marginTop="@dimen/dp_40"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginTop="@dimen/dp_30"
             android:src="@drawable/ic_svg_viewer_skills"
-            app:layout_constraintRight_toLeftOf="@id/button_editSkills_formEditorScreen"
+            android:layout_marginStart="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider_3" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_editSkills_formEditorScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="55dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/custom_button_shape"
             android:text="@string/edit_skills"
             android:textSize="@dimen/sp_20"
             android:layout_marginTop="@dimen/dp_40"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintLeft_toRightOf="@id/imageView_skills_editorFormScreen"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider_3" />
 
@@ -161,29 +166,32 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider_5" />
 
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageView_project_editorFormScreen"
-            android:layout_width="@dimen/dp_50"
+            android:layout_width="@dimen/dp_60"
             android:layout_height="@dimen/dp_50"
-            android:layout_marginEnd="@dimen/dp_4"
-            android:padding="5dp"
-            android:src="@drawable/ic_svg_viewer_experience"
-            android:layout_marginTop="@dimen/dp_40"
-            app:layout_constraintRight_toLeftOf="@id/button_editProject_formEditorScreen"
+            android:layout_marginTop="36dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_svg_viewer_project"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider_4" />
-
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_editProject_formEditorScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_55"
-            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/custom_button_shape"
             android:text="@string/edit_project_details"
             android:textSize="@dimen/sp_20"
             android:layout_marginTop="@dimen/dp_40"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintLeft_toRightOf="@id/imageView_project_editorFormScreen"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider_4" />
 
@@ -199,13 +207,12 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageView_experience_editorFormScreen"
-            android:layout_width="@dimen/dp_50"
+            android:layout_width="@dimen/dp_60"
             android:layout_height="@dimen/dp_50"
-            android:layout_marginEnd="@dimen/dp_4"
-            android:padding="5dp"
-            android:src="@drawable/ic_svg_viewer_project"
+            android:src="@drawable/ic_svg_viewer_experience"
             android:layout_marginTop="@dimen/dp_40"
-            app:layout_constraintRight_toLeftOf="@id/button_experience_formEditorScreen"
+            android:layout_marginStart="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider_6" />
 
         <View
@@ -221,13 +228,16 @@
             android:id="@+id/button_experience_formEditorScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_55"
-            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/custom_button_shape"
             android:text="@string/edit_experience"
             android:textSize="@dimen/sp_20"
             android:layout_marginTop="@dimen/dp_40"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintLeft_toRightOf="@id/imageView_experience_editorFormScreen"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider_6" />
 
@@ -237,8 +247,11 @@
             android:layout_height="wrap_content"
             android:text="generate pdf"
             android:textSize="@dimen/sp_20"
-            android:layout_marginTop="@dimen/dp_40"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/textView_formEditorScreen"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_experience_formEditorScreen" />

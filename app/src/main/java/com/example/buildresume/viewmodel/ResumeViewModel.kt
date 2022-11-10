@@ -35,8 +35,8 @@ class ResumeViewModel @Inject constructor(private val editDetailsRepository: Edi
     private var isResumeCreated =  MutableLiveData<Boolean>().apply { postValue(false) }
     var resumeCreated: LiveData<Boolean> = isResumeCreated
 
-    fun setIsResumeCreated(){
-        isResumeCreated.value = true
+    fun setIsResumeCreated(status:Boolean){
+        isResumeCreated.value = status
     }
 
     fun generatePdf(context: Context) {
@@ -143,6 +143,32 @@ class ResumeViewModel @Inject constructor(private val editDetailsRepository: Edi
                 totalExperience
             )
         }
+    }
+
+    fun deleteLocalData(){
+            writeToLocal(
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            )
     }
 
     val readToLocal = editDetailsRepository.readToLocal
