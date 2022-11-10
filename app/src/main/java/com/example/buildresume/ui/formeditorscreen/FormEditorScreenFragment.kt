@@ -79,8 +79,6 @@ class FormEditorScreenFragment : Fragment() {
         return binding.root
     }
 
-
-
     private fun showPdf() {
 
         ActivityCompat.requestPermissions(

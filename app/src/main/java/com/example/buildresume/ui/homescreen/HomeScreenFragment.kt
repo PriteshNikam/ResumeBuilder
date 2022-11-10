@@ -1,10 +1,12 @@
 package com.example.buildresume.ui.homescreen
 
+import android.graphics.ColorFilter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.graphics.Color
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -41,7 +43,6 @@ class HomeScreenFragment : Fragment() {
         binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
         binding.textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
 
-        readStoredData()
 
         resumeViewModel.resumeCreated.observe(requireActivity(), Observer {
             if(it){

@@ -38,6 +38,8 @@
         android:layout_height="48dp"
         android:layout_margin="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_20"
+        android:singleLine="true"
+        android:scrollHorizontally="true"
         android:background="@drawable/custom_edittext_shape"
         android:fontFamily="@font/alice_regular"
         android:hint="eg - abc company LTD"

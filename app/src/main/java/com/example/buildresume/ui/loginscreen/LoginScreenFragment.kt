@@ -116,7 +116,7 @@ class LoginScreenFragment : Fragment() {
                     CommonStatusCodes.CANCELED -> {
                         showLog(TAG, "One-tap dialog was closed.")
                         // Don't re-prompt the user.
-                        Snackbar.make(
+                        Snackbar.make( // error
                             binding.root,
                             "One-tap dialog was closed.",
                             Snackbar.LENGTH_INDEFINITE
