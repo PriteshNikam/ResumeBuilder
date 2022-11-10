@@ -12,12 +12,24 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:text="@string/fill_all_details"
-        android:textSize="@dimen/sp_20"
+        android:textSize="30sp"
         android:textColor="@color/primaryDarkColor"
-        android:fontFamily="@font/alice_regular"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="@dimen/dp_10" />
+
+    <View
+        android:id="@+id/divider_1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginStart="95dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@+id/textView_fillForm_EditProfileDetails"
+        tools:layout_editor_absoluteX="-16dp" />
 
     <TextView
         android:id="@+id/textView_enterName_EditProfileDetails"
@@ -26,9 +38,9 @@
         android:layout_height="wrap_content"
         android:text="@string/enter_name"
         android:textSize="@dimen/sp_20"
+        android:textStyle="bold"
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="@color/black"
-        android:fontFamily="@font/alice_regular"
         app:layout_constraintTop_toBottomOf="@+id/textView_fillForm_EditProfileDetails"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -42,7 +54,6 @@
         android:scrollHorizontally="true"
         android:layout_marginTop="@dimen/dp_20"
         android:background="@drawable/custom_edittext_shape"
-        android:fontFamily="@font/alice_regular"
         android:hint="@string/eg_vijay_joseph"
         android:textColorHint="@color/secondaryDarkColor"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -57,7 +68,7 @@
         android:textSize="@dimen/sp_20"
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="@color/black"
-        android:fontFamily="@font/alice_regular"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/editText_enterName_EditProfileDetails"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -69,7 +80,6 @@
         android:padding="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_20"
         android:background="@drawable/custom_edittext_shape"
-        android:fontFamily="@font/alice_regular"
         android:hint="@string/eg_91_0011233445"
         android:textColorHint="@color/secondaryDarkColor"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -85,7 +95,7 @@
         android:textSize="@dimen/sp_20"
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="@color/black"
-        android:fontFamily="@font/alice_regular"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/editText_userMobileNumber_EditProfileDetails"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -99,7 +109,6 @@
         android:singleLine="true"
         android:scrollHorizontally="true"
         android:background="@drawable/custom_edittext_shape"
-        android:fontFamily="@font/alice_regular"
         android:hint="@string/a_p_vimanagar_pune_maharashtra_1234"
         android:textColorHint="@color/secondaryDarkColor"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -113,9 +122,9 @@
         android:layout_height="wrap_content"
         android:text="@string/enter_user_email"
         android:textSize="@dimen/sp_20"
+        android:textStyle="bold"
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="@color/black"
-        android:fontFamily="@font/alice_regular"
         app:layout_constraintTop_toBottomOf="@id/editText_userAddress_EditProfileDetails"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -129,7 +138,6 @@
         android:singleLine="true"
         android:scrollHorizontally="true"
         android:background="@drawable/custom_edittext_shape"
-        android:fontFamily="@font/alice_regular"
         android:hint="@string/abc123_gmail_com"
         android:textColorHint="@color/secondaryDarkColor"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -137,11 +145,15 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_saveProfiledata_editProfileDetails"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Save Profile Details"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_shape_dark_button"
         app:layout_constraintTop_toBottomOf="@id/editText_userEmail_EditProfileDetails"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:text="save" />
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

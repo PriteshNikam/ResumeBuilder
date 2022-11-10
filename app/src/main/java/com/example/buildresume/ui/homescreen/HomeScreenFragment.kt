@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -29,30 +30,33 @@ class HomeScreenFragment : Fragment() {
 
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
-    var isItemSelected = false
+    var isItemSelected = 0
 
-/*    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            if(isItemSelected) {
-                readStoredData()
-                updateHomeScreenView()
+            if (isItemSelected == 1) {
+                isItemSelected = 0
+                openEditedResume()
+               // readStoredData()
+                resumeViewModel.setIsResumeCreated(true)
+                //updateHomeScreenView()
                 binding.singleResumeViewConstraint.setBackgroundResource(R.drawable.custom_view_shape)
                 showLog("value: ", resumeViewModel.form.userName)
-                binding.textViewResumeUserNameHomeScreen.text = resumeViewModel.form.userName
+                binding.textViewResumeUserNameHomeScreen.visibility = View.VISIBLE
                 binding.imageVIewResumeDocumentView.visibility = View.VISIBLE
                 binding.imageViewDeleteResume.visibility = View.GONE
-                isItemSelected = false
-            }
-            else {
-                activity?.finish()
+            } else {
+                //activity?.supportFragmentManager?.popBackStackImmediate()
+                requireActivity().onBackPressed()
+                requireActivity().finish()
             }
         }
-    }*/
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fragmentArgs = HomeScreenFragmentArgs.fromBundle(requireArguments())
-       // requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
     override fun onCreateView(
@@ -68,42 +72,68 @@ class HomeScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        updateHomeScreenView()
+        showLog("lifeCycle","onViewCreated")
+        readStoredData()
 
-        binding.singleResumeViewConstraint.setOnClickListener{
-            onClick(view,HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment())
+        resumeViewModel.resumeCreated.observe(requireActivity(), Observer {
+            updateHomeScreenView(it)
+        })
+
+        openEditedResume()
+        deletedEditedResume()
+
+        showLog("isSelected", "$isItemSelected")
+
+        binding.floatingButtonAddResumeHomeScreen.setOnClickListener {
+            onClick(
+                view,
+                HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment()
+            )
         }
+    }
 
+    private fun deletedEditedResume() {
         binding.apply {
             singleResumeViewConstraint.setOnLongClickListener {
-                isItemSelected = true
-                singleResumeViewConstraint.setBackgroundResource(R.drawable.delete_resume_shape)
-                textViewResumeUserNameHomeScreen.visibility = View.GONE
-                imageVIewResumeDocumentView.visibility = View.GONE
-                imageViewDeleteResume.visibility = View.VISIBLE
-                singleResumeViewConstraint.setOnClickListener {
-                    resumeViewModel.deleteLocalData()
-                    readStoredData()
-                    resumeViewModel.setIsResumeCreated(false)
-                    updateHomeScreenView()
-                    imageViewDeleteResume.visibility = View.GONE
-                    binding.textViewUserNameHomeScreen.text = ""
-                    isItemSelected = false
+                if (isItemSelected == 0) {
+                    isItemSelected = 1
+                    singleResumeViewConstraint.setBackgroundResource(R.drawable.delete_resume_shape)
+                    textViewResumeUserNameHomeScreen.visibility = View.INVISIBLE
+                    imageVIewResumeDocumentView.visibility = View.GONE
+                    imageViewDeleteResume.visibility = View.VISIBLE
+                    binding.apply {
+                        singleResumeViewConstraint.setOnClickListener {
+                            if (isItemSelected == 1) {
+                                isItemSelected = 0
+                                resumeViewModel.deleteLocalData()
+                                readStoredData()
+                                resumeViewModel.setIsResumeCreated(false)
+                                updateHomeScreenView(resumeViewModel.resumeCreated.value!!)
+                                imageViewDeleteResume.visibility = View.GONE
+                                binding.textViewUserNameHomeScreen.text = ""
+                            }
+                        }
+                    }
                 }
                 return@setOnLongClickListener true
             }
-            readStoredData()
-            updateHomeScreenView()
         }
+    }
 
-        binding.floatingButtonAddResumeHomeScreen.setOnClickListener{
-            onClick(view,HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment())
+    private fun openEditedResume() {
+        binding.singleResumeViewConstraint.setOnClickListener {
+            if (isItemSelected == 0) {
+                onClick(
+                    view,
+                    HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment()
+                )
+            }
         }
     }
 
     private fun readStoredData() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 resumeViewModel.readToLocal.collect { resume ->
                     resumeViewModel.apply {
                         form.userName = resume.userName
@@ -127,36 +157,53 @@ class HomeScreenFragment : Fragment() {
                         form.companyName = resume.companyName
                         form.companyExperienceYear = resume.companyExperienceYear
                         form.totalExperience = resume.totalExperience
-                        if (resume.userName.isNotEmpty()) {
+                        if (resume.userName.isNotEmpty() ||
+                            resume.schoolName.isNotEmpty() ||
+                            resume.schoolName.isNotEmpty() ||
+                            resume.programmingLanguage.isNotEmpty() ||
+                            resume.companyName.isNotEmpty()
+                        ) {
                             setIsResumeCreated(true)
                         }
-                        Log.d("values: "," read : ${form.userName} ${resumeViewModel.resumeCreated.value}")
+                        Log.d(
+                            "values: ",
+                            " read : ${form.userName} ${resumeViewModel.resumeCreated.value}"
+                        )
                     }
                 }
-            }
+           }
         }
     }
 
-    private fun updateHomeScreenView(){
-        Log.d("values: ","update Screen")
-        resumeViewModel.resumeCreated.observe(requireActivity(), Observer {
-            if(it){
+    private fun updateHomeScreenView(state:Boolean) {
+        Log.d("values: ", "update Screen")
+            if (state) {
                 binding.apply {
                     singleResumeViewConstraint.visibility = View.VISIBLE
                     floatingButtonAddResumeHomeScreen.visibility = View.GONE
                     textViewUserNameHomeScreen.text = resumeViewModel.form.userName
                     textViewResumeUserNameHomeScreen.text = resumeViewModel.form.userName
                     textViewEmptyTextHomeScreen.visibility = View.GONE
+                    imageViewEmptyDocHomeScreen.visibility = View.GONE
                 }
-            }else{
+            } else {
                 binding.apply {
                     singleResumeViewConstraint.visibility = View.GONE
                     floatingButtonAddResumeHomeScreen.visibility = View.VISIBLE
                     textViewEmptyTextHomeScreen.visibility = View.VISIBLE
+                    imageViewEmptyDocHomeScreen.visibility = View.VISIBLE
                 }
             }
-        })
     }
 
+    override fun onPause() {
+        super.onPause()
+        showLog("lifeCycle","onPause")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        showLog("lifecycle","onDestroy")
+    }
 
 }

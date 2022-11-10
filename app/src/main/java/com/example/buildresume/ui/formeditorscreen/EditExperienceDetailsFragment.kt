@@ -22,8 +22,6 @@ class EditExperienceDetailsFragment : Fragment() {
     private lateinit var binding: FragmentEditExperienceDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

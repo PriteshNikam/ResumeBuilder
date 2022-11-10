@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/custom_button_shape.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/custom_edittext_shape.xml" value="0.126" />
+        <entry key="app/src/main/res/drawable/custom_shape_darkbutton.xml" value="0.2195" />
         <entry key="app/src/main/res/drawable/custom_sign_in_button.xml" value="0.324" />
         <entry key="app/src/main/res/drawable/custom_view_shape.xml" value="0.151" />
         <entry key="app/src/main/res/drawable/custome_view_shape.xml" value="0.223" />
@@ -27,11 +28,12 @@
         <entry key="app/src/main/res/layout/fragment_edit_project_details.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_skills_details.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_form_editor_screen.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.28260849801430904" />
         <entry key="app/src/main/res/layout/fragment_login_screen.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_splash_screen.xml" value="0.23891625615763548" />
         <entry key="app/src/main/res/layout/single_resume_view.xml" value="0.28125" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1215" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_build_resume_icon.xml" value="0.1745" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1215" />
       </map>
     </option>

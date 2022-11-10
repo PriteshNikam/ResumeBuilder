@@ -19,7 +19,6 @@ import com.example.buildresume.databinding.FragmentEditEducationDetailsBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import kotlinx.coroutines.launch
 
-
 class EditEducationDetailsFragment : Fragment() {
 
     private lateinit var binding :FragmentEditEducationDetailsBinding
