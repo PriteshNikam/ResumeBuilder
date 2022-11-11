@@ -22,3 +22,32 @@ data class Form(
     var companyName:String = "",
     var companyExperienceYear:String = "",
     var totalExperience:String ="")
+
+{
+    fun isFormFilled(): Boolean {
+        var result: Boolean = false
+        if (userName.isNotEmpty() ||
+            userMobile.isNotEmpty() ||
+            userEmail.isNotEmpty() ||
+            schoolName.isNotEmpty() ||
+            schoolMarks.isNotEmpty() ||
+            collegeName.isNotEmpty() ||
+            collegeMarks.isNotEmpty() ||
+            diplomaCollegeName.isNotEmpty() ||
+            diplomaCollegeMarks.isNotEmpty() ||
+            degreeCollegeName.isNotEmpty() ||
+            degreeMarks.isNotEmpty() ||
+            programmingLanguage.isNotEmpty() ||
+            softwareTools.isNotEmpty() ||
+            certification.isNotEmpty() ||
+            otherSkills.isNotEmpty() ||
+            projectTitle.isNotEmpty() ||
+            projectDescription.isNotEmpty() ||
+            companyName.isNotEmpty() ||
+            companyExperienceYear.isNotEmpty() ||
+            totalExperience.isNotEmpty()) {
+            result = true
+        }
+        return result
+    }
+}

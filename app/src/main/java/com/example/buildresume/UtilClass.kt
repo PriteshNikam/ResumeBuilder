@@ -8,11 +8,12 @@ import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 
 object UtilClass {
+
     fun showToast(context: Context, message:Int){
         Toast.makeText(context,message,Toast.LENGTH_SHORT).show()
     }
 
-    fun onClick(view:View?,navDirections:NavDirections){
+    fun gotoScreen(view:View?, navDirections:NavDirections){
          view?.findNavController()?.navigate(navDirections)
     }
 

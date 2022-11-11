@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -14,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.buildresume.R
-import com.example.buildresume.UtilClass.onClick
+import com.example.buildresume.UtilClass.gotoScreen
 import com.example.buildresume.UtilClass.showLog
 import com.example.buildresume.databinding.FragmentHomeScreenBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
@@ -26,7 +25,6 @@ class HomeScreenFragment : Fragment() {
 
     private lateinit var fragmentArgs: HomeScreenFragmentArgs
     private lateinit var binding: FragmentHomeScreenBinding
-    //private lateinit var firebaseAuth: FirebaseAuth
 
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
@@ -37,16 +35,15 @@ class HomeScreenFragment : Fragment() {
             if (isItemSelected == 1) {
                 isItemSelected = 0
                 openEditedResume()
-               // readStoredData()
                 resumeViewModel.setIsResumeCreated(true)
-                //updateHomeScreenView()
-                binding.singleResumeViewConstraint.setBackgroundResource(R.drawable.custom_view_shape)
-                showLog("value: ", resumeViewModel.form.userName)
-                binding.textViewResumeUserNameHomeScreen.visibility = View.VISIBLE
-                binding.imageVIewResumeDocumentView.visibility = View.VISIBLE
-                binding.imageViewDeleteResume.visibility = View.GONE
-            } else {
-                //activity?.supportFragmentManager?.popBackStackImmediate()
+                binding.run {
+                    singleResumeViewConstraint.setBackgroundResource(R.drawable.custom_view_shape)
+                    textViewResumeUserNameHomeScreen.visibility = View.VISIBLE
+                    imageVIewResumeDocumentView.visibility = View.VISIBLE
+                    imageViewDeleteResume.visibility = View.GONE
+                }
+                } else {
+                //activity?.supportFragmentManager?.popBackStackImmediate() // some time back press get crashed
                 requireActivity().onBackPressed()
                 requireActivity().finish()
             }
@@ -85,7 +82,7 @@ class HomeScreenFragment : Fragment() {
         showLog("isSelected", "$isItemSelected")
 
         binding.floatingButtonAddResumeHomeScreen.setOnClickListener {
-            onClick(
+            gotoScreen(
                 view,
                 HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment()
             )
@@ -123,7 +120,7 @@ class HomeScreenFragment : Fragment() {
     private fun openEditedResume() {
         binding.singleResumeViewConstraint.setOnClickListener {
             if (isItemSelected == 0) {
-                onClick(
+                gotoScreen(
                     view,
                     HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment()
                 )
@@ -135,7 +132,7 @@ class HomeScreenFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 resumeViewModel.readToLocal.collect { resume ->
-                    resumeViewModel.apply {
+                    resumeViewModel.run {
                         form.userName = resume.userName
                         form.userMobile = resume.userMobile
                         form.userAddress = resume.userAddress
@@ -157,18 +154,10 @@ class HomeScreenFragment : Fragment() {
                         form.companyName = resume.companyName
                         form.companyExperienceYear = resume.companyExperienceYear
                         form.totalExperience = resume.totalExperience
-                        if (resume.userName.isNotEmpty() ||
-                            resume.schoolName.isNotEmpty() ||
-                            resume.schoolName.isNotEmpty() ||
-                            resume.programmingLanguage.isNotEmpty() ||
-                            resume.companyName.isNotEmpty()
-                        ) {
+                        if (form.isFormFilled()) {
                             setIsResumeCreated(true)
                         }
-                        Log.d(
-                            "values: ",
-                            " read : ${form.userName} ${resumeViewModel.resumeCreated.value}"
-                        )
+                        showLog("data read: ","${form.isFormFilled()}")
                     }
                 }
            }
@@ -196,14 +185,5 @@ class HomeScreenFragment : Fragment() {
             }
     }
 
-    override fun onPause() {
-        super.onPause()
-        showLog("lifeCycle","onPause")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        showLog("lifecycle","onDestroy")
-    }
 
 }

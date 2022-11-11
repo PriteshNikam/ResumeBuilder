@@ -2,26 +2,20 @@ package com.example.buildresume.ui.formeditorscreen
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.buildresume.R
-import com.example.buildresume.UtilClass.onClick
-import com.example.buildresume.UtilClass.showLog
+import com.example.buildresume.UtilClass.gotoScreen
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentFormEditorScreenBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
-
 
 @AndroidEntryPoint
 class FormEditorScreenFragment : Fragment() {
@@ -36,62 +30,85 @@ class FormEditorScreenFragment : Fragment() {
     ): View {
         binding = FragmentFormEditorScreenBinding.inflate(inflater, container, false)
 
-        binding.run {
-            buttonEditProfileFormEditorScreen.setOnClickListener {
-                onClick(
-                    view,
-                    FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProfileDetailsFragment()
-                )
-            }
+        openProfileForm()
+        openEducationForm()
+        openSkillsForm()
+        openProjectForm()
+        openExperienceForm()
+        generatePDF()
 
-            buttonEditEducationFormEditorScreen.setOnClickListener {
-                onClick(
-                    view,
-                    FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditEducationDetailsFragment()
-                )
-            }
+        return binding.root
+    }
 
-            buttonEditSkillsFormEditorScreen.setOnClickListener {
-                onClick(
-                    view,
-                    FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditSkillsDetailsFragment()
-                )
-            }
-
-            buttonEditProjectFormEditorScreen.setOnClickListener {
-                onClick(
-                    view,
-                    FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProjectDetailsFragment()
-                )
-            }
-
-            buttonExperienceFormEditorScreen.setOnClickListener {
-                onClick(
-                    view,
-                    FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditExperienceDetailsFragment()
-                )
-            }
+    private fun openProfileForm() {
+        binding.buttonEditProfileFormEditorScreen.setOnClickListener {
+            gotoScreen(
+                view,
+                FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProfileDetailsFragment()
+            )
         }
+    }
 
+    private fun openEducationForm() {
+        binding.buttonEditEducationFormEditorScreen.setOnClickListener {
+            gotoScreen(
+                view,
+                FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditEducationDetailsFragment()
+            )
+        }
+    }
+
+    private fun openSkillsForm() {
+        binding.buttonEditSkillsFormEditorScreen.setOnClickListener {
+            gotoScreen(
+                view,
+                FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditSkillsDetailsFragment()
+            )
+        }
+    }
+
+    private fun openProjectForm() {
+        binding.buttonEditProjectFormEditorScreen.setOnClickListener {
+            gotoScreen(
+                view,
+                FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProjectDetailsFragment()
+            )
+        }
+    }
+
+    private fun openExperienceForm() {
+        binding.buttonExperienceFormEditorScreen.setOnClickListener {
+            gotoScreen(
+                view,
+                FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditExperienceDetailsFragment()
+            )
+        }
+    }
+
+    private fun generatePDF() {
         binding.buttonGeneratePdfFormEditorScreen.setOnClickListener {
             resumeViewModel.generatePdf(requireContext()) // library function
             // resumeViewModel.localGeneratePDF(requireContext()) // local function for testing
-            showPdf()
+        showPdf()
         }
-
-        return binding.root
     }
 
     private fun showPdf() {
         val file = File(requireContext().getExternalFilesDir("/"), "resumePDF.pdf")
         val target = Intent(Intent.ACTION_VIEW)
-
         target.data = Uri.fromFile(file)
         target.type = "application/pdf"
         // target.setDataAndType(Uri.fromFile(file), "application/pdf")
         target.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        val intent = Intent.createChooser(target, getString(R.string.select_app))
 
-        val intent = Intent.createChooser(target, "Select app")
+/*       val target = Intent(Intent.ACTION_VIEW)
+        target.data = Uri.fromFile(file)
+       target.type = "application/pdf"
+        //target.setDataAndType(Uri.fromFile(file),"application/pdf")
+       target.addCategory(Intent.CATEGORY_OPENABLE)
+        startActivityForResult(Intent.createChooser(target,"Select PDF"),99)*/
+
         try {
             startActivity(intent)
         } catch (e: ActivityNotFoundException) {

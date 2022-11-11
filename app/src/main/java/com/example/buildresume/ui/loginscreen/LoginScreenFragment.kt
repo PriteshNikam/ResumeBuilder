@@ -34,52 +34,6 @@ class LoginScreenFragment : Fragment() {
     private lateinit var signInRequest: BeginSignInRequest
     private lateinit var firebaseAuth: FirebaseAuth
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        firebaseAuth = Firebase.auth // entry point for firebase authentication
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if (firebaseAuth.currentUser != null) {
-            view?.findNavController()
-                ?.navigate(
-                    LoginScreenFragmentDirections.actionLoginScreenFragmentToHomeScreen(
-                        firebaseAuth.currentUser
-                    )
-                )
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentLoginScreenBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        oneTapClient = Identity.getSignInClient(requireActivity())
-        signInRequest = BeginSignInRequest.builder()
-            .setGoogleIdTokenRequestOptions(
-                BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                    .setSupported(true)
-                    .setServerClientId(getString(R.string.web_client_id)) // web id
-                    .setFilterByAuthorizedAccounts(false)
-                    .build()
-            )
-            .setAutoSelectEnabled(false)
-            .build()
-
-        binding.linearLayoutLoginScreen.setOnClickListener {
-            showToast(requireContext(),R.string.click)
-            displaySignIn()
-        }
-    }
-
     private val oneTapResult =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
             try {
@@ -119,7 +73,7 @@ class LoginScreenFragment : Fragment() {
                         Snackbar.make( // error
                             binding.root,
                             "One-tap dialog was closed.",
-                            Snackbar.LENGTH_INDEFINITE
+                            Snackbar.LENGTH_SHORT
                         ).show()
                     }
                     CommonStatusCodes.NETWORK_ERROR -> {
@@ -128,7 +82,7 @@ class LoginScreenFragment : Fragment() {
                         Snackbar.make(
                             binding.root,
                             "One-tap encountered a network error.",
-                            Snackbar.LENGTH_INDEFINITE
+                            Snackbar.LENGTH_SHORT
                         ).show()
                     }
                     else -> {
@@ -144,6 +98,57 @@ class LoginScreenFragment : Fragment() {
                 }
             }
         }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        firebaseAuth = Firebase.auth // entry point for firebase authentication
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (firebaseAuth.currentUser != null) {
+            view?.findNavController()
+                ?.navigate(
+                    LoginScreenFragmentDirections.actionLoginScreenFragmentToHomeScreen(
+                        firebaseAuth.currentUser
+                    )
+                )
+        }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentLoginScreenBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initOneTapSignIn()
+
+    }
+
+    private fun initOneTapSignIn() {
+        oneTapClient = Identity.getSignInClient(requireActivity())
+        signInRequest = BeginSignInRequest.builder()
+            .setGoogleIdTokenRequestOptions(
+                BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+                    .setSupported(true)
+                    .setServerClientId(getString(R.string.web_client_id)) // web id
+                    .setFilterByAuthorizedAccounts(false)
+                    .build()
+            )
+            .setAutoSelectEnabled(false)
+            .build()
+
+        binding.linearLayoutLoginScreen.setOnClickListener {
+            showToast(requireContext(),R.string.click)
+            displaySignIn()
+        }
+    }
 
     private fun displaySignIn() {
         oneTapClient.beginSignIn(signInRequest).addOnSuccessListener(requireActivity()) { result ->
