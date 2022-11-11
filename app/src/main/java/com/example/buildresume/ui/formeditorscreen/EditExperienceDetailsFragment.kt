@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -28,12 +27,10 @@ class EditExperienceDetailsFragment : Fragment() {
     ): View {
         binding = FragmentEditExperienceDetailsBinding.inflate(inflater,container,false)
 
-        defaultFormFill()
-
+        ifEditedFillForm()
         binding.buttonSaveExperienceDetails.setOnClickListener {
             writeToLocal()
         }
-
         return binding.root
     }
 
@@ -49,21 +46,23 @@ class EditExperienceDetailsFragment : Fragment() {
         }
     }
 
-    private fun defaultFormFill() {
+    private fun ifEditedFillForm() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                resumeViewModel.readToLocal.collect() { resume ->
-                    if(resume.companyName.isNotEmpty()) {
-                        binding.textViewFillDetailsEditExperienceDetails.text = getString(R.string.data_saved)
-                    }
-                    binding.apply {
-                        resumeViewModel.form.run {
-                            editTextEnterCompanyName.setText(companyName)
-                            editTextCompanyExperience.setText(companyExperienceYear)
-                            editTextTotalYearOfExperience.setText(totalExperience)
+                binding.apply {
+                    resumeViewModel.apply {
+                       readToLocal.collect() { resume ->
+                            if (resume.companyName.isNotEmpty()) {
+                                textViewFillDetailsEditExperienceDetails.text =
+                                    getString(R.string.data_saved)
+                            }
+                            form.run {
+                                editTextEnterCompanyName.setText(companyName)
+                                editTextCompanyExperience.setText(companyExperienceYear)
+                                editTextTotalYearOfExperience.setText(totalExperience)
+                            }
                         }
                     }
-
                 }
             }
         }

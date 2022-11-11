@@ -30,51 +30,52 @@ class FormEditorScreenFragment : Fragment() {
 
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        ActivityCompat.requestPermissions(
-            requireActivity(),
-            arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
-            PackageManager.PERMISSION_GRANTED
-        )
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFormEditorScreenBinding.inflate(inflater, container, false)
 
-
-        binding.apply {
+        binding.run {
             buttonEditProfileFormEditorScreen.setOnClickListener {
-                onClick(view,FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProfileDetailsFragment())
+                onClick(
+                    view,
+                    FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProfileDetailsFragment()
+                )
             }
 
             buttonEditEducationFormEditorScreen.setOnClickListener {
-                onClick(view,FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditEducationDetailsFragment())
+                onClick(
+                    view,
+                    FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditEducationDetailsFragment()
+                )
             }
 
             buttonEditSkillsFormEditorScreen.setOnClickListener {
-                onClick(view,FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditSkillsDetailsFragment())
+                onClick(
+                    view,
+                    FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditSkillsDetailsFragment()
+                )
             }
 
             buttonEditProjectFormEditorScreen.setOnClickListener {
-                onClick(view,FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProjectDetailsFragment())
+                onClick(
+                    view,
+                    FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditProjectDetailsFragment()
+                )
             }
 
             buttonExperienceFormEditorScreen.setOnClickListener {
-                onClick(view,FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditExperienceDetailsFragment())
+                onClick(
+                    view,
+                    FormEditorScreenFragmentDirections.actionFormEditorScreenFragmentToEditExperienceDetailsFragment()
+                )
             }
         }
 
-        //binding.textViewFormEditorScreen.text = fragmentArgs.userID.toString()
-
-
         binding.buttonGeneratePdfFormEditorScreen.setOnClickListener {
             resumeViewModel.generatePdf(requireContext()) // library function
-          // resumeViewModel.localGeneratePDF(requireContext()) // local function for testing
+            // resumeViewModel.localGeneratePDF(requireContext()) // local function for testing
             showPdf()
         }
 
@@ -82,22 +83,19 @@ class FormEditorScreenFragment : Fragment() {
     }
 
     private fun showPdf() {
-
-        //val file = File("${Environment.getExternalStorageDirectory().absolutePath}/resumePDF.pdf") // works
-        val file =File(requireContext().getExternalFilesDir("/"), "resumePDF.pdf")
-
+        val file = File(requireContext().getExternalFilesDir("/"), "resumePDF.pdf")
         val target = Intent(Intent.ACTION_VIEW)
-       target.data = Uri.fromFile(file)
-        showLog("uri","${target.data}")
-         target.type = "application/pdf"
-       // target.setDataAndType(Uri.fromFile(file), "application/pdf")
+
+        target.data = Uri.fromFile(file)
+        target.type = "application/pdf"
+        // target.setDataAndType(Uri.fromFile(file), "application/pdf")
         target.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
 
-       val intent = Intent.createChooser(target, "Select app")
+        val intent = Intent.createChooser(target, "Select app")
         try {
             startActivity(intent)
         } catch (e: ActivityNotFoundException) {
-            showToast(requireContext(),R.string.install_wps_app)
+            showToast(requireContext(), R.string.install_wps_app)
         }
     }
 }

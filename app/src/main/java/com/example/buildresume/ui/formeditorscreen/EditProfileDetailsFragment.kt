@@ -5,35 +5,27 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.example.buildresume.R
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentEditProfileDetailsBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class EditProfileDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentEditProfileDetailsBinding
-
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentEditProfileDetailsBinding.inflate(inflater, container, false)
 
-        defaultFormFill()
-
+        ifEditedFillForm()
         binding.buttonSaveProfiledataEditProfileDetails.setOnClickListener {
             writeToLocal()
         }
@@ -53,6 +45,7 @@ class EditProfileDetailsFragment : Fragment() {
                     userMobile = editTextUserMobileNumberEditProfileDetails.text.toString()
                     userAddress = editTextUserAddressEditProfileDetails.text.toString()
                     userEmail = editTextUserEmailEditProfileDetails.text.toString()
+                    textViewFillFormEditProfileDetails.text = "data saved"
                 }
                 resumeViewModel.saveDataToLocal()
                 showToast(requireContext(), R.string.data_saved)
@@ -62,7 +55,7 @@ class EditProfileDetailsFragment : Fragment() {
         }
     }
 
-    private fun defaultFormFill() {
+    private fun ifEditedFillForm() {
         binding.apply {
             resumeViewModel.form.run {
                 editTextEnterNameEditProfileDetails.setText(userName)

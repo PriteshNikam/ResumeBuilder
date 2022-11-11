@@ -2,18 +2,15 @@ package com.example.buildresume.ui.formeditorscreen
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.buildresume.R
-import com.example.buildresume.UtilClass.showLog
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentEditEducationDetailsBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
@@ -21,19 +18,16 @@ import kotlinx.coroutines.launch
 
 class EditEducationDetailsFragment : Fragment() {
 
-    private lateinit var binding :FragmentEditEducationDetailsBinding
-
+    private lateinit var binding: FragmentEditEducationDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
-        binding = FragmentEditEducationDetailsBinding.inflate(inflater,container,false)
+        binding = FragmentEditEducationDetailsBinding.inflate(inflater, container, false)
 
-        defaultFormFill()
-
+        ifEditedFillForm()
         binding.buttonSaveEducationDetailsEditEducationDetails.setOnClickListener {
             writeToLocal()
         }
@@ -45,45 +39,53 @@ class EditEducationDetailsFragment : Fragment() {
         binding.apply {
             if (editTextSchoolNameEditEducationDetails.text.isNullOrEmpty().not() &&
                 !TextUtils.isEmpty(editTextSchoolMarksEditEducationDetails.text.toString()) &&
-            !TextUtils.isEmpty(editTextDegreeCollegeNameEditEducationDetails.text.toString()) &&
-            !TextUtils.isEmpty(editTextDegreeMarksEditEducationDetails.text.toString())) {
-
+                !TextUtils.isEmpty(editTextDegreeCollegeNameEditEducationDetails.text.toString()) &&
+                !TextUtils.isEmpty(editTextDegreeMarksEditEducationDetails.text.toString())
+            ) {
                 resumeViewModel.form.run {
-                    schoolName =  editTextSchoolNameEditEducationDetails.text.toString()
-                    schoolMarks =  editTextSchoolMarksEditEducationDetails.text.toString()
+                    schoolName = editTextSchoolNameEditEducationDetails.text.toString()
+                    schoolMarks = editTextSchoolMarksEditEducationDetails.text.toString()
                     collegeName = editTextCollegeNameEditEducationDetails.text.toString()
                     collegeMarks = editTextCollegeMarksEditEducationDetails.text.toString()
-                    diplomaCollegeName = editTextDiplomaCollegeNameEditEducationDetails.text.toString()
+                    diplomaCollegeName =
+                        editTextDiplomaCollegeNameEditEducationDetails.text.toString()
                     diplomaCollegeMarks = editTextDiplomaMarksEditEducationDetails.text.toString()
-                    degreeCollegeName = editTextDegreeCollegeNameEditEducationDetails.text.toString()
+                    degreeCollegeName =
+                        editTextDegreeCollegeNameEditEducationDetails.text.toString()
                     degreeMarks = editTextDegreeMarksEditEducationDetails.text.toString()
                 }
                 resumeViewModel.saveDataToLocal()
-                showToast(requireContext(),R.string.data_saved)
+                showToast(requireContext(), R.string.data_saved)
             } else {
-                showToast(requireContext(),R.string.empty_data)
+                showToast(requireContext(), R.string.empty_data)
             }
         }
     }
 
-    private fun defaultFormFill() {
+    private fun ifEditedFillForm() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                resumeViewModel.readToLocal.collect { resume ->
-                    if(resume.schoolName.isNotEmpty()) {
-                        binding.textViewFillEducationEditEducationDetails.text = getString(R.string.data_saved)
-                    }
-                    binding.apply {
-                        resumeViewModel.form.run {
-                            showLog("education education: ","$schoolName || $schoolMarks || $collegeName || $collegeMarks || $diplomaCollegeName || $diplomaCollegeMarks || $degreeCollegeName || $degreeMarks")
-                            editTextSchoolNameEditEducationDetails.setText(schoolName)
-                            editTextSchoolMarksEditEducationDetails.setText(schoolMarks)
-                            editTextCollegeNameEditEducationDetails.setText(collegeName)
-                            editTextCollegeMarksEditEducationDetails.setText(collegeMarks)
-                            editTextDiplomaCollegeNameEditEducationDetails.setText(diplomaCollegeName)
-                            editTextDiplomaMarksEditEducationDetails.setText(diplomaCollegeMarks)
-                            editTextDegreeCollegeNameEditEducationDetails.setText(degreeCollegeName)
-                            editTextDegreeMarksEditEducationDetails.setText(degreeMarks)
+                binding.apply {
+                    resumeViewModel.apply {
+                        resumeViewModel.readToLocal.collect { resume ->
+                            if (resume.schoolName.isNotEmpty()) {
+                                textViewFillEducationEditEducationDetails.text =
+                                    getString(R.string.data_saved)
+                            }
+                            form.run {
+                                editTextSchoolNameEditEducationDetails.setText(schoolName)
+                                editTextSchoolMarksEditEducationDetails.setText(schoolMarks)
+                                editTextCollegeNameEditEducationDetails.setText(collegeName)
+                                editTextCollegeMarksEditEducationDetails.setText(collegeMarks)
+                                editTextDiplomaCollegeNameEditEducationDetails.setText(
+                                    diplomaCollegeName
+                                )
+                                editTextDiplomaMarksEditEducationDetails.setText(diplomaCollegeMarks)
+                                editTextDegreeCollegeNameEditEducationDetails.setText(
+                                    degreeCollegeName
+                                )
+                                editTextDegreeMarksEditEducationDetails.setText(degreeMarks)
+                            }
                         }
                     }
                 }

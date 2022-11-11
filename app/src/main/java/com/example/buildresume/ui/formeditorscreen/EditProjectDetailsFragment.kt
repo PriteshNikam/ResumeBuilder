@@ -2,11 +2,10 @@ package com.example.buildresume.ui.formeditorscreen
 
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -23,50 +22,50 @@ class EditProjectDetailsFragment : Fragment() {
     private lateinit var binding: FragmentEditProjectDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentEditProjectDetailsBinding.inflate(inflater,container,false)
+        binding = FragmentEditProjectDetailsBinding.inflate(inflater, container, false)
 
-        defaultFormFill()
-
+        ifEditedFillForm()
         binding.buttonSaveProjectDetails.setOnClickListener {
             writeToLocal()
         }
-
         return binding.root
-
     }
+
     private fun writeToLocal() {
         binding.apply {
             if (!TextUtils.isEmpty(editTextProjectTitle.text.toString()) &&
-                !TextUtils.isEmpty(editTextProjectDescription.text.toString())){
-
-                resumeViewModel.form.run{
+                !TextUtils.isEmpty(editTextProjectDescription.text.toString())
+            ) {
+                resumeViewModel.form.run {
                     projectTitle = editTextProjectTitle.text.toString()
                     projectDescription = editTextProjectDescription.text.toString()
                 }
                 resumeViewModel.saveDataToLocal()
-                showToast(requireContext(),R.string.data_saved)
+                showToast(requireContext(), R.string.data_saved)
             } else {
-                showToast(requireContext(),R.string.empty_data)
+                showToast(requireContext(), R.string.empty_data)
             }
         }
     }
 
-    private fun defaultFormFill() {
+    private fun ifEditedFillForm() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                resumeViewModel.readToLocal.collect() { resume ->
-                    if(resume.programmingLanguage.isNotEmpty()) {
-                        binding.textViewFillFormEditProjectDetails.text = getString(R.string.data_saved)
-                    }
-                    binding.apply {
-                        resumeViewModel.form.run {
-                            editTextProjectTitle.setText(projectTitle)
-                            editTextProjectDescription.setText(projectDescription)
+                resumeViewModel.apply {
+                    readToLocal.collect() { resume ->
+                        if (resume.programmingLanguage.isNotEmpty()) {
+                            binding.textViewFillFormEditProjectDetails.text =
+                                getString(R.string.data_saved)
+                        }
+                        binding.apply {
+                            form.run {
+                                editTextProjectTitle.setText(projectTitle)
+                                editTextProjectDescription.setText(projectDescription)
+                            }
                         }
                     }
                 }
