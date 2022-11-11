@@ -35,7 +35,7 @@ class HomeScreenFragment : Fragment() {
             if (isItemSelected == 1) {
                 isItemSelected = 0
                 openEditedResume()
-                resumeViewModel.setIsResumeCreated(true)
+                //resumeViewModel.setIsResumeCreated(true)
                 binding.run {
                     singleResumeViewConstraint.setBackgroundResource(R.drawable.custom_view_shape)
                     textViewResumeUserNameHomeScreen.visibility = View.VISIBLE
@@ -43,8 +43,6 @@ class HomeScreenFragment : Fragment() {
                     imageViewDeleteResume.visibility = View.GONE
                 }
                 } else {
-                //activity?.supportFragmentManager?.popBackStackImmediate() // some time back press get crashed
-                requireActivity().onBackPressed()
                 requireActivity().finish()
             }
         }
@@ -62,7 +60,7 @@ class HomeScreenFragment : Fragment() {
     ): View {
         binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
         binding.textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
-        readStoredData()
+        showLog("lifeCycle","onCreateView")
         return binding.root
     }
 
@@ -72,21 +70,50 @@ class HomeScreenFragment : Fragment() {
         showLog("lifeCycle","onViewCreated")
         readStoredData()
 
-        resumeViewModel.resumeCreated.observe(requireActivity(), Observer {
-            updateHomeScreenView(it)
+        resumeViewModel.resumeCreated.observe(viewLifecycleOwner, Observer {
+            if (resumeViewModel.form.isFormFilled()) {
+                binding.apply {
+                    singleResumeViewConstraint.visibility = View.VISIBLE
+                    floatingButtonAddResumeHomeScreen.visibility = View.GONE
+                    textViewUserNameHomeScreen.text = resumeViewModel.form.userName
+                    textViewResumeUserNameHomeScreen.text = resumeViewModel.form.userName
+                    textViewEmptyTextHomeScreen.visibility = View.GONE
+                    imageViewEmptyDocHomeScreen.visibility = View.GONE
+                }
+            } else {
+                binding.apply {
+                    singleResumeViewConstraint.visibility = View.GONE
+                    floatingButtonAddResumeHomeScreen.visibility = View.VISIBLE
+                    textViewEmptyTextHomeScreen.visibility = View.VISIBLE
+                    imageViewEmptyDocHomeScreen.visibility = View.VISIBLE
+                }
+            }
         })
 
+        showLog("lifeCycle resume:","${resumeViewModel.resumeCreated.value}")
         openEditedResume()
         deletedEditedResume()
+        createNewResume()
 
-        showLog("isSelected", "$isItemSelected")
+    }
 
+    private fun createNewResume() {
         binding.floatingButtonAddResumeHomeScreen.setOnClickListener {
             gotoScreen(
                 view,
                 HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment()
             )
         }
+    }
+
+    override fun onDestroy() {
+        showLog("lifeCycle","onDestroy")
+        super.onDestroy()
+    }
+
+    override fun onResume() {
+        showLog("lifeCycle","onResume")
+        super.onResume()
     }
 
     private fun deletedEditedResume() {
@@ -157,7 +184,7 @@ class HomeScreenFragment : Fragment() {
                         if (form.isFormFilled()) {
                             setIsResumeCreated(true)
                         }
-                        showLog("data read: ","${form.isFormFilled()}")
+                        showLog(" life cycle data read: ","${form.isFormFilled()}")
                     }
                 }
            }
@@ -165,7 +192,7 @@ class HomeScreenFragment : Fragment() {
     }
 
     private fun updateHomeScreenView(state:Boolean) {
-        Log.d("values: ", "update Screen")
+        showLog("values: ", "update Screen")
             if (state) {
                 binding.apply {
                     singleResumeViewConstraint.visibility = View.VISIBLE
@@ -184,6 +211,5 @@ class HomeScreenFragment : Fragment() {
                 }
             }
     }
-
 
 }

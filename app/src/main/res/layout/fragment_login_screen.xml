@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:text="@string/sign_in"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="?android:textColorPrimary"
             android:layout_margin="2dp"
             android:layout_gravity="center" />
 

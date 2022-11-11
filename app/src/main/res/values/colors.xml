@@ -10,6 +10,7 @@
 
     //
 
+    <color name="primaryBlack">#FF000000</color>
     <color name="primaryColor">#7986cc</color>
     <color name="primaryLightColor">#abb6ff</color>
     <color name="primaryDarkColor">#49599b</color>
