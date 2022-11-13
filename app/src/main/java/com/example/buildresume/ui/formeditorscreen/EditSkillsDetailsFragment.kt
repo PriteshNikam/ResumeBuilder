@@ -7,14 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.example.buildresume.R
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentEditSkillsDetailsBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
-import kotlinx.coroutines.launch
 
 class EditSkillsDetailsFragment : Fragment() {
 
@@ -25,54 +21,53 @@ class EditSkillsDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentEditSkillsDetailsBinding.inflate(layoutInflater,container,false)
+        binding = FragmentEditSkillsDetailsBinding.inflate(layoutInflater, container, false)
 
         ifEditedFillForm()
         binding.buttonSaveSkillsDetailsEditEducationDetails.setOnClickListener {
             writeToLocal()
         }
         return binding.root
-     }
+    }
 
     private fun writeToLocal() {
         binding.apply {
             if (!TextUtils.isEmpty(editTextProgramLangEditSkillsDetails.text.toString()) &&
                 !TextUtils.isEmpty(editTextToolsEditSkillsDetails.text.toString()) &&
                 !TextUtils.isEmpty(editTextCertificatesEditSkillsDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextOtherSkillsEditSkillsDetails.text.toString())) {
-
-                resumeViewModel.form.run{
-                    programmingLanguage = editTextProgramLangEditSkillsDetails.text.toString()
-                    softwareTools = editTextToolsEditSkillsDetails.text.toString()
-                    certification = editTextCertificatesEditSkillsDetails.text.toString()
-                    otherSkills = editTextOtherSkillsEditSkillsDetails.text.toString()
+                !TextUtils.isEmpty(editTextOtherSkillsEditSkillsDetails.text.toString())
+            ) {
+                resumeViewModel.run {
+                    form.run {
+                        programmingLanguage = editTextProgramLangEditSkillsDetails.text.toString()
+                        softwareTools = editTextToolsEditSkillsDetails.text.toString()
+                        certification = editTextCertificatesEditSkillsDetails.text.toString()
+                        otherSkills = editTextOtherSkillsEditSkillsDetails.text.toString()
+                    }
+                    saveDataToLocal()
+                    showToast(requireContext(), R.string.data_saved)
                 }
-                resumeViewModel.saveDataToLocal()
-                showToast(requireContext(),R.string.data_saved)
             } else {
-                showToast(requireContext(),R.string.empty_data)
+                showToast(requireContext(), R.string.empty_data)
             }
         }
     }
 
     private fun ifEditedFillForm() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                resumeViewModel.readToLocal.collect() { resume ->
-                    if(resume.programmingLanguage.isNotEmpty()) {
-                        binding.textViewFillSkillsEditSkillsDetails.text = getString(R.string.data_saved)
-                    }
-                    binding.apply {
-                        resumeViewModel.form.run {
-                            editTextProgramLangEditSkillsDetails.setText(programmingLanguage)
-                            editTextToolsEditSkillsDetails.setText(softwareTools)
-                            editTextCertificatesEditSkillsDetails.setText(certification)
-                            editTextOtherSkillsEditSkillsDetails.setText(otherSkills)
-                        }
-                    }
-
+        binding.apply {
+            resumeViewModel.run {
+                if (form.programmingLanguage.isNotEmpty()) {
+                    textViewFillSkillsEditSkillsDetails.text = getString(R.string.data_saved)
+                }
+                form.run {
+                    editTextProgramLangEditSkillsDetails.setText(programmingLanguage)
+                    editTextToolsEditSkillsDetails.setText(softwareTools)
+                    editTextCertificatesEditSkillsDetails.setText(certification)
+                    editTextOtherSkillsEditSkillsDetails.setText(otherSkills)
                 }
             }
         }
     }
 }
+
+

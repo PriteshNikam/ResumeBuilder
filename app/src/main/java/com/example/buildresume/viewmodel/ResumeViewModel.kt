@@ -246,24 +246,80 @@ class ResumeViewModel @Inject constructor(private val editDetailsRepository: Edi
 
         canvas.drawText("Education details :", 30F, 160F, paintHead2)
         canvas.drawText("School Name :", 35F, 180F, paintHead3) // 10th School name
-        canvas.drawText(form.schoolName, 40F, 200F, paintNormalText)
-        canvas.drawText(form.schoolMarks, 300F, 200F, paintBoldText)
-        canvas.drawText("College Name :", 35F, 220F, paintHead3)
-        canvas.drawText(form.collegeName, 40F, 240F, paintNormalText)
+        val schoolNameTextLayout =
+            StaticLayout(
+                form.schoolName,
+                paragraphText,
+                250,
+                Layout.Alignment.ALIGN_NORMAL,
+                1.0f,
+                0.0f,
+                true
+            )
+        canvas.save()
+        canvas.translate(40F, 185F)
+        schoolNameTextLayout.draw(canvas)
+        canvas.restore()
+        canvas.drawText(form.schoolMarks, 300F, 198F, paintBoldText)
+
+        canvas.drawText("College Name :", 35F, 225F, paintHead3)
+       // canvas.drawText(form.collegeName, 40F, 240F, paintNormalText)
+        val collegeNameTextLayout =
+            StaticLayout(
+                form.collegeName,
+                paragraphText,
+                250,
+                Layout.Alignment.ALIGN_NORMAL,
+                1.0f,
+                0.0f,
+                true
+            )
+        canvas.save()
+        canvas.translate(40F, 230F)
+        collegeNameTextLayout.draw(canvas)
+        canvas.restore()
         canvas.drawText(form.collegeMarks, 300F, 240F, paintBoldText)
 
-        y = 240F
+        y = 245F
 
         if(form.diplomaCollegeName.isNotEmpty()){
-            canvas.drawText("Diploma College Name :", 35F, y+20F, paintHead3)
-            canvas.drawText(form.diplomaCollegeName, 40F, y+40F, paintNormalText)
-            canvas.drawText(form.diplomaCollegeMarks, 300F, y+40F, paintBoldText)
-            y = 280F
+            canvas.drawText("Diploma College Name :", 35F, y+30F, paintHead3)
+          //  canvas.drawText(form.diplomaCollegeName, 40F, y+40F, paintNormalText)
+            val diplomaCollegeTextLayout =
+                StaticLayout(
+                    form.diplomaCollegeName,
+                    paragraphText,
+                    250,
+                    Layout.Alignment.ALIGN_NORMAL,
+                    1.0f,
+                    0.0f,
+                    true
+                )
+            canvas.save()
+            canvas.translate(40F, y+35F)
+            diplomaCollegeTextLayout.draw(canvas)
+            canvas.restore()
+            canvas.drawText(form.diplomaCollegeMarks, 300F, y+47F, paintBoldText)
+            y = 290F
         }
 
-        canvas.drawText("Degree College Name :", 35F, y+20F, paintHead3)
-        canvas.drawText(form.degreeCollegeName, 40F, y+40F, paintNormalText)
-        canvas.drawText(form.degreeMarks, 320F, y+40F, paintBoldText)
+        canvas.drawText("Degree College Name :", 35F, y+25F, paintHead3)
+    //    canvas.drawText(form.degreeCollegeName, 40F, y+40F, paintNormalText)
+        val degreeCollegeNameTextLayout =
+            StaticLayout(
+                form.degreeCollegeName,
+                paragraphText,
+                250,
+                Layout.Alignment.ALIGN_NORMAL,
+                1.0f,
+                0.0f,
+                true
+            )
+        canvas.save()
+        canvas.translate(40F, y+28F)
+        degreeCollegeNameTextLayout.draw(canvas)
+        canvas.restore()
+        canvas.drawText(form.degreeMarks, 300F, y+40F, paintBoldText)
 
         canvas.drawText("Skills details: ", 30F, y+70F, paintHead2)
         canvas.drawText("Programming languages :", 35F, y+90F, paintHead3)

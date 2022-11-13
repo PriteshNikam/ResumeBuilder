@@ -26,7 +26,7 @@ class EditProfileDetailsFragment : Fragment() {
         binding = FragmentEditProfileDetailsBinding.inflate(inflater, container, false)
 
         ifEditedFillForm()
-        binding.buttonSaveProfiledataEditProfileDetails.setOnClickListener {
+        binding.buttonSaveProfileDataEditProfileDetails.setOnClickListener {
             writeToLocal()
         }
 
@@ -40,15 +40,16 @@ class EditProfileDetailsFragment : Fragment() {
                 !TextUtils.isEmpty(editTextUserAddressEditProfileDetails.text.toString()) &&
                 !TextUtils.isEmpty(editTextUserEmailEditProfileDetails.text.toString())
             ) {
-                resumeViewModel.form.run {
-                    userName = editTextEnterNameEditProfileDetails.text.toString()
-                    userMobile = editTextUserMobileNumberEditProfileDetails.text.toString()
-                    userAddress = editTextUserAddressEditProfileDetails.text.toString()
-                    userEmail = editTextUserEmailEditProfileDetails.text.toString()
-                    textViewFillFormEditProfileDetails.text = "data saved"
+                resumeViewModel.run {
+                    resumeViewModel.form.run {
+                        userName = editTextEnterNameEditProfileDetails.text.toString()
+                        userMobile = editTextUserMobileNumberEditProfileDetails.text.toString()
+                        userAddress = editTextUserAddressEditProfileDetails.text.toString()
+                        userEmail = editTextUserEmailEditProfileDetails.text.toString()
+                    }
+                    saveDataToLocal()
+                    showToast(requireContext(), R.string.data_saved)
                 }
-                resumeViewModel.saveDataToLocal()
-                showToast(requireContext(), R.string.data_saved)
             } else {
                 showToast(requireContext(), R.string.empty_data)
             }
@@ -57,14 +58,18 @@ class EditProfileDetailsFragment : Fragment() {
 
     private fun ifEditedFillForm() {
         binding.apply {
-            resumeViewModel.form.run {
-                editTextEnterNameEditProfileDetails.setText(userName)
-                editTextUserMobileNumberEditProfileDetails.setText(userMobile)
-                editTextUserAddressEditProfileDetails.setText(userAddress)
-                editTextUserEmailEditProfileDetails.setText(userEmail)
+            resumeViewModel.run {
+                if (form.schoolName.isNotEmpty()) {
+                    textViewFillFormEditProfileDetails.text =
+                        getString(R.string.data_saved)
+                }
+                form.run {
+                    editTextEnterNameEditProfileDetails.setText(userName)
+                    editTextUserMobileNumberEditProfileDetails.setText(userMobile)
+                    editTextUserAddressEditProfileDetails.setText(userAddress)
+                    editTextUserEmailEditProfileDetails.setText(userEmail)
+                }
             }
         }
-
     }
-
 }

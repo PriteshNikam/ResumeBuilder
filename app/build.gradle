@@ -94,7 +94,7 @@ dependencies {
     // Lifecycles only (without ViewModel or LiveData)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 
-    implementation 'com.github.pritesh-coditas:GeenratePDF:b639ddf8af'
+    implementation 'com.github.pritesh-coditas:GeenratePDF:0783233e20'
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 

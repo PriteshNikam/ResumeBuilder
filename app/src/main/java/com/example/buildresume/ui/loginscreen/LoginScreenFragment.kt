@@ -126,9 +126,7 @@ class LoginScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initOneTapSignIn()
-
     }
 
     private fun initOneTapSignIn() {

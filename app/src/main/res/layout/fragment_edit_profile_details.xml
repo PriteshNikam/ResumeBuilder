@@ -144,7 +144,7 @@
         app:layout_constraintTop_toBottomOf="@id/textView_enterEmail_EditProfileDetails" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_saveProfiledata_editProfileDetails"
+        android:id="@+id/button_saveProfileData_editProfileDetails"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"

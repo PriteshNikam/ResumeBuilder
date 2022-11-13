@@ -88,7 +88,7 @@ class FormEditorScreenFragment : Fragment() {
     private fun generatePDF() {
         binding.buttonGeneratePdfFormEditorScreen.setOnClickListener {
             resumeViewModel.generatePdf(requireContext()) // library function
-            // resumeViewModel.localGeneratePDF(requireContext()) // local function for testing
+           //  resumeViewModel.localGeneratePDF(requireContext()) // local function for testing
         showPdf()
         }
     }

@@ -25,9 +25,10 @@ data class Form(
 
 {
     fun isFormFilled(): Boolean {
-        var result: Boolean = false
+        var result = false
         if (userName.isNotEmpty() ||
             userMobile.isNotEmpty() ||
+            userAddress.isNotEmpty() ||
             userEmail.isNotEmpty() ||
             schoolName.isNotEmpty() ||
             schoolMarks.isNotEmpty() ||

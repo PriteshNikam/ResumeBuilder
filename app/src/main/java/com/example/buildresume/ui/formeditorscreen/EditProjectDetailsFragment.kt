@@ -7,15 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.example.buildresume.R
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentEditProjectDetailsBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
-import kotlinx.coroutines.launch
-
 
 class EditProjectDetailsFragment : Fragment() {
 
@@ -40,12 +35,14 @@ class EditProjectDetailsFragment : Fragment() {
             if (!TextUtils.isEmpty(editTextProjectTitle.text.toString()) &&
                 !TextUtils.isEmpty(editTextProjectDescription.text.toString())
             ) {
-                resumeViewModel.form.run {
-                    projectTitle = editTextProjectTitle.text.toString()
-                    projectDescription = editTextProjectDescription.text.toString()
+                resumeViewModel.run {
+                    form.run {
+                        projectTitle = editTextProjectTitle.text.toString()
+                        projectDescription = editTextProjectDescription.text.toString()
+                    }
+                    saveDataToLocal()
+                    showToast(requireContext(), R.string.data_saved)
                 }
-                resumeViewModel.saveDataToLocal()
-                showToast(requireContext(), R.string.data_saved)
             } else {
                 showToast(requireContext(), R.string.empty_data)
             }
@@ -53,23 +50,18 @@ class EditProjectDetailsFragment : Fragment() {
     }
 
     private fun ifEditedFillForm() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                resumeViewModel.apply {
-                    readToLocal.collect() { resume ->
-                        if (resume.programmingLanguage.isNotEmpty()) {
-                            binding.textViewFillFormEditProjectDetails.text =
-                                getString(R.string.data_saved)
-                        }
-                        binding.apply {
-                            form.run {
-                                editTextProjectTitle.setText(projectTitle)
-                                editTextProjectDescription.setText(projectDescription)
-                            }
-                        }
-                    }
+        binding.apply {
+            resumeViewModel.run {
+                if (form.programmingLanguage.isNotEmpty()) {
+                    textViewFillFormEditProjectDetails.text =
+                        getString(R.string.data_saved)
+                }
+                form.run {
+                    editTextProjectTitle.setText(projectTitle)
+                    editTextProjectDescription.setText(projectDescription)
                 }
             }
         }
     }
 }
+
