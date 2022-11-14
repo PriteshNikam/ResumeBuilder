@@ -1,5 +1,6 @@
 package com.example.buildresume.data
 
+
 data class Form(
     var userName:String = "",
     var userMobile:String = "",
