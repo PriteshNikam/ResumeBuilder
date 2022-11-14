@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.example.buildresume.R
 import com.example.buildresume.UtilClass.gotoScreen
 import com.example.buildresume.databinding.FragmentHomeScreenBinding
@@ -82,7 +80,7 @@ class HomeScreenFragment : Fragment() {
     }
 
     private fun deleteEditedResume() {
-        binding.apply {
+        binding.run {
             resumeViewModel.run {
                 singleResumeViewConstraint.setOnLongClickListener {
                     if (isItemSelected == 0) {
@@ -119,13 +117,13 @@ class HomeScreenFragment : Fragment() {
 
     private fun readStoredData() {
         viewLifecycleOwner.lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+           // lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 resumeViewModel.run {
                     readToLocal.collect { resume ->
                         form.userName = resume.userName
                         form.userMobile = resume.userMobile
-                        form.userAddress = resume.userAddress
                         form.userEmail = resume.userEmail
+                        form.userAddress = resume.userAddress
                         form.schoolName = resume.schoolName
                         form.schoolMarks = resume.schoolMarks
                         form.collegeName = resume.collegeName
@@ -151,7 +149,7 @@ class HomeScreenFragment : Fragment() {
                         }
                     }
                 }
-            }
+          //  }
         }
     }
 

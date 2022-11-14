@@ -80,8 +80,8 @@ class EditDetailsRepository @Inject constructor
             val form = Form(
                 it.userName,
                 it.userMobile,
-                it.userAddress,
                 it.userEmail,
+                it.userAddress,
                 it.schoolName,
                 it.schoolMarks,
                 it.collegeName,

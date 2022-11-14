@@ -30,7 +30,7 @@ class EditExperienceDetailsFragment : Fragment() {
     }
 
     private fun writeToLocal() {
-        binding.apply {
+        binding.run {
             resumeViewModel.run {
                 form.run {
                     companyName = editTextEnterCompanyName.text.toString()
@@ -44,18 +44,17 @@ class EditExperienceDetailsFragment : Fragment() {
     }
 
     private fun ifEditedFillForm() {
-        binding.apply {
-            resumeViewModel.run {
-                if (form.companyName.isNotEmpty()) {
+        binding.run {
+            resumeViewModel.form.run {
+                if (companyName.isNotEmpty()) {
                     textViewFillDetailsEditExperienceDetails.text =
                         getString(R.string.data_saved)
                 }
-                form.run {
-                    editTextEnterCompanyName.setText(companyName)
-                    editTextCompanyExperience.setText(companyExperienceYear)
-                    editTextTotalYearOfExperience.setText(totalExperience)
-                }
+                editTextEnterCompanyName.setText(companyName)
+                editTextCompanyExperience.setText(companyExperienceYear)
+                editTextTotalYearOfExperience.setText(totalExperience)
             }
         }
     }
+
 }

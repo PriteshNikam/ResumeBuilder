@@ -3,8 +3,8 @@ package com.example.buildresume.data
 data class Form(
     var userName:String = "",
     var userMobile:String = "",
-    var userAddress:String = "",
     var userEmail:String = "",
+    var userAddress:String = "",
     var schoolName:String = "",
     var schoolMarks:String = "",
     var collegeName:String = "",
@@ -28,8 +28,8 @@ data class Form(
         var result = false
         if (userName.isNotEmpty() ||
             userMobile.isNotEmpty() ||
-            userAddress.isNotEmpty() ||
             userEmail.isNotEmpty() ||
+            userAddress.isNotEmpty() ||
             schoolName.isNotEmpty() ||
             schoolMarks.isNotEmpty() ||
             collegeName.isNotEmpty() ||

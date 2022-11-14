@@ -31,7 +31,7 @@ class EditProjectDetailsFragment : Fragment() {
     }
 
     private fun writeToLocal() {
-        binding.apply {
+        binding.run {
             if (!TextUtils.isEmpty(editTextProjectTitle.text.toString()) &&
                 !TextUtils.isEmpty(editTextProjectDescription.text.toString())
             ) {
@@ -50,16 +50,14 @@ class EditProjectDetailsFragment : Fragment() {
     }
 
     private fun ifEditedFillForm() {
-        binding.apply {
-            resumeViewModel.run {
-                if (form.programmingLanguage.isNotEmpty()) {
+        binding.run {
+            resumeViewModel.form.run {
+                if (programmingLanguage.isNotEmpty()) {
                     textViewFillFormEditProjectDetails.text =
                         getString(R.string.data_saved)
                 }
-                form.run {
-                    editTextProjectTitle.setText(projectTitle)
-                    editTextProjectDescription.setText(projectDescription)
-                }
+                editTextProjectTitle.setText(projectTitle)
+                editTextProjectDescription.setText(projectDescription)
             }
         }
     }

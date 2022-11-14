@@ -31,7 +31,7 @@ class EditSkillsDetailsFragment : Fragment() {
     }
 
     private fun writeToLocal() {
-        binding.apply {
+        binding.run {
             if (!TextUtils.isEmpty(editTextProgramLangEditSkillsDetails.text.toString()) &&
                 !TextUtils.isEmpty(editTextToolsEditSkillsDetails.text.toString()) &&
                 !TextUtils.isEmpty(editTextCertificatesEditSkillsDetails.text.toString()) &&
@@ -54,18 +54,16 @@ class EditSkillsDetailsFragment : Fragment() {
     }
 
     private fun ifEditedFillForm() {
-        binding.apply {
-            resumeViewModel.run {
-                if (form.programmingLanguage.isNotEmpty()) {
+        binding.run {
+            resumeViewModel.form.run {
+                if (programmingLanguage.isNotEmpty()) {
                     textViewFillSkillsEditSkillsDetails.text = getString(R.string.data_saved)
                 }
-                form.run {
                     editTextProgramLangEditSkillsDetails.setText(programmingLanguage)
                     editTextToolsEditSkillsDetails.setText(softwareTools)
                     editTextCertificatesEditSkillsDetails.setText(certification)
                     editTextOtherSkillsEditSkillsDetails.setText(otherSkills)
                 }
-            }
         }
     }
 }

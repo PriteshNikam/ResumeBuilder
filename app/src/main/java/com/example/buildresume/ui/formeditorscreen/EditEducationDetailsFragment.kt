@@ -32,7 +32,7 @@ class EditEducationDetailsFragment : Fragment() {
     }
 
     private fun writeToLocal() {
-        binding.apply {
+        binding.run {
             if (editTextSchoolNameEditEducationDetails.text.isNullOrEmpty().not() &&
                 !TextUtils.isEmpty(editTextSchoolMarksEditEducationDetails.text.toString()) &&
                 !TextUtils.isEmpty(editTextDegreeCollegeNameEditEducationDetails.text.toString()) &&
@@ -62,28 +62,25 @@ class EditEducationDetailsFragment : Fragment() {
     }
 
     private fun ifEditedFillForm() {
-        binding.apply {
-            resumeViewModel.run {
-                if (form.schoolName.isNotEmpty()) {
+        binding.run {
+            resumeViewModel.form.run {
+                if (schoolName.isNotEmpty()) {
                     textViewFillEducationEditEducationDetails.text =
                         getString(R.string.data_saved)
                 }
-                form.run {
-                    editTextSchoolNameEditEducationDetails.setText(schoolName)
-                    editTextSchoolMarksEditEducationDetails.setText(schoolMarks)
-                    editTextCollegeNameEditEducationDetails.setText(collegeName)
-                    editTextCollegeMarksEditEducationDetails.setText(collegeMarks)
-                    editTextDiplomaCollegeNameEditEducationDetails.setText(
-                        diplomaCollegeName
-                    )
-                    editTextDiplomaMarksEditEducationDetails.setText(diplomaCollegeMarks)
-                    editTextDegreeCollegeNameEditEducationDetails.setText(
-                        degreeCollegeName
-                    )
-                    editTextDegreeMarksEditEducationDetails.setText(degreeMarks)
-                }
+                editTextSchoolNameEditEducationDetails.setText(schoolName)
+                editTextSchoolMarksEditEducationDetails.setText(schoolMarks)
+                editTextCollegeNameEditEducationDetails.setText(collegeName)
+                editTextCollegeMarksEditEducationDetails.setText(collegeMarks)
+                editTextDiplomaCollegeNameEditEducationDetails.setText(
+                    diplomaCollegeName
+                )
+                editTextDiplomaMarksEditEducationDetails.setText(diplomaCollegeMarks)
+                editTextDegreeCollegeNameEditEducationDetails.setText(
+                    degreeCollegeName
+                )
+                editTextDegreeMarksEditEducationDetails.setText(degreeMarks)
             }
         }
     }
-
 }
