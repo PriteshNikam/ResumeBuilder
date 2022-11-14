@@ -47,6 +47,7 @@ class HomeScreenFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        activity?.actionBar?.title = "Build Resume"
         fragmentArgs = HomeScreenFragmentArgs.fromBundle(requireArguments())
         requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }

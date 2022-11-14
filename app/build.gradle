@@ -94,10 +94,14 @@ dependencies {
     // Lifecycles only (without ViewModel or LiveData)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 
+    // pdf geneartor library
     implementation 'com.github.pritesh-coditas:GeenratePDF:174f35ff71'
 
+    //coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
+    //material design
+    implementation 'com.google.android.material:material:1.7.0'
 
 }
 
