@@ -11,7 +11,9 @@ import com.example.buildresume.R
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentEditEducationDetailsBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EditEducationDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentEditEducationDetailsBinding

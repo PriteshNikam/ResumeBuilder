@@ -88,8 +88,8 @@ class FormEditorScreenFragment : Fragment() {
     private fun generatePDF() {
         binding.buttonGeneratePdfFormEditorScreen.setOnClickListener {
             resumeViewModel.generatePdf(requireContext()) // library function
-           //  resumeViewModel.localGeneratePDF(requireContext()) // local function for testing
-        showPdf()
+            //  resumeViewModel.localGeneratePDF(requireContext()) // local function for testing
+            showPdf()
         }
     }
 
@@ -114,5 +114,37 @@ class FormEditorScreenFragment : Fragment() {
         } catch (e: ActivityNotFoundException) {
             showToast(requireContext(), R.string.install_wps_app)
         }
+    }
+
+    private fun readStoredData() {
+/*        resumeViewModel.allResumeList.observe(requireActivity() {
+            form.userName = resume.userName
+            form.userMobile = resume.userMobile
+            form.userEmail = resume.userEmail
+            form.userAddress = resume.userAddress
+            form.schoolName = resume.schoolName
+            form.schoolMarks = resume.schoolMarks
+            form.collegeName = resume.collegeName
+            form.collegeMarks = resume.collegeMarks
+            form.diplomaCollegeName = resume.diplomaCollegeName
+            form.diplomaCollegeMarks = resume.diplomaCollegeMarks
+            form.degreeCollegeName = resume.degreeCollegeName
+            form.degreeMarks = resume.degreeMarks
+            form.programmingLanguage = resume.programmingLanguage
+            form.softwareTools = resume.softwareTools
+            form.certification = resume.certification
+            form.otherSkills = resume.otherSkills
+            form.projectTitle = resume.projectTitle
+            form.projectDescription = resume.projectDescription
+            form.companyName = resume.companyName
+            form.companyExperienceYear = resume.companyExperienceYear
+            form.totalExperience = resume.totalExperience
+            if (form.isFormFilled()) {
+                setIsResumeCreated(true)
+            } else {
+                setIsResumeCreated(false)
+            }
+        })
+ */
     }
 }

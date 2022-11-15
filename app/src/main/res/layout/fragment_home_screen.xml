@@ -8,13 +8,13 @@
         android:layout_height="match_parent"
         tools:context=".ui.homescreen.HomeScreenFragment">
 
-        <com.google.android.material.appbar.AppBarLayout
+<!--        <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBar_homeScreen"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/primaryDarkColor"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/linearLayout_homeScreen" />
+            app:layout_constraintBottom_toTopOf="@id/linearLayout_homeScreen" />-->
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/linearLayout_homeScreen"
@@ -27,7 +27,7 @@
             android:outlineProvider="bounds"
             android:background="@drawable/custom_view_shape"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appBar_homeScreen">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageView_profile_homeScreen"
@@ -58,62 +58,6 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/singleResume_view_Constraint"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginEnd="20sp"
-            android:background="@drawable/custom_view_shape"
-            android:elevation="25dp"
-            android:outlineProvider="bounds"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            android:orientation="horizontal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout_homeScreen">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageVIew_resumeDocumentView"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_svg_viewer_doc"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/textView_ResumeUserName_homeScreen"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textView_ResumeUserName_homeScreen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/user_name"
-                android:textColor="@color/primaryDarkColor"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageVIew_resumeDocumentView" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageView_deleteResume"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_svg_viewer_delete_icon"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageView_emptyDoc_HomeScreen"
             android:layout_width="200dp"
@@ -123,8 +67,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearLayout_homeScreen"
-            app:layout_constraintBottom_toTopOf="@id/floatingButton_addResume_homeScreen"
-            />
+            app:layout_constraintBottom_toTopOf="@id/floatingButton_addResume_homeScreen" />
         <TextView
             android:id="@+id/textView_emptyText_homeScreen"
             android:layout_width="wrap_content"
@@ -135,6 +78,22 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageView_emptyDoc_HomeScreen" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_homeScreen"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            app:spanCount="2"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.476"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout_homeScreen"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/single_resume_view" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingButton_addResume_homeScreen"

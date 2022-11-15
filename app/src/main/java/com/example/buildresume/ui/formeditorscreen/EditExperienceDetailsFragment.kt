@@ -10,7 +10,9 @@ import com.example.buildresume.R
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentEditExperienceDetailsBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EditExperienceDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentEditExperienceDetailsBinding

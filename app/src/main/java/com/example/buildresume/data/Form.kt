@@ -1,6 +1,12 @@
 package com.example.buildresume.data
 
+import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
+@Entity(tableName = tableName)
 data class Form(
     var userName:String = "",
     var userMobile:String = "",
@@ -22,9 +28,12 @@ data class Form(
     var projectDescription:String = "",
     var companyName:String = "",
     var companyExperienceYear:String = "",
-    var totalExperience:String ="")
+    var totalExperience:String ="",
+    var resumeTime:String = ""
+    ):Parcelable {
+    @PrimaryKey(autoGenerate = true)
+    var resumeId = 0
 
-{
     fun isFormFilled(): Boolean {
         var result = false
         if (userName.isNotEmpty() ||
@@ -52,4 +61,7 @@ data class Form(
         }
         return result
     }
+
 }
+
+const val tableName = "resumes_tables"

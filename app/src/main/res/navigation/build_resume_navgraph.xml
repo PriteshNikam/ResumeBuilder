@@ -67,6 +67,10 @@
         <action
             android:id="@+id/action_formEditorScreenFragment_to_editProjectDetailsFragment"
             app:destination="@id/editProjectDetailsFragment" />
+        <argument
+            android:name="form"
+            app:argType="com.example.buildresume.data.Form"
+            />
     </fragment>
     <fragment
         android:id="@+id/editProfileDetailsFragment"
