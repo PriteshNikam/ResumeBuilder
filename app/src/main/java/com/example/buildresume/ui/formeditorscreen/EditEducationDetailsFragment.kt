@@ -1,7 +1,7 @@
 package com.example.buildresume.ui.formeditorscreen
 
 import android.os.Bundle
-import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +19,8 @@ class EditEducationDetailsFragment : Fragment() {
     private lateinit var binding: FragmentEditEducationDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
+    private var isDataStored: Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,19 +31,18 @@ class EditEducationDetailsFragment : Fragment() {
         binding.buttonSaveEducationDetailsEditEducationDetails.setOnClickListener {
             writeToLocal()
         }
-
         return binding.root
     }
 
     private fun writeToLocal() {
         binding.run {
             if (editTextSchoolNameEditEducationDetails.text.isNullOrEmpty().not() &&
-                !TextUtils.isEmpty(editTextSchoolMarksEditEducationDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextDegreeCollegeNameEditEducationDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextDegreeMarksEditEducationDetails.text.toString())
+                editTextSchoolMarksEditEducationDetails.text.isNullOrEmpty().not() &&
+                editTextDegreeCollegeNameEditEducationDetails.text.isNullOrEmpty().not() &&
+                editTextDegreeMarksEditEducationDetails.text.isNullOrEmpty().not()
             ) {
                 resumeViewModel.run {
-                    form.run {
+                    resume.run {
                         schoolName = editTextSchoolNameEditEducationDetails.text.toString()
                         schoolMarks = editTextSchoolMarksEditEducationDetails.text.toString()
                         collegeName = editTextCollegeNameEditEducationDetails.text.toString()
@@ -54,8 +55,13 @@ class EditEducationDetailsFragment : Fragment() {
                             editTextDegreeCollegeNameEditEducationDetails.text.toString()
                         degreeMarks = editTextDegreeMarksEditEducationDetails.text.toString()
                     }
-                    saveDataToLocal()
-                    showToast(requireContext(), R.string.data_saved)
+                    if (isDataStored) {
+                        updateResume(resume)
+                        showToast(requireContext(), R.string.data_updated)
+                    } else {
+                        insertResume()
+                        showToast(requireContext(), R.string.data_saved)
+                    }
                 }
             } else {
                 showToast(requireContext(), R.string.empty_data)
@@ -65,8 +71,10 @@ class EditEducationDetailsFragment : Fragment() {
 
     private fun ifEditedFillForm() {
         binding.run {
-            resumeViewModel.form.run {
-                if (schoolName.isNotEmpty()) {
+            resumeViewModel.resume.run {
+                if (isFormFilled()) {
+                    Log.d("education isFormFilled","${isFormFilled()}")
+                    isDataStored = true
                     textViewFillEducationEditEducationDetails.text =
                         getString(R.string.data_saved)
                 }

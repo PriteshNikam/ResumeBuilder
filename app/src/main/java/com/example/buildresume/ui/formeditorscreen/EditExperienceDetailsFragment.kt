@@ -18,6 +18,8 @@ class EditExperienceDetailsFragment : Fragment() {
     private lateinit var binding: FragmentEditExperienceDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
+    private var isDataStored: Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,12 +36,16 @@ class EditExperienceDetailsFragment : Fragment() {
     private fun writeToLocal() {
         binding.run {
             resumeViewModel.run {
-                form.run {
+                resume.run {
                     companyName = editTextEnterCompanyName.text.toString()
                     companyExperienceYear = editTextCompanyExperience.text.toString()
                     totalExperience = editTextTotalYearOfExperience.text.toString()
                 }
-                saveDataToLocal()
+                if (isDataStored) {
+                    updateResume(resume)
+                } else {
+                    insertResume()
+                }
             }
             showToast(requireContext(), R.string.data_saved)
         }
@@ -47,8 +53,9 @@ class EditExperienceDetailsFragment : Fragment() {
 
     private fun ifEditedFillForm() {
         binding.run {
-            resumeViewModel.form.run {
-                if (companyName.isNotEmpty()) {
+            resumeViewModel.resume.run {
+                if (isFormFilled()) {
+                    isDataStored = true
                     textViewFillDetailsEditExperienceDetails.text =
                         getString(R.string.data_saved)
                 }

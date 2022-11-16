@@ -1,7 +1,6 @@
 package com.example.buildresume.ui.formeditorscreen
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,7 @@ class EditSkillsDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentEditSkillsDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
+    private var isDataStored: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,19 +32,23 @@ class EditSkillsDetailsFragment : Fragment() {
 
     private fun writeToLocal() {
         binding.run {
-            if (!TextUtils.isEmpty(editTextProgramLangEditSkillsDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextToolsEditSkillsDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextCertificatesEditSkillsDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextOtherSkillsEditSkillsDetails.text.toString())
+            if (editTextProgramLangEditSkillsDetails.text.isNullOrEmpty().not() &&
+                editTextToolsEditSkillsDetails.text.isNullOrEmpty().not() &&
+                editTextCertificatesEditSkillsDetails.text.isNullOrEmpty().not() &&
+                editTextOtherSkillsEditSkillsDetails.text.isNullOrEmpty().not()
             ) {
                 resumeViewModel.run {
-                    form.run {
+                    resume.run {
                         programmingLanguage = editTextProgramLangEditSkillsDetails.text.toString()
                         softwareTools = editTextToolsEditSkillsDetails.text.toString()
                         certification = editTextCertificatesEditSkillsDetails.text.toString()
                         otherSkills = editTextOtherSkillsEditSkillsDetails.text.toString()
                     }
-                    saveDataToLocal()
+                    if (isDataStored) {
+                        updateResume(resume)
+                    } else {
+                        insertResume()
+                    }
                     showToast(requireContext(), R.string.data_saved)
                 }
             } else {
@@ -55,15 +59,16 @@ class EditSkillsDetailsFragment : Fragment() {
 
     private fun ifEditedFillForm() {
         binding.run {
-            resumeViewModel.form.run {
-                if (programmingLanguage.isNotEmpty()) {
+            resumeViewModel.resume.run {
+                if (isFormFilled()) {
+                    isDataStored = true
                     textViewFillSkillsEditSkillsDetails.text = getString(R.string.data_saved)
                 }
-                    editTextProgramLangEditSkillsDetails.setText(programmingLanguage)
-                    editTextToolsEditSkillsDetails.setText(softwareTools)
-                    editTextCertificatesEditSkillsDetails.setText(certification)
-                    editTextOtherSkillsEditSkillsDetails.setText(otherSkills)
-                }
+                editTextProgramLangEditSkillsDetails.setText(programmingLanguage)
+                editTextToolsEditSkillsDetails.setText(softwareTools)
+                editTextCertificatesEditSkillsDetails.setText(certification)
+                editTextOtherSkillsEditSkillsDetails.setText(otherSkills)
+            }
         }
     }
 }

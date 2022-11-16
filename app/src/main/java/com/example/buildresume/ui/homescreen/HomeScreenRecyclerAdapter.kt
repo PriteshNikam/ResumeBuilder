@@ -1,34 +1,38 @@
 package com.example.buildresume.ui.homescreen
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buildresume.R
-import com.example.buildresume.data.Form
+import com.example.buildresume.data.Resume
 import com.example.buildresume.databinding.SingleResumeViewBinding
 
 class HomeScreenRecyclerAdapter (private val listener: IResumeAdapter) :
     RecyclerView.Adapter<HomeScreenRecyclerAdapter.ResumeViewHolder>() {
 
-    private val resumeList by lazy { ArrayList<Form>() }
+    private val resumeList by lazy { ArrayList<Resume>() }
 
     private var selectedResumePosition = -1
 
     inner class ResumeViewHolder(private val binding: SingleResumeViewBinding, val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(currentResume: Form, iResumeAdapter: IResumeAdapter) {
+        fun bind(currentResume: Resume, iResumeAdapter: IResumeAdapter) {
             binding.apply {
-                resume = currentResume
+                if(currentResume.userName.isNotEmpty()){
+                    textViewResumeUserNameHomeScreen.text = currentResume.userName
+                }
                 singleResumeViewConstraint.setBackgroundResource(R.drawable.single_view_shape)
                 imageViewDeleteResume.visibility = View.GONE
             }
             itemView.setOnLongClickListener {
                 if (selectedResumePosition == -1) {
                     selectedResumePosition = adapterPosition
+                    Log.d("position","$adapterPosition")
                     iResumeAdapter.isItemSelected()
                     binding.apply {
                         singleResumeViewConstraint.setBackgroundResource(R.drawable.delete_resume_shape)
@@ -36,16 +40,16 @@ class HomeScreenRecyclerAdapter (private val listener: IResumeAdapter) :
                         imageVIewResumeDocumentView.visibility = View.INVISIBLE
                         imageViewDeleteResume.visibility = View.VISIBLE
                         singleResumeViewConstraint.setOnClickListener {
-                            iResumeAdapter.onClickDeleteResume(currentResume)
                             singleResumeViewConstraint.setBackgroundResource(R.drawable.single_view_shape)
                             textViewResumeUserNameHomeScreen.visibility = View.VISIBLE
                             imageVIewResumeDocumentView.visibility = View.VISIBLE
                             imageViewDeleteResume.visibility = View.GONE
+                            iResumeAdapter.onClickDeleteResume(currentResume)
                             selectedResumePosition = -1
                         }
                     }
                 }else{
-                    Toast.makeText(context.applicationContext, "not possible", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context.applicationContext, context.getString(R.string.not_possible), Toast.LENGTH_SHORT).show()
                 }
                 return@setOnLongClickListener true
             }
@@ -76,15 +80,16 @@ class HomeScreenRecyclerAdapter (private val listener: IResumeAdapter) :
         selectedResumePosition = -1
     }
 
-    fun updateList(newList: List<Form>) {
+    fun updateList(newList: List<Resume>) {
         resumeList.clear()
         resumeList.addAll(newList)
-        notifyItemRangeChanged(0,newList.size+1)
+        //notifyItemRangeChanged(0,newList.size+1) // crash -> invalid item position.
+        notifyDataSetChanged()
     }
 
     interface IResumeAdapter {
-        fun onClickOpenResume(form: Form)
-        fun onClickDeleteResume(form: Form)
+        fun onClickOpenResume(resume: Resume)
+        fun onClickDeleteResume(resume: Resume)
         fun isItemSelected()
     }
 

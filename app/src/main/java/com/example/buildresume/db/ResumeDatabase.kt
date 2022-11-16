@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.buildresume.data.Form
+import com.example.buildresume.data.Resume
 
-@Database(entities = [Form::class], version = 1, exportSchema = false)
+@Database(entities = [Resume::class], version = 1, exportSchema = false)
 abstract class ResumeDatabase:RoomDatabase() {
     abstract fun getResumeDao(): ResumeDao
 
@@ -20,12 +20,12 @@ abstract class ResumeDatabase:RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ResumeDatabase::class.java,
-                    "resume_database"
+                    resumeDataBase
                 ).build()
                 INSTANCE = instance
                 instance
             }
         }
     }
-
 }
+const val resumeDataBase = "resume_database"

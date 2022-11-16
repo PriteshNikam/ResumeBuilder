@@ -7,7 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.buildresume.data.Form
+import com.example.buildresume.data.Resume
 import com.example.buildresume.db.ResumeDatabase
 import com.example.buildresume.db.ResumeRepository
 import com.example.generatepdf.GeneratePdf
@@ -19,36 +19,31 @@ class ResumeViewModel(application: Application) : AndroidViewModel(application) 
     private val dao = ResumeDatabase.getDatabase(application).getResumeDao()
     private val resumeRepository = ResumeRepository(dao)
 
-    private var isResumeCreated =  MutableLiveData<Boolean>().apply { postValue(false) }
-    var resumeCreated: LiveData<Boolean> = isResumeCreated
-    var form = Form()
+    var resume = Resume()
 
-    private fun setIsResumeCreated(status:Boolean){
-        isResumeCreated.value = status
-    }
+    var allResumeList: LiveData<List<Resume>> = resumeRepository.allResumes
 
-    var allResumeList: LiveData<List<Form>> = resumeRepository.allResumes
-
-    fun saveDataToLocal() {
+    fun insertResume() {
         viewModelScope.launch(Dispatchers.IO) {
-            resumeRepository.insertNote(form)
+            resumeRepository.insertResume(resume)
         }
     }
 
-    fun delete(form:Form) {
+    fun deleteResume(resume:Resume) {
         viewModelScope.launch(Dispatchers.IO) {
-            resumeRepository.deleteNote(form)
+            resumeRepository.deleteResume(resume)
         }
     }
 
-    fun update(form:Form) {
+
+    fun updateResume(updatedResume:Resume) {
         viewModelScope.launch(Dispatchers.IO) {
-            resumeRepository.updateNote(form)
+            resumeRepository.updateResume(updatedResume)
         }
     }
 
     fun generatePdf(context: Context) {
-        form.run {
+        resume.run {
             GeneratePdf.build(
                 context,
                 userName,
@@ -76,12 +71,10 @@ class ResumeViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    fun openEditedResume(id:Int){
-        Log.d("resumeList","${allResumeList.value?.forEach { if(it.resumeId.equals(id)) println(it)}}")
+    fun setRecyclerViewResume(resume:Resume){
+        this.resume = resume
     }
 
-    fun setSpecificResumeFormDetails(form:Form){
-        this.form = form
-    }
+
 
 }

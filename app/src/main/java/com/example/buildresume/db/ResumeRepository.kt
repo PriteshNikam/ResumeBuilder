@@ -1,21 +1,23 @@
 package com.example.buildresume.db
 
+import android.util.Log
 import androidx.lifecycle.LiveData
-import com.example.buildresume.data.Form
+import com.example.buildresume.data.Resume
 
 class ResumeRepository(private var resumeDao:ResumeDao) {
 
-    val allResumes : LiveData<List<Form>> = resumeDao.getAllResume()
+    val allResumes : LiveData<List<Resume>> = resumeDao.getAllResume()
 
-    suspend fun insertNote(note: Form){
-        resumeDao.insert(note)
+    suspend fun insertResume(resume: Resume){
+        resumeDao.insert(resume)
     }
 
-    suspend fun deleteNote(note: Form){
-        resumeDao.delete(note)
+    suspend fun deleteResume(resume: Resume){
+        resumeDao.delete(resume)
     }
 
-    suspend fun updateNote(updateNote:Form){
-        resumeDao.resumeUpdate(updateNote)
+    suspend fun updateResume(updateResume:Resume){
+        Log.d("repo isFormFilled: ", "${updateResume.resumeId} || ${updateResume.userName}")
+        resumeDao.update(updateResume)
     }
 }

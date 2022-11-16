@@ -1,7 +1,6 @@
 package com.example.buildresume.ui.formeditorscreen
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +18,8 @@ class EditProjectDetailsFragment : Fragment() {
     private lateinit var binding: FragmentEditProjectDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
+    private var isDataStored: Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,15 +35,20 @@ class EditProjectDetailsFragment : Fragment() {
 
     private fun writeToLocal() {
         binding.run {
-            if (!TextUtils.isEmpty(editTextProjectTitle.text.toString()) &&
-                !TextUtils.isEmpty(editTextProjectDescription.text.toString())
+            if (editTextProjectTitle.text.isNullOrEmpty().not() &&
+                editTextProjectDescription.text.isNullOrEmpty().not()
             ) {
                 resumeViewModel.run {
-                    form.run {
+                    resume.run {
                         projectTitle = editTextProjectTitle.text.toString()
                         projectDescription = editTextProjectDescription.text.toString()
                     }
-                    saveDataToLocal()
+                    if (isDataStored) {
+                        updateResume(resume)
+                    } else {
+                        insertResume()
+                    }
+                    insertResume()
                     showToast(requireContext(), R.string.data_saved)
                 }
             } else {
@@ -53,8 +59,9 @@ class EditProjectDetailsFragment : Fragment() {
 
     private fun ifEditedFillForm() {
         binding.run {
-            resumeViewModel.form.run {
-                if (programmingLanguage.isNotEmpty()) {
+            resumeViewModel.resume.run {
+                if (isFormFilled()) {
+                    isDataStored = true
                     textViewFillFormEditProjectDetails.text =
                         getString(R.string.data_saved)
                 }

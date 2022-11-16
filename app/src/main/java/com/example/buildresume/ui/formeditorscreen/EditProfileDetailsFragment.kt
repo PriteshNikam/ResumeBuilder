@@ -1,7 +1,6 @@
 package com.example.buildresume.ui.formeditorscreen
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +18,8 @@ class EditProfileDetailsFragment : Fragment() {
     private lateinit var binding: FragmentEditProfileDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
+    private var isDataStored: Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,6 +27,7 @@ class EditProfileDetailsFragment : Fragment() {
         binding = FragmentEditProfileDetailsBinding.inflate(inflater, container, false)
 
         ifEditedFillForm()
+
         binding.buttonSaveProfileDataEditProfileDetails.setOnClickListener {
             writeToLocal()
         }
@@ -34,20 +36,25 @@ class EditProfileDetailsFragment : Fragment() {
 
     private fun writeToLocal() {
         binding.run {
-            if (!TextUtils.isEmpty(editTextEnterNameEditProfileDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextUserMobileNumberEditProfileDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextUserAddressEditProfileDetails.text.toString()) &&
-                !TextUtils.isEmpty(editTextUserEmailEditProfileDetails.text.toString())
+            if (editTextEnterNameEditProfileDetails.text.isNullOrEmpty().not() &&
+                editTextUserMobileNumberEditProfileDetails.text.isNullOrEmpty().not() &&
+                editTextUserAddressEditProfileDetails.text.isNullOrEmpty().not() &&
+                editTextUserEmailEditProfileDetails.text.isNullOrEmpty().not()
             ) {
                 resumeViewModel.run {
-                    form.run {
-                        userName = editTextEnterNameEditProfileDetails.text.toString()
-                        userMobile = editTextUserMobileNumberEditProfileDetails.text.toString()
-                        userAddress = editTextUserAddressEditProfileDetails.text.toString()
-                        userEmail = editTextUserEmailEditProfileDetails.text.toString()
+                    setDataOnResume()
+                    if (isDataStored && resume.resumeId==0){ // logic need to try for multiple test cases.
+                        allResumeList.observe(requireActivity()){
+                            setRecyclerViewResume(it[0]) // 0 because all_List reversed in descending order.
+                            setDataOnResume()
+                        }
+                        updateResume(resume)
+                        showToast(requireContext(), R.string.data_updated)
+                    } else {
+                        insertResume()
+                        isDataStored = true
+                        showToast(requireContext(), R.string.data_saved)
                     }
-                    saveDataToLocal()
-                    showToast(requireContext(), R.string.data_saved)
                 }
             } else {
                 showToast(requireContext(), R.string.empty_data)
@@ -57,15 +64,25 @@ class EditProfileDetailsFragment : Fragment() {
 
     private fun ifEditedFillForm() {
         binding.run {
-            resumeViewModel.form.run {
-                if (userName.isNotEmpty()) {
-                    textViewFillFormEditProfileDetails.text =
-                        getString(R.string.data_saved)
+            resumeViewModel.resume.run {
+                if(isFormFilled()) {
+                    isDataStored = true
                 }
                 editTextEnterNameEditProfileDetails.setText(userName)
                 editTextUserMobileNumberEditProfileDetails.setText(userMobile)
                 editTextUserAddressEditProfileDetails.setText(userAddress)
                 editTextUserEmailEditProfileDetails.setText(userEmail)
+            }
+        }
+    }
+
+    private fun setDataOnResume(){
+        binding.run {
+            resumeViewModel.resume.run {
+                userName = editTextEnterNameEditProfileDetails.text.toString()
+                userMobile = editTextUserMobileNumberEditProfileDetails.text.toString()
+                userAddress = editTextUserAddressEditProfileDetails.text.toString()
+                userEmail = editTextUserEmailEditProfileDetails.text.toString()
             }
         }
     }

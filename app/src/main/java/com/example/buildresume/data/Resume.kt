@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Entity(tableName = tableName)
-data class Form(
+data class Resume(
     var userName:String = "",
     var userMobile:String = "",
     var userEmail:String = "",
@@ -29,7 +29,6 @@ data class Form(
     var companyName:String = "",
     var companyExperienceYear:String = "",
     var totalExperience:String ="",
-    var resumeTime:String = ""
     ):Parcelable {
     @PrimaryKey(autoGenerate = true)
     var resumeId = 0
@@ -61,7 +60,7 @@ data class Form(
         }
         return result
     }
-
 }
 
 const val tableName = "resumes_tables"
+

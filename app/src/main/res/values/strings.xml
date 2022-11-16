@@ -13,7 +13,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user_profile">User profile</string>
-    <string name="edit_your_form">Edit your form</string>
+    <string name="edit_your_form">Edit your resume</string>
     <string name="edit_profile_details">Edit profile Details</string>
     <string name="edit_education_details">Edit Education details</string>
     <string name="edit_project_details">Edit project details</string>
@@ -66,8 +66,11 @@
     <string name="enter_tools_you_are_familiar_of">*Enter tools you are familiar of:</string>
     <string name="eg_java_c_etc">eg - java, C++ etc</string>
     <string name="enter_your_programming_languages">*Enter your programming languages :</string>
-    <string name="resume_form">Resume form</string>
+    <string name="resume_form">Resume resume</string>
     <string name="download_resume_pdf">Download Resume PDF</string>
     <string name="user_name">User name</string>
+    <string name="resume">Resume</string>
+    <string name="not_possible">not possible</string>
+    <string name="data_updated">Data updated</string>
 </resources>
 
