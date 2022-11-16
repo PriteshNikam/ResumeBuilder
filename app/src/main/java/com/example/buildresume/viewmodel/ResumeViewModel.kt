@@ -35,7 +35,6 @@ class ResumeViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-
     fun updateResume(updatedResume:Resume) {
         viewModelScope.launch(Dispatchers.IO) {
             resumeRepository.updateResume(updatedResume)

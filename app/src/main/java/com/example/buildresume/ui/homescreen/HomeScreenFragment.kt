@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.buildresume.UtilClass.gotoScreen
 import com.example.buildresume.data.Resume
@@ -67,10 +68,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
         binding.floatingButtonAddResumeHomeScreen.setOnClickListener {
             val resume = Resume()
             resumeViewModel.setRecyclerViewResume(resume)
-            gotoScreen(
-                view,
-                HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment()
-            )
+            findNavController().navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToFormSlideMainFragment())
         }
     }
 
@@ -95,10 +93,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
 
     override fun onClickOpenResume(resume: Resume) {
         resumeViewModel.setRecyclerViewResume(resume)
-        gotoScreen(
-            view,
-            HomeScreenFragmentDirections.actionHomeScreenFragmentToFormEditorScreenFragment()
-        )
+        findNavController().navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToFormSlideMainFragment())
     }
 
     override fun onClickDeleteResume(resume: Resume) {

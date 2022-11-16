@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.viewpager2.widget.ViewPager2
 import com.example.buildresume.R
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentEditProfileDetailsBinding
@@ -26,6 +27,8 @@ class EditProfileDetailsFragment : Fragment() {
     ): View {
         binding = FragmentEditProfileDetailsBinding.inflate(inflater, container, false)
 
+        // val viewPager = activity?.findViewById<ViewPager2>(R.id.viewpager_formSlide)
+
         ifEditedFillForm()
 
         binding.buttonSaveProfileDataEditProfileDetails.setOnClickListener {
@@ -42,17 +45,24 @@ class EditProfileDetailsFragment : Fragment() {
                 editTextUserEmailEditProfileDetails.text.isNullOrEmpty().not()
             ) {
                 resumeViewModel.run {
-                    setDataOnResume()
-                    if (isDataStored && resume.resumeId==0){ // logic need to try for multiple test cases.
-                        allResumeList.observe(requireActivity()){
-                            setRecyclerViewResume(it[0]) // 0 because all_List reversed in descending order.
-                            setDataOnResume()
+                    binding.run {
+                        resumeViewModel.resume.run {
+                            userName = editTextEnterNameEditProfileDetails.text.toString()
+                            userMobile = editTextUserMobileNumberEditProfileDetails.text.toString()
+                            userAddress = editTextUserAddressEditProfileDetails.text.toString()
+                            userEmail = editTextUserEmailEditProfileDetails.text.toString()
+                        }
+                    }
+                    if (isDataStored) { // logic need to try for multiple test cases.
+                        if (resume.resumeId == 0) {
+                            resume.resumeId = allResumeList.value!!.first().resumeId // 0 because all_List reversed in descending order.
+                            updateResume(resume)
                         }
                         updateResume(resume)
                         showToast(requireContext(), R.string.data_updated)
                     } else {
-                        insertResume()
                         isDataStored = true
+                        insertResume()
                         showToast(requireContext(), R.string.data_saved)
                     }
                 }
@@ -65,7 +75,7 @@ class EditProfileDetailsFragment : Fragment() {
     private fun ifEditedFillForm() {
         binding.run {
             resumeViewModel.resume.run {
-                if(isFormFilled()) {
+                if (isFormFilled()) {
                     isDataStored = true
                 }
                 editTextEnterNameEditProfileDetails.setText(userName)
@@ -75,16 +85,4 @@ class EditProfileDetailsFragment : Fragment() {
             }
         }
     }
-
-    private fun setDataOnResume(){
-        binding.run {
-            resumeViewModel.resume.run {
-                userName = editTextEnterNameEditProfileDetails.text.toString()
-                userMobile = editTextUserMobileNumberEditProfileDetails.text.toString()
-                userAddress = editTextUserAddressEditProfileDetails.text.toString()
-                userEmail = editTextUserEmailEditProfileDetails.text.toString()
-            }
-        }
-    }
-
 }

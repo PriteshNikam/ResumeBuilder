@@ -46,10 +46,11 @@ class EditSkillsDetailsFragment : Fragment() {
                     }
                     if (isDataStored) {
                         updateResume(resume)
+                        showToast(requireContext(), R.string.data_updated)
                     } else {
                         insertResume()
+                        showToast(requireContext(), R.string.data_saved)
                     }
-                    showToast(requireContext(), R.string.data_saved)
                 }
             } else {
                 showToast(requireContext(), R.string.empty_data)

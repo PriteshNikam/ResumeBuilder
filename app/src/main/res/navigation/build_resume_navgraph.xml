@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_homeScreenFragment_to_formEditorScreenFragment"
             app:destination="@id/formEditorScreenFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_formSlideMainFragment"
+            app:destination="@id/formSlideMainFragment" />
     </fragment>
     <fragment
         android:id="@+id/formEditorScreenFragment"
@@ -97,5 +100,10 @@
         android:name="com.example.buildresume.ui.formeditorscreen.EditProjectDetailsFragment"
         android:label="fragment_edit_project_details"
         tools:layout="@layout/fragment_edit_project_details" />
+    <fragment
+        android:id="@+id/formSlideMainFragment"
+        android:name="com.example.buildresume.ui.formeditorscreen.FormSlideMainFragment"
+        android:label="fragment_form_slide_main"
+        tools:layout="@layout/fragment_form_slide_main" />
 
 </navigation>

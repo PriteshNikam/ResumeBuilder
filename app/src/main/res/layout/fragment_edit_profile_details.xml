@@ -37,27 +37,37 @@
         android:layout_marginTop="40dp"
         android:layout_height="wrap_content"
         android:text="@string/enter_name"
-        android:textSize="@dimen/sp_20"
+        android:textSize="18dp"
         android:textStyle="bold"
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintTop_toBottomOf="@+id/textView_fillForm_EditProfileDetails"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editText_enterName_EditProfileDetails"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/enterName_profileFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxBackgroundColor="@color/secondaryColor"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:padding="@dimen/dp_10"
-        android:layout_margin="@dimen/dp_10"
+        android:layout_height="wrap_content"
         android:singleLine="true"
         android:scrollHorizontally="true"
-        android:layout_marginTop="@dimen/dp_20"
-        android:background="@drawable/custom_edittext_shape"
-        android:hint="@string/eg_vijay_joseph"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter User Name"
+        app:hintTextColor="@color/primaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_enterName_EditProfileDetails" />
+        app:boxStrokeColor="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@id/textView_enterName_EditProfileDetails"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_enterName_EditProfileDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView_enterMobile_EditProfileDetails"
@@ -65,54 +75,77 @@
         android:layout_marginTop="40dp"
         android:layout_height="wrap_content"
         android:text="@string/enter_mobile_number"
-        android:textSize="@dimen/sp_20"
+        android:textSize="18dp"
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="?android:textColorPrimary"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/editText_enterName_EditProfileDetails"
+        app:layout_constraintTop_toBottomOf="@id/enterName_profileFragment"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/enterMobile_profileFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxBackgroundColor="@color/secondaryColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:scrollHorizontally="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter User Mobile Number"
+        app:hintTextColor="@color/primaryDarkColor"
+        android:textColorHint="@color/secondaryDarkColor"
+        app:boxStrokeColor="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@id/textView_enterMobile_EditProfileDetails"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editText_userMobileNumber_EditProfileDetails"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_margin="@dimen/dp_10"
-        android:padding="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_20"
-        android:background="@drawable/custom_edittext_shape"
-        android:hint="@string/eg_91_0011233445"
-        android:textColorHint="@color/secondaryDarkColor"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_enterMobile_EditProfileDetails" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/black" />
 
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView_enterAddress_EditProfileDetails"
         android:layout_width="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_height="wrap_content"
-        android:text="@string/enter_user_address"
-        android:textSize="@dimen/sp_20"
+        android:text="@string/enter_address"
+        android:textSize="18dp"
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="?android:textColorPrimary"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/editText_userMobileNumber_EditProfileDetails"
+        app:layout_constraintTop_toBottomOf="@id/enterMobile_profileFragment"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editText_userAddress_EditProfileDetails"
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/enterAddress_profileFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxBackgroundColor="@color/secondaryColor"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:padding="@dimen/dp_10"
-        android:layout_margin="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_20"
+        android:layout_height="wrap_content"
         android:singleLine="true"
         android:scrollHorizontally="true"
-        android:background="@drawable/custom_edittext_shape"
-        android:hint="@string/a_p_vimanagar_pune_maharashtra_1234"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter User Address"
+        app:hintTextColor="@color/primaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_enterAddress_EditProfileDetails" />
+        app:boxStrokeColor="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@id/textView_enterAddress_EditProfileDetails"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_userAddress_EditProfileDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <TextView
@@ -120,28 +153,39 @@
         android:layout_width="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_height="wrap_content"
-        android:text="@string/enter_user_email"
-        android:textSize="@dimen/sp_20"
+        android:text="@string/enter_email"
+        android:textSize="18dp"
         android:textStyle="bold"
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="?android:textColorPrimary"
-        app:layout_constraintTop_toBottomOf="@id/editText_userAddress_EditProfileDetails"
+        app:layout_constraintTop_toBottomOf="@id/enterAddress_profileFragment"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editText_userEmail_EditProfileDetails"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/enterEmail_profileFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxBackgroundColor="@color/secondaryColor"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:padding="@dimen/dp_10"
-        android:layout_margin="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_20"
+        android:layout_height="wrap_content"
         android:singleLine="true"
         android:scrollHorizontally="true"
-        android:background="@drawable/custom_edittext_shape"
-        android:hint="@string/abc123_gmail_com"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter User Email"
+        app:hintTextColor="@color/primaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_enterEmail_EditProfileDetails" />
+        app:boxStrokeColor="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@id/textView_enterEmail_EditProfileDetails"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_userEmail_EditProfileDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_saveProfileData_editProfileDetails"
@@ -152,7 +196,7 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:background="@drawable/custom_shape_dark_button"
-        app:layout_constraintTop_toBottomOf="@id/editText_userEmail_EditProfileDetails"
+        app:layout_constraintTop_toBottomOf="@id/enterEmail_profileFragment"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 

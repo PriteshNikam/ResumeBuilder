@@ -25,10 +25,10 @@
     <string name="eg_vijay_joseph">eg. - Vijay Joseph</string>
     <string name="enter_mobile_number">*Enter mobile number:</string>
     <string name="eg_91_0011233445">eg: +91 0011233445</string>
-    <string name="enter_user_address">*Enter user Address</string>
+    <string name="enter_address">*Enter Address</string>
     <string name="a_p_vimanagar_pune_maharashtra_1234">a/p Vimanagar, Pune Maharashtra, 1234</string>
     <string name="abc123_gmail_com">abc123@gmail.com</string>
-    <string name="enter_user_email">*Enter user Email</string>
+    <string name="enter_email">*Enter Email</string>
     <string name="enter_school_name">Enter school name :</string>
     <string name="school_name">School name</string>
     <string name="fill_education_details">Fill education details :</string>
@@ -72,5 +72,6 @@
     <string name="resume">Resume</string>
     <string name="not_possible">not possible</string>
     <string name="data_updated">Data updated</string>
+    <string name="save_pdf">Save PDF</string>
 </resources>
 

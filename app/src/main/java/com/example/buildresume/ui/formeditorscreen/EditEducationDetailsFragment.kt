@@ -42,23 +42,33 @@ class EditEducationDetailsFragment : Fragment() {
                 editTextDegreeMarksEditEducationDetails.text.isNullOrEmpty().not()
             ) {
                 resumeViewModel.run {
-                    resume.run {
-                        schoolName = editTextSchoolNameEditEducationDetails.text.toString()
-                        schoolMarks = editTextSchoolMarksEditEducationDetails.text.toString()
-                        collegeName = editTextCollegeNameEditEducationDetails.text.toString()
-                        collegeMarks = editTextCollegeMarksEditEducationDetails.text.toString()
-                        diplomaCollegeName =
-                            editTextDiplomaCollegeNameEditEducationDetails.text.toString()
-                        diplomaCollegeMarks =
-                            editTextDiplomaMarksEditEducationDetails.text.toString()
-                        degreeCollegeName =
-                            editTextDegreeCollegeNameEditEducationDetails.text.toString()
-                        degreeMarks = editTextDegreeMarksEditEducationDetails.text.toString()
+                    binding.run {
+                        resumeViewModel.run {
+                            resume.run {
+                                schoolName = editTextSchoolNameEditEducationDetails.text.toString()
+                                schoolMarks = editTextSchoolMarksEditEducationDetails.text.toString()
+                                collegeName = editTextCollegeNameEditEducationDetails.text.toString()
+                                collegeMarks = editTextCollegeMarksEditEducationDetails.text.toString()
+                                diplomaCollegeName =
+                                    editTextDiplomaCollegeNameEditEducationDetails.text.toString()
+                                diplomaCollegeMarks =
+                                    editTextDiplomaMarksEditEducationDetails.text.toString()
+                                degreeCollegeName =
+                                    editTextDegreeCollegeNameEditEducationDetails.text.toString()
+                                degreeMarks = editTextDegreeMarksEditEducationDetails.text.toString()
+                            }
+                        }
                     }
-                    if (isDataStored) {
+                    if (isDataStored) { // logic need to try for multiple test cases.
+                        if (resume.resumeId == 0) {
+                            resume.resumeId =
+                                allResumeList.value!!.first().resumeId // 0 because all_List reversed in descending order.
+                            updateResume(resume)
+                        }
                         updateResume(resume)
                         showToast(requireContext(), R.string.data_updated)
                     } else {
+                        isDataStored = true
                         insertResume()
                         showToast(requireContext(), R.string.data_saved)
                     }
@@ -69,11 +79,12 @@ class EditEducationDetailsFragment : Fragment() {
         }
     }
 
+
     private fun ifEditedFillForm() {
         binding.run {
             resumeViewModel.resume.run {
                 if (isFormFilled()) {
-                    Log.d("education isFormFilled","${isFormFilled()}")
+                    Log.d("education isFormFilled", "${isFormFilled()}")
                     isDataStored = true
                     textViewFillEducationEditEducationDetails.text =
                         getString(R.string.data_saved)

@@ -43,12 +43,12 @@
             android:layout_marginTop="40dp"
             android:text="@string/enter_10th_school_name_and_percentage"
             android:textColor="?android:textColorPrimary"
-            android:textSize="@dimen/sp_20"
+            android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_fillEducation_EditEducationDetails" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+<!--        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editText_schoolName_EditEducationDetails"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -62,10 +62,34 @@
             android:textColorHint="@color/secondaryDarkColor"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_schoolName_EditEducationDetails" />
+            app:layout_constraintTop_toBottomOf="@id/textView_schoolName_EditEducationDetails" />-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enterSchoolName_EducationFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxBackgroundColor="@color/secondaryColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:scrollHorizontally="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Enter School Name"
+            app:hintTextColor="@color/primaryDarkColor"
+            android:textColorHint="@color/secondaryDarkColor"
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@id/textView_schoolName_EditEducationDetails"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_schoolName_EditEducationDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        <androidx.appcompat.widget.AppCompatEditText
+<!--        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editText_schoolMarks_EditEducationDetails"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -76,7 +100,31 @@
             android:padding="@dimen/dp_10"
             android:textColorHint="@color/secondaryDarkColor"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText_schoolName_EditEducationDetails" />
+            app:layout_constraintTop_toBottomOf="@id/enterSchoolName_EducationFragment" />-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enterSchoolMarks_EducationFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxBackgroundColor="@color/secondaryColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:scrollHorizontally="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Enter School Marks"
+            app:hintTextColor="@color/primaryDarkColor"
+            android:textColorHint="@color/secondaryDarkColor"
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@id/enterSchoolName_EducationFragment"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_schoolMarks_EditEducationDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <TextView
@@ -88,38 +136,59 @@
             android:textStyle="bold"
             android:text="@string/enter_12th_school_name_and_percentage"
             android:textColor="?android:textColorPrimary"
-            android:textSize="@dimen/sp_20"
+            android:textSize="18dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText_schoolMarks_EditEducationDetails" />
+            app:layout_constraintTop_toBottomOf="@id/enterSchoolMarks_EducationFragment" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editText_collegeName_EditEducationDetails"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/collegeName_EducationFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxBackgroundColor="@color/secondaryColor"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_20"
+            android:layout_height="wrap_content"
             android:singleLine="true"
             android:scrollHorizontally="true"
-            android:background="@drawable/custom_edittext_shape"
-            android:hint="@string/college_name"
-            android:padding="@dimen/dp_10"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Enter College Name"
+            app:hintTextColor="@color/primaryDarkColor"
             android:textColorHint="@color/secondaryDarkColor"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_collegeName_EditEducationDetails" />
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@id/textView_collegeName_EditEducationDetails"
+            app:layout_constraintLeft_toLeftOf="parent">
 
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editText_collegeMarks_EditEducationDetails"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_collegeName_EditEducationDetails"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_20"
-            android:background="@drawable/custom_edittext_shape"
-            android:hint="@string/_99_99"
-            android:padding="@dimen/dp_10"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enterCollegeMarks_EducationFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxBackgroundColor="@color/secondaryColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:scrollHorizontally="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Enter College Marks"
+            app:hintTextColor="@color/primaryDarkColor"
             android:textColorHint="@color/secondaryDarkColor"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText_collegeName_EditEducationDetails" />
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@id/collegeName_EducationFragment"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_collegeMarks_EditEducationDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <TextView
@@ -132,40 +201,58 @@
             android:text="@string/enter_diploma_college_name_and_percentage"
             android:textColor="?android:textColorPrimary"
             android:textStyle="bold"
-            android:textSize="@dimen/sp_20"
+            android:textSize="18dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText_collegeMarks_EditEducationDetails" />
+            app:layout_constraintTop_toBottomOf="@id/enterCollegeMarks_EducationFragment" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editText_diplomaCollegeName_EditEducationDetails"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enterDiplomaCollegeName_EducationFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxBackgroundColor="@color/secondaryColor"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="@dimen/dp_10"
+            android:layout_height="wrap_content"
             android:singleLine="true"
             android:scrollHorizontally="true"
-            android:layout_marginTop="@dimen/dp_20"
-            android:background="@drawable/custom_edittext_shape"
-            android:hint="@string/college_name"
-            android:padding="@dimen/dp_10"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Enter Diploma College Name"
+            app:hintTextColor="@color/primaryDarkColor"
             android:textColorHint="@color/secondaryDarkColor"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_diplomaCollegeName_EditEducationDetails" />
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@id/textView_diplomaCollegeName_EditEducationDetails"
+            app:layout_constraintLeft_toLeftOf="parent">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editText_diplomaMarks_EditEducationDetails"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_diplomaCollegeName_EditEducationDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enterDiplomaMarks_EducationFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxBackgroundColor="@color/secondaryColor"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="@dimen/dp_10"
+            android:layout_height="wrap_content"
             android:singleLine="true"
             android:scrollHorizontally="true"
-            android:layout_marginTop="@dimen/dp_20"
-            android:background="@drawable/custom_edittext_shape"
-            android:hint="@string/_99_99"
-            android:padding="@dimen/dp_10"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Enter Diploma College Marks"
+            app:hintTextColor="@color/primaryDarkColor"
             android:textColorHint="@color/secondaryDarkColor"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText_diplomaCollegeName_EditEducationDetails" />
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@id/enterDiplomaCollegeName_EducationFragment"
+            app:layout_constraintLeft_toLeftOf="parent">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextDiplomaMarksEditEducationDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/textView_degreeCollegeName_EditEducationDetails"
@@ -176,37 +263,57 @@
             android:text="@string/enter_degree_college_name_and_percentage"
             android:textColor="?android:textColorPrimary"
             android:textStyle="bold"
-            android:textSize="@dimen/sp_20"
+            android:textSize="18dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText_diplomaMarks_EditEducationDetails" />
+            app:layout_constraintTop_toBottomOf="@id/enterDiplomaMarks_EducationFragment" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editText_degreeCollegeName_EditEducationDetails"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enterDegreeCollegeName_EducationFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxBackgroundColor="@color/secondaryColor"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_20"
-            android:background="@drawable/custom_edittext_shape"
-            android:hint="@string/college_name"
-            android:padding="@dimen/dp_10"
+            android:layout_height="wrap_content"
             android:singleLine="true"
             android:scrollHorizontally="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Enter Degree College Name"
+            app:hintTextColor="@color/primaryDarkColor"
             android:textColorHint="@color/secondaryDarkColor"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_degreeCollegeName_EditEducationDetails" />
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@id/textView_degreeCollegeName_EditEducationDetails"
+            app:layout_constraintLeft_toLeftOf="parent">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editText_degreeMarks_EditEducationDetails"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_degreeCollegeName_EditEducationDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enterDegreeMarks_EducationFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxBackgroundColor="@color/secondaryColor"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_20"
-            android:background="@drawable/custom_edittext_shape"
-            android:hint="@string/_99_99"
-            android:padding="@dimen/dp_10"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:scrollHorizontally="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Enter Degree College Marks"
+            app:hintTextColor="@color/primaryDarkColor"
             android:textColorHint="@color/secondaryDarkColor"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText_degreeCollegeName_EditEducationDetails" />
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:layout_constraintTop_toBottomOf="@id/enterDegreeCollegeName_EducationFragment"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_degreeMarks_EditEducationDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_saveEducationDetails_EditEducationDetails"
@@ -219,7 +326,7 @@
             android:background="@drawable/custom_shape_dark_button"
             android:layout_marginBottom="55dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText_degreeMarks_EditEducationDetails"
+            app:layout_constraintTop_toBottomOf="@id/enterDegreeMarks_EducationFragment"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 

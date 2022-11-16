@@ -28,6 +28,7 @@
         <entry key="app/src/main/res/layout/fragment_edit_project_details.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_skills_details.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_form_editor_screen.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_form_slide_main.xml" value="0.30854700854700856" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.22792262405382674" />
         <entry key="app/src/main/res/layout/fragment_login_screen.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_splash_screen.xml" value="0.23891625615763548" />
