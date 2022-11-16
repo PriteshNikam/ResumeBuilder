@@ -40,23 +40,32 @@
         android:textStyle="bold"
         android:text="@string/enter_company_name"
         android:textColor="?android:textColorPrimary"
-        android:textSize="@dimen/sp_20"
+        android:textSize="@dimen/sp_18"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_fillDetails_editExperienceDetails" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editText_enterCompanyName"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyName_ExperienceFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxBackgroundColor="@color/secondaryColor"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_margin="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_20"
-        android:singleLine="true"
-        android:scrollHorizontally="true"
-        android:background="@drawable/custom_edittext_shape"
-        android:hint="@string/eg_abc_company_ltd"
-        android:padding="@dimen/dp_10"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="eg. Abc"
+        app:hintTextColor="@color/primaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
-        app:layout_constraintTop_toBottomOf="@id/textView_enterCompanyName" />
+        app:boxStrokeColor="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@id/textView_enterCompanyName"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_enterCompanyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView_enterCompanyExperience"
@@ -67,21 +76,31 @@
         android:textStyle="bold"
         android:text="@string/enter_year_of_experience_in_company"
         android:textColor="?android:textColorPrimary"
-        android:textSize="@dimen/sp_20"
+        android:textSize="@dimen/sp_18"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText_enterCompanyName" />
+        app:layout_constraintTop_toBottomOf="@id/companyName_ExperienceFragment" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editText_companyExperience"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyExperience_ExperienceFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxBackgroundColor="@color/secondaryColor"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_margin="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_20"
-        android:background="@drawable/custom_edittext_shape"
-        android:hint="@string/eg_2_years"
-        android:padding="@dimen/dp_10"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="eg. 1 year"
+        app:hintTextColor="@color/primaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
-        app:layout_constraintTop_toBottomOf="@id/textView_enterCompanyExperience" />
+        app:boxStrokeColor="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@id/textView_enterCompanyExperience"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_companyExperience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView_totalYearOfExperience"
@@ -92,21 +111,31 @@
         android:textStyle="bold"
         android:text="@string/enter_total_year_of_experience"
         android:textColor="?android:textColorPrimary"
-        android:textSize="@dimen/sp_20"
+        android:textSize="@dimen/sp_18"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText_companyExperience" />
+        app:layout_constraintTop_toBottomOf="@id/companyExperience_ExperienceFragment" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editText_totalYearOfExperience"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/totalExperience_ExperienceFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxBackgroundColor="@color/secondaryColor"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_margin="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_20"
-        android:background="@drawable/custom_edittext_shape"
-        android:hint="@string/eg_5_years"
-        android:padding="@dimen/dp_10"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="eg. 4 year"
+        app:hintTextColor="@color/primaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
-        app:layout_constraintTop_toBottomOf="@id/textView_totalYearOfExperience" />
+        app:boxStrokeColor="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@id/textView_totalYearOfExperience"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_totalYearOfExperience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -118,7 +147,7 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:background="@drawable/custom_shape_dark_button"
-        app:layout_constraintTop_toBottomOf="@id/editText_totalYearOfExperience"
+        app:layout_constraintTop_toBottomOf="@id/totalExperience_ExperienceFragment"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 

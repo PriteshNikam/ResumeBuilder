@@ -22,11 +22,11 @@
         <entry key="app/src/main/res/layout-v23/fragment_home_screen.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_dash_board.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/fragment_edit_education_details.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_edit_education_details.xml" value="0.20730407714843752" />
         <entry key="app/src/main/res/layout/fragment_edit_experience_details.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/fragment_edit_profile_details.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_edit_profile_details.xml" value="0.24057128906250003" />
         <entry key="app/src/main/res/layout/fragment_edit_project_details.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/fragment_edit_skills_details.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_edit_skills_details.xml" value="0.24133707682291666" />
         <entry key="app/src/main/res/layout/fragment_form_editor_screen.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_form_slide_main.xml" value="0.30854700854700856" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.22792262405382674" />

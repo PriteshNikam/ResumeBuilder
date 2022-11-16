@@ -16,5 +16,7 @@
 
     <dimen name="sp_20">20sp</dimen>
     <dimen name="sp_30">30sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+
 
 </resources>
