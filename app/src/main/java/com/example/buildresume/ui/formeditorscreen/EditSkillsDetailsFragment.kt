@@ -44,15 +44,36 @@ class EditSkillsDetailsFragment : Fragment() {
                         certification = editTextCertificatesEditSkillsDetails.text.toString()
                         otherSkills = editTextOtherSkillsEditSkillsDetails.text.toString()
                     }
-                    if (isDataStored) {
+/*                    if (isDataStored) {
                         updateResume(resume)
                         showToast(requireContext(), R.string.data_updated)
                     } else {
                         insertResume()
                         showToast(requireContext(), R.string.data_saved)
+                    }*/
+                    if (isDataStored) { // logic need to try for multiple test cases.
+                        if (resume.resumeId == 0) {
+                            resume.resumeId =
+                                allResumeList.value!!.first().resumeId // 0 because all_List reversed in descending order.
+                            updateResume(resume)
+                        }
+                        updateResume(resume)
+                        showToast(requireContext(), R.string.data_updated)
+                    } else {
+                        isDataStored = true
+                        insertResume()
+                        showToast(requireContext(), R.string.data_saved)
                     }
                 }
             } else {
+                if (editTextProgramLangEditSkillsDetails.text.isNullOrEmpty()) editTextProgramLangEditSkillsDetails.error =
+                    ""
+                if (editTextToolsEditSkillsDetails.text.isNullOrEmpty()) editTextToolsEditSkillsDetails.error =
+                    ""
+                if (editTextCertificatesEditSkillsDetails.text.isNullOrEmpty()) editTextCertificatesEditSkillsDetails.error =
+                    ""
+                if (editTextOtherSkillsEditSkillsDetails.text.isNullOrEmpty()) editTextOtherSkillsEditSkillsDetails.error =
+                    ""
                 showToast(requireContext(), R.string.empty_data)
             }
         }

@@ -43,16 +43,44 @@ class EditProjectDetailsFragment : Fragment() {
                         projectTitle = editTextProjectTitle.text.toString()
                         projectDescription = editTextProjectDescription.text.toString()
                     }
-                    if (isDataStored) {
+                    if (isDataStored) { // logic need to try for multiple test cases.
+                        if (resume.resumeId == 0) {
+                            resume.resumeId =
+                                allResumeList.value!!.first().resumeId // 0 because all_List reversed in descending order.
+                            updateResume(resume)
+                        }
                         updateResume(resume)
+                        showToast(requireContext(), R.string.data_updated)
                     } else {
+                        isDataStored = true
                         insertResume()
+                        showToast(requireContext(), R.string.data_saved)
                     }
-                    insertResume()
-                    showToast(requireContext(), R.string.data_saved)
                 }
             } else {
-                showToast(requireContext(), R.string.empty_data)
+                if (editTextProjectTitle.text.isNullOrEmpty().not() ||
+                    editTextProjectDescription.text.isNullOrEmpty().not()
+                ) {
+                    if (editTextProjectTitle.text.isNullOrEmpty()) editTextProjectTitle.error =
+                        ""
+                    if (editTextProjectDescription.text.isNullOrEmpty()) editTextProjectDescription.error =
+                        ""
+                } else {
+                    if (resumeViewModel.resume.projectTitle.isEmpty().not() &&
+                        resumeViewModel.resume.projectDescription.isEmpty().not()
+                    ) {
+                        resumeViewModel.run {
+                            resume.run {
+                                projectTitle = editTextProjectTitle.text.toString()
+                                projectDescription = editTextProjectDescription.text.toString()
+                            }
+                            updateResume(resume)
+                            showToast(requireContext(), R.string.remove_project_details)
+                        }
+                    } else{
+                        showToast(requireContext(),R.string.fill_details)
+                    }
+                }
             }
         }
     }
@@ -71,4 +99,6 @@ class EditProjectDetailsFragment : Fragment() {
         }
     }
 }
+
+
 

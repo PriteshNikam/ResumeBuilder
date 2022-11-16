@@ -11,6 +11,7 @@
         android:id="@+id/tabLayout_formSlide"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabBackground="@drawable/tab_selector"
         app:tabTextColor="@color/white"
         android:background="@color/primaryDarkColor"
         tools:ignore="SpeakableTextPresentCheck" />

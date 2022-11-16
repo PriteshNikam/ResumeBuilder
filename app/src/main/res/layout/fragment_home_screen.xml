@@ -1,118 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.homescreen.HomeScreenFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayout_homeScreen"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.homescreen.HomeScreenFragment">
-
-<!--        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBar_homeScreen"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/primaryDarkColor"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/linearLayout_homeScreen" />-->
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearLayout_homeScreen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_margin="@dimen/dp_10"
-            android:orientation="vertical"
-            android:elevation="25dp"
-            android:outlineProvider="bounds"
-            android:background="@drawable/custom_view_shape"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageView_profile_homeScreen"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_svg_viewer_account"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView_welcomeText_homeScreen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/welcome"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageView_profile_homeScreen" />
-
-            <TextView
-                android:id="@+id/textView_userName_homeScreen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/username"
-                android:textSize="25sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView_welcomeText_homeScreen" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@drawable/custom_view_shape"
+        android:elevation="25dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:outlineProvider="bounds"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageView_emptyDoc_HomeScreen"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:foregroundGravity="center"
-            android:src="@drawable/ic_svg_viewer_doc"
+            android:id="@+id/imageView_profile_homeScreen"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_svg_viewer_account"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout_homeScreen"
-            app:layout_constraintBottom_toTopOf="@id/floatingButton_addResume_homeScreen" />
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:id="@+id/textView_emptyText_homeScreen"
+            android:id="@+id/textView_welcomeText_homeScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/create_new_resume"
-            android:textSize="20sp"
+            android:text="@string/welcome"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView_emptyDoc_HomeScreen" />
+            app:layout_constraintTop_toBottomOf="@id/imageView_profile_homeScreen" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_homeScreen"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            app:spanCount="2"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.476"
+        <TextView
+            android:id="@+id/textView_userName_homeScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/username"
+            android:textSize="25sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout_homeScreen"
-            app:layout_constraintVertical_bias="0.0"
-            tools:listitem="@layout/single_resume_view" />
+            app:layout_constraintTop_toBottomOf="@id/textView_welcomeText_homeScreen" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingButton_addResume_homeScreen"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:backgroundTint="@color/primaryDarkColor"
-            android:layout_marginBottom="49dp"
-            android:contentDescription="@string/to_add_new_resume"
-            android:foreground="@drawable/ic_svg_viewer_add"
-            android:foregroundGravity="center"
-            android:foregroundTint="@color/white"
-            android:elevation="40dp"
-            app:borderWidth="0dp"
-            app:fabCustomSize="60dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_emptyDoc_HomeScreen"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:foregroundGravity="center"
+        android:src="@drawable/ic_svg_viewer_doc"
+        app:layout_constraintBottom_toTopOf="@id/floatingButton_addResume_homeScreen"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_homeScreen" />
+
+    <TextView
+        android:id="@+id/textView_emptyText_homeScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_new_resume"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView_emptyDoc_HomeScreen" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_homeScreen"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_homeScreen"
+        app:layout_constraintVertical_bias="0.0"
+        app:spanCount="2"
+        tools:listitem="@layout/single_resume_view" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingButton_addResume_homeScreen"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="49dp"
+        android:clickable="true"
+        android:contentDescription="@string/to_add_new_resume"
+        android:elevation="40dp"
+        android:focusable="true"
+        android:foreground="@drawable/ic_svg_viewer_add"
+        android:foregroundGravity="center"
+        android:foregroundTint="@color/white"
+        app:backgroundTint="@color/primaryDarkColor"
+        app:borderWidth="0dp"
+        app:fabCustomSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

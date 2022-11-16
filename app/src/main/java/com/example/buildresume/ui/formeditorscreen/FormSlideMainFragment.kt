@@ -20,7 +20,6 @@ class FormSlideMainFragment : Fragment() {
         // Inflate the layout for this fragment
         binding =  FragmentFormSlideMainBinding.inflate(inflater,container,false)
         binding.run {
-            //viewPager2.isSaveEnabled = false
             viewpagerFormSlide.adapter = ViewPagerAdapter(requireActivity().supportFragmentManager,lifecycle)
             tabLayoutFormSlide.tabMode = TabLayout.MODE_SCROLLABLE
 

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.viewpager2.widget.ViewPager2
 import com.example.buildresume.R
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentEditProfileDetailsBinding
@@ -67,6 +66,10 @@ class EditProfileDetailsFragment : Fragment() {
                     }
                 }
             } else {
+               if(editTextEnterNameEditProfileDetails.text.isNullOrEmpty()) editTextEnterNameEditProfileDetails.error = ""
+               if(editTextUserMobileNumberEditProfileDetails.text.isNullOrEmpty())   editTextUserMobileNumberEditProfileDetails.error = ""
+                 if(  editTextUserAddressEditProfileDetails.text.isNullOrEmpty()) editTextUserAddressEditProfileDetails.error = ""
+                    if(    editTextUserEmailEditProfileDetails.text.isNullOrEmpty()) editTextUserEmailEditProfileDetails.error = ""
                 showToast(requireContext(), R.string.empty_data)
             }
         }

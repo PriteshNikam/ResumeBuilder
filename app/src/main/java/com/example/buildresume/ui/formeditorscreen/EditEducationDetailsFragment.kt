@@ -46,16 +46,20 @@ class EditEducationDetailsFragment : Fragment() {
                         resumeViewModel.run {
                             resume.run {
                                 schoolName = editTextSchoolNameEditEducationDetails.text.toString()
-                                schoolMarks = editTextSchoolMarksEditEducationDetails.text.toString()
-                                collegeName = editTextCollegeNameEditEducationDetails.text.toString()
-                                collegeMarks = editTextCollegeMarksEditEducationDetails.text.toString()
+                                schoolMarks =
+                                    editTextSchoolMarksEditEducationDetails.text.toString()
+                                collegeName =
+                                    editTextCollegeNameEditEducationDetails.text.toString()
+                                collegeMarks =
+                                    editTextCollegeMarksEditEducationDetails.text.toString()
                                 diplomaCollegeName =
                                     editTextDiplomaCollegeNameEditEducationDetails.text.toString()
                                 diplomaCollegeMarks =
                                     editTextDiplomaMarksEditEducationDetails.text.toString()
                                 degreeCollegeName =
                                     editTextDegreeCollegeNameEditEducationDetails.text.toString()
-                                degreeMarks = editTextDegreeMarksEditEducationDetails.text.toString()
+                                degreeMarks =
+                                    editTextDegreeMarksEditEducationDetails.text.toString()
                             }
                         }
                     }
@@ -74,6 +78,14 @@ class EditEducationDetailsFragment : Fragment() {
                     }
                 }
             } else {
+                if (editTextSchoolNameEditEducationDetails.text.isNullOrEmpty()) editTextSchoolNameEditEducationDetails.error =
+                    ""
+                if (editTextSchoolMarksEditEducationDetails.text.isNullOrEmpty()) editTextSchoolMarksEditEducationDetails.error =
+                    ""
+                if (editTextDegreeCollegeNameEditEducationDetails.text.isNullOrEmpty()) editTextDegreeCollegeNameEditEducationDetails.error =
+                    ""
+                if (editTextDegreeMarksEditEducationDetails.text.isNullOrEmpty()) editTextDegreeMarksEditEducationDetails.error =
+                    ""
                 showToast(requireContext(), R.string.empty_data)
             }
         }

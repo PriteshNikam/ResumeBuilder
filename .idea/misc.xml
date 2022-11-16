@@ -19,11 +19,12 @@
         <entry key="app/src/main/res/drawable/ic_svg_viewer_info.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_skills.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/single_view_shape.xml" value="0.136" />
+        <entry key="app/src/main/res/drawable/tab_selector.xml" value="0.1005" />
         <entry key="app/src/main/res/layout-v23/fragment_home_screen.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_dash_board.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_education_details.xml" value="0.20730407714843752" />
-        <entry key="app/src/main/res/layout/fragment_edit_experience_details.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_edit_experience_details.xml" value="0.16365763346354167" />
         <entry key="app/src/main/res/layout/fragment_edit_profile_details.xml" value="0.24057128906250003" />
         <entry key="app/src/main/res/layout/fragment_edit_project_details.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_skills_details.xml" value="0.24133707682291666" />

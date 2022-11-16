@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.formeditorscreen.EditProjectDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView_fillForm_EditProjectDetails"
@@ -53,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="eg. Object detector"
+        android:hint="Project Title"
         app:hintTextColor="@color/primaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
         app:boxStrokeColor="@color/primaryDarkColor"
@@ -88,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="eg. describe your project in short"
+        android:hint="Describe your project in short"
         app:hintTextColor="@color/primaryDarkColor"
         android:textColorHint="@color/secondaryDarkColor"
         app:boxStrokeColor="@color/primaryDarkColor"
@@ -116,3 +120,4 @@
         app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
