@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.buildresume.data.Resume
 
-@Database(entities = [Resume::class], version = 1, exportSchema = false)
+@Database(entities = [Resume::class], version = 2, exportSchema = false)
 abstract class ResumeDatabase:RoomDatabase() {
     abstract fun getResumeDao(): ResumeDao
 

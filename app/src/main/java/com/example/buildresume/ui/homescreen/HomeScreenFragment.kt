@@ -2,17 +2,21 @@ package com.example.buildresume.ui.homescreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.buildresume.UtilClass.gotoScreen
+import com.example.buildresume.UtilClass.showLog
 import com.example.buildresume.data.Resume
 import com.example.buildresume.databinding.FragmentHomeScreenBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
+import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,9 +44,12 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // activity?.actionBar?.title = "Build Resume"
+
+      //  requireActivity()
+
         fragmentArgs = HomeScreenFragmentArgs.fromBundle(requireArguments())
         requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
     }
 
     override fun onCreateView(
@@ -50,6 +57,9 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
+
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
         binding.run {
             textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
             recyclerViewHomeScreen.layoutManager = GridLayoutManager(requireContext(), 2)
@@ -98,11 +108,12 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
 
     override fun onClickDeleteResume(resume: Resume) {
         resumeViewModel.deleteResume(resume)
-        binding.recyclerViewHomeScreen.recycledViewPool.clear()
+       // binding.recyclerViewHomeScreen.recycledViewPool.clear()
         homeScreenRecyclerAdapter.deselectItem()
     }
 
     override fun isItemSelected() {
         isItemSelected = 1
     }
+
 }

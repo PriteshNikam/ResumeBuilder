@@ -16,6 +16,7 @@ class EditSkillsDetailsFragment : Fragment() {
     private lateinit var binding: FragmentEditSkillsDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
     private var isDataStored: Boolean = false
+    private val currentTime: Long by lazy{ System.currentTimeMillis() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +44,7 @@ class EditSkillsDetailsFragment : Fragment() {
                         softwareTools = editTextToolsEditSkillsDetails.text.toString()
                         certification = editTextCertificatesEditSkillsDetails.text.toString()
                         otherSkills = editTextOtherSkillsEditSkillsDetails.text.toString()
+                        resumeTime = currentTime.toString()
                     }
 /*                    if (isDataStored) {
                         updateResume(resume)
@@ -84,7 +86,6 @@ class EditSkillsDetailsFragment : Fragment() {
             resumeViewModel.resume.run {
                 if (isFormFilled()) {
                     isDataStored = true
-                    textViewFillSkillsEditSkillsDetails.text = getString(R.string.data_saved)
                 }
                 editTextProgramLangEditSkillsDetails.setText(programmingLanguage)
                 editTextToolsEditSkillsDetails.setText(softwareTools)

@@ -76,5 +76,6 @@
     <string name="remove_project_details">removed project details</string>
     <string name="removed_experience_details">removed experience details</string>
     <string name="fill_details">fill details</string>
+    <string name="download_pdf">download PDF</string>
 </resources>
 

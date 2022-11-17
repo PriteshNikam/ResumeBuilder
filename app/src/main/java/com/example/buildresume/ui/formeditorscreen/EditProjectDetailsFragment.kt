@@ -18,6 +18,9 @@ class EditProjectDetailsFragment : Fragment() {
     private lateinit var binding: FragmentEditProjectDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
+    private val currentTime: Long by lazy{ System.currentTimeMillis() }
+
+
     private var isDataStored: Boolean = false
 
     override fun onCreateView(
@@ -42,6 +45,7 @@ class EditProjectDetailsFragment : Fragment() {
                     resume.run {
                         projectTitle = editTextProjectTitle.text.toString()
                         projectDescription = editTextProjectDescription.text.toString()
+                        resumeTime = currentTime.toString()
                     }
                     if (isDataStored) { // logic need to try for multiple test cases.
                         if (resume.resumeId == 0) {
@@ -90,8 +94,6 @@ class EditProjectDetailsFragment : Fragment() {
             resumeViewModel.resume.run {
                 if (isFormFilled()) {
                     isDataStored = true
-                    textViewFillFormEditProjectDetails.text =
-                        getString(R.string.data_saved)
                 }
                 editTextProjectTitle.setText(projectTitle)
                 editTextProjectDescription.setText(projectDescription)

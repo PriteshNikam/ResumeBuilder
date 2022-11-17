@@ -14,6 +14,7 @@
         <entry key="app/src/main/res/drawable/ic_account.xml" value="0.223" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_add.xml" value="0.2025" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_download.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_experience.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_google_login.xml" value="0.324" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_info.xml" value="0.1215" />
@@ -29,7 +30,7 @@
         <entry key="app/src/main/res/layout/fragment_edit_project_details.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_skills_details.xml" value="0.24133707682291666" />
         <entry key="app/src/main/res/layout/fragment_form_editor_screen.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_form_slide_main.xml" value="0.30854700854700856" />
+        <entry key="app/src/main/res/layout/fragment_form_slide_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.22792262405382674" />
         <entry key="app/src/main/res/layout/fragment_login_screen.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_splash_screen.xml" value="0.23891625615763548" />
@@ -37,6 +38,7 @@
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1215" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_build_resume_icon.xml" value="0.1745" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1215" />
+        <entry key="app/src/main/res/xml/preference_path.xml" value="0.1799145299145299" />
       </map>
     </option>
   </component>

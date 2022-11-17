@@ -7,7 +7,7 @@ import com.example.buildresume.data.Resume
 
 @Dao
 interface ResumeDao {
-    @Query( "Select * from resumes_tables order by resumeId DESC")
+    @Query( "Select * from resumes_tables order by resumeTime DESC")
     fun getAllResume(): LiveData<List<Resume>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

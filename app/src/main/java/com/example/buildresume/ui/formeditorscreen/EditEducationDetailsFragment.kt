@@ -21,6 +21,8 @@ class EditEducationDetailsFragment : Fragment() {
 
     private var isDataStored: Boolean = false
 
+    private val currentTime: Long by lazy{ System.currentTimeMillis() }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,6 +62,7 @@ class EditEducationDetailsFragment : Fragment() {
                                     editTextDegreeCollegeNameEditEducationDetails.text.toString()
                                 degreeMarks =
                                     editTextDegreeMarksEditEducationDetails.text.toString()
+                                resumeTime = currentTime.toString()
                             }
                         }
                     }
@@ -96,10 +99,7 @@ class EditEducationDetailsFragment : Fragment() {
         binding.run {
             resumeViewModel.resume.run {
                 if (isFormFilled()) {
-                    Log.d("education isFormFilled", "${isFormFilled()}")
                     isDataStored = true
-                    textViewFillEducationEditEducationDetails.text =
-                        getString(R.string.data_saved)
                 }
                 editTextSchoolNameEditEducationDetails.setText(schoolName)
                 editTextSchoolMarksEditEducationDetails.setText(schoolMarks)

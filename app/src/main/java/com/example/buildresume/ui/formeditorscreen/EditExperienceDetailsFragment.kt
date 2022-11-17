@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.buildresume.R
@@ -23,6 +22,8 @@ class EditExperienceDetailsFragment : Fragment() {
     private lateinit var binding: FragmentEditExperienceDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
+    private val currentTime: Long by lazy{ System.currentTimeMillis() }
+
     private var isDataStored: Boolean = false
 
     override fun onCreateView(
@@ -31,7 +32,6 @@ class EditExperienceDetailsFragment : Fragment() {
     ): View {
         binding = FragmentEditExperienceDetailsBinding.inflate(inflater, container, false)
 
-        generatePDF()
         ifEditedFillForm()
         binding.buttonSaveExperienceDetails.setOnClickListener {
             writeToLocal()
@@ -50,6 +50,7 @@ class EditExperienceDetailsFragment : Fragment() {
                         companyName = editTextEnterCompanyName.text.toString()
                         companyExperienceYear = editTextCompanyExperience.text.toString()
                         totalExperience = editTextTotalYearOfExperience.text.toString()
+                        resumeTime = currentTime.toString()
                     }
                     if (isDataStored) { // logic need to try for multiple test cases.
                         if (resume.resumeId == 0) {
@@ -104,8 +105,6 @@ class EditExperienceDetailsFragment : Fragment() {
             resumeViewModel.resume.run {
                 if (isFormFilled()) {
                     isDataStored = true
-                    textViewFillDetailsEditExperienceDetails.text =
-                        getString(R.string.data_saved)
                 }
                 editTextEnterCompanyName.setText(companyName)
                 editTextCompanyExperience.setText(companyExperienceYear)
@@ -115,35 +114,6 @@ class EditExperienceDetailsFragment : Fragment() {
     }
 
 
-    private fun generatePDF() {
-        binding.buttonGeneratePdfExperience.setOnClickListener {
-            resumeViewModel.generatePdf(requireContext()) // library function
-            //  resumeViewModel.localGeneratePDF(requireContext()) // local function for testing
-            showPdf()
-        }
-    }
 
-    private fun showPdf() {
-        val file = File(requireContext().getExternalFilesDir("/"), "resumePDF.pdf")
-        val target = Intent(Intent.ACTION_VIEW)
-        target.data = Uri.fromFile(file)
-        target.type = "application/pdf"
-        // target.setDataAndType(Uri.fromFile(file), "application/pdf")
-        target.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        val intent = Intent.createChooser(target, getString(R.string.select_app))
-
-/*       val target = Intent(Intent.ACTION_VIEW)
-        target.data = Uri.fromFile(file)
-       target.type = "application/pdf"
-        //target.setDataAndType(Uri.fromFile(file),"application/pdf")
-       target.addCategory(Intent.CATEGORY_OPENABLE)
-        startActivityForResult(Intent.createChooser(target,"Select PDF"),99)*/
-
-        try {
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            showToast(requireContext(), R.string.install_wps_app)
-        }
-    }
 
 }

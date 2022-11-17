@@ -94,7 +94,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 
     // pdf geneartor library
-    implementation 'com.github.pritesh-coditas:GeenratePDF:174f35ff71'
+    implementation 'com.github.pritesh-coditas:GeenratePDF:cdd59313ac'
 
     //coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")

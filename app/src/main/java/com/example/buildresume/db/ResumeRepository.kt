@@ -17,7 +17,6 @@ class ResumeRepository(private var resumeDao:ResumeDao) {
     }
 
     suspend fun updateResume(updateResume:Resume){
-        Log.d("repo isFormFilled: ", "${updateResume.resumeId} || ${updateResume.userName}")
         resumeDao.update(updateResume)
     }
 }

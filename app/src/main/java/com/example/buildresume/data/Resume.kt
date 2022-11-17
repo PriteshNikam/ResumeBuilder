@@ -29,6 +29,7 @@ data class Resume(
     var companyName:String = "",
     var companyExperienceYear:String = "",
     var totalExperience:String ="",
+    var resumeTime:String=""
     ):Parcelable {
     @PrimaryKey(autoGenerate = true)
     var resumeId = 0

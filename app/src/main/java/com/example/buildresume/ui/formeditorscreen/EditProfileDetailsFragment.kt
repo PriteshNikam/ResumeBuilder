@@ -20,6 +20,8 @@ class EditProfileDetailsFragment : Fragment() {
 
     private var isDataStored: Boolean = false
 
+    private val currentTime: Long by lazy{ System.currentTimeMillis() }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,11 +52,12 @@ class EditProfileDetailsFragment : Fragment() {
                             userMobile = editTextUserMobileNumberEditProfileDetails.text.toString()
                             userAddress = editTextUserAddressEditProfileDetails.text.toString()
                             userEmail = editTextUserEmailEditProfileDetails.text.toString()
+                            resumeTime = currentTime.toString()
                         }
                     }
                     if (isDataStored) { // logic need to try for multiple test cases.
                         if (resume.resumeId == 0) {
-                            resume.resumeId = allResumeList.value!!.first().resumeId // 0 because all_List reversed in descending order.
+                            resume.resumeId = allResumeList.value!!.first().resumeId // first because all_List reversed in descending order.
                             updateResume(resume)
                         }
                         updateResume(resume)

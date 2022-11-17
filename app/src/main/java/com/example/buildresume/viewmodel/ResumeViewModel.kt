@@ -65,7 +65,8 @@ class ResumeViewModel(application: Application) : AndroidViewModel(application) 
                 projectDescription,
                 companyName,
                 companyExperienceYear,
-                totalExperience
+                totalExperience,
+                resumeTime
             )
         }
     }
