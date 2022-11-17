@@ -77,5 +77,9 @@
     <string name="removed_experience_details">removed experience details</string>
     <string name="fill_details">fill details</string>
     <string name="download_pdf">download PDF</string>
+    <string name="download">download</string>
+    <string name="sign_out">sign_out</string>
+    <string name="generate_pdf">PDF geenrated</string>
+    <string name="not_signed_in">Not Signed In</string>
 </resources>
 

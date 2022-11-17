@@ -16,7 +16,6 @@ class SplashScreenFragment : Fragment() {
 
     private var splashScreenDelay: Long = 2000
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,8 +26,6 @@ class SplashScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //(requireActivity() as AppCompatActivity).supportActionBar?.hide()
-
         lifecycleScope.launch {
             delay(splashScreenDelay)
            // view.findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToLoginScreenFragment())
@@ -36,7 +33,7 @@ class SplashScreenFragment : Fragment() {
         }
 
     }
-
+/*
     override fun onStart() {
         super.onStart()
         (requireActivity() as AppCompatActivity?)?.supportActionBar?.hide()
@@ -45,5 +42,5 @@ class SplashScreenFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         (requireActivity() as AppCompatActivity?)?.supportActionBar?.show()
-    }
+    }*/
 }

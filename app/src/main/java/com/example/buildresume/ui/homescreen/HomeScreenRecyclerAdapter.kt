@@ -83,8 +83,8 @@ class HomeScreenRecyclerAdapter (private val listener: IResumeAdapter) :
     fun updateList(newList: List<Resume>) {
         resumeList.clear()
         resumeList.addAll(newList)
-        //notifyItemRangeChanged(0,newList.size+1) // crash -> invalid item position.
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0,newList.size+1) // crash -> invalid item position.
+        //notifyDataSetChanged()
     }
 
     interface IResumeAdapter {

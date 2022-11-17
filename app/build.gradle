@@ -93,8 +93,10 @@ dependencies {
     // Lifecycles only (without ViewModel or LiveData)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 
-    // pdf geneartor library
+    // pdf generator library
     implementation 'com.github.pritesh-coditas:GeenratePDF:cdd59313ac'
+
+    // recycler view
 
     //coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")

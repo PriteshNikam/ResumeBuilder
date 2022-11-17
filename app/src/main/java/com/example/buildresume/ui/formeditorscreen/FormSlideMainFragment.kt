@@ -13,7 +13,6 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.buildresume.R
-import com.example.buildresume.UtilClass.showLog
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentFormSlideMainBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
@@ -21,15 +20,11 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import java.io.File
 
-
 class FormSlideMainFragment : Fragment() {
 
     private lateinit var binding: FragmentFormSlideMainBinding
 
     private val resumeViewModel: ResumeViewModel by activityViewModels()
-
-    private val currentTime: Long by lazy{ System.currentTimeMillis() }
-
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -59,6 +54,10 @@ class FormSlideMainFragment : Fragment() {
 
         generatePDF()
 
+        binding.topAppBarFormSlide.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
         binding.run {
             viewpagerFormSlide.adapter =
                 ViewPagerAdapter(requireActivity().supportFragmentManager, lifecycle)
@@ -78,15 +77,19 @@ class FormSlideMainFragment : Fragment() {
     }
 
     private fun generatePDF() {
-        binding.floatingButtonSlideFragment.setOnClickListener {
-            resumeViewModel.run {
-                if (resume.isFormFilled()) {
-                   // resume.resumeTime = currentTime.toString()
-                    generatePdf(requireContext()) // library function
-                    openPdf()
-                }else{
-                    showToast(requireContext(),R.string.fill_all_details)
+        binding.topAppBarFormSlide.setOnMenuItemClickListener { menuItem ->
+            if (resumeViewModel.resume.isFormFilled()) {
+                when (menuItem.itemId) {
+                    R.id.download -> {
+                        resumeViewModel.generatePdf(requireContext()) // library function
+                        openPdf()
+                        showToast(requireContext(),R.string.generate_pdf)
+                        true
+                    }else -> false
                 }
+            }else{
+                showToast(requireContext(),R.string.fill_all_details)
+                false
             }
         }
     }

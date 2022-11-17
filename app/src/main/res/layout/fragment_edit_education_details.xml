@@ -48,21 +48,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_fillEducation_EditEducationDetails" />
 
-<!--        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editText_schoolName_EditEducationDetails"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_20"
-            android:singleLine="true"
-            android:scrollHorizontally="true"
-            android:background="@drawable/custom_edittext_shape"
-            android:hint="@string/school_name"
-            android:padding="@dimen/dp_10"
-            android:textColorHint="@color/secondaryDarkColor"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_schoolName_EditEducationDetails" />-->
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/enterSchoolName_EducationFragment"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -88,19 +74,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
-<!--        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editText_schoolMarks_EditEducationDetails"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_20"
-            android:background="@drawable/custom_edittext_shape"
-            android:hint="@string/_99_99"
-            android:padding="@dimen/dp_10"
-            android:textColorHint="@color/secondaryDarkColor"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enterSchoolName_EducationFragment" />-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/enterSchoolMarks_EducationFragment"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -263,10 +236,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_10"
             android:layout_marginTop="40dp"
+            android:textSize="18sp"
             android:text="@string/enter_degree_college_name_and_percentage"
             android:textColor="?android:textColorPrimary"
             android:textStyle="bold"
-            android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/enterDiplomaMarks_EducationFragment" />
 

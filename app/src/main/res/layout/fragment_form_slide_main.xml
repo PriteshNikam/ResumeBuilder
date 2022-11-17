@@ -7,6 +7,24 @@
     android:orientation="vertical"
     tools:context=".ui.formeditorscreen.FormSlideMainFragment">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar_formSlide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar_formSlide"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="BuildResume"
+            app:menu="@menu/slide_form_menu"
+            app:navigationIcon="@drawable/ic_svg_viewer_back"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout_formSlide"
         android:layout_width="match_parent"
@@ -14,10 +32,9 @@
         android:background="@color/primaryDarkColor"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar_formSlide"
         app:tabBackground="@drawable/tab_selector"
-        app:tabTextColor="@color/white"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:tabTextColor="@color/white" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager_formSlide"
@@ -26,7 +43,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabLayout_formSlide" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingButton_slideFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,6 +60,6 @@
         app:borderWidth="0dp"
         app:fabCustomSize="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

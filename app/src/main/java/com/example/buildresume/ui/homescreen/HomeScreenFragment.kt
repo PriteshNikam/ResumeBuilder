@@ -11,12 +11,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.buildresume.R
 import com.example.buildresume.UtilClass.gotoScreen
 import com.example.buildresume.UtilClass.showLog
+import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.data.Resume
 import com.example.buildresume.databinding.FragmentHomeScreenBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import com.google.android.material.appbar.AppBarLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,6 +28,8 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
 
     private lateinit var fragmentArgs: HomeScreenFragmentArgs
     private lateinit var binding: FragmentHomeScreenBinding
+
+    private lateinit var firebaseAuth:FirebaseAuth
 
     private val resumeViewModel: ResumeViewModel by activityViewModels()
 
@@ -45,8 +51,6 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-      //  requireActivity()
-
         fragmentArgs = HomeScreenFragmentArgs.fromBundle(requireArguments())
         requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
@@ -65,7 +69,23 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
             recyclerViewHomeScreen.layoutManager = GridLayoutManager(requireContext(), 2)
             recyclerViewHomeScreen.adapter = homeScreenRecyclerAdapter
         }
-            return binding.root
+
+        binding.topAppBarHomeScreen.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.sign_out -> {
+                    if(fragmentArgs.user!=null) {
+                        firebaseAuth = FirebaseAuth.getInstance()
+                        firebaseAuth.signOut()
+                        showToast(requireContext(), R.string.sign_out)
+                    }else{
+                        showToast(requireContext(),R.string.not_signed_in)
+                    }
+                    true
+                }else -> false
+            }
+        }
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -108,7 +128,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
 
     override fun onClickDeleteResume(resume: Resume) {
         resumeViewModel.deleteResume(resume)
-       // binding.recyclerViewHomeScreen.recycledViewPool.clear()
+        // binding.recyclerViewHomeScreen.recycledViewPool.clear()
         homeScreenRecyclerAdapter.deselectItem()
     }
 
