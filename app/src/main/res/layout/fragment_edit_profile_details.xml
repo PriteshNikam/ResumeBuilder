@@ -51,7 +51,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/enterName_profileFragment"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        app:boxBackgroundColor="@color/secondaryColor"
+        app:boxBackgroundColor="@color/secondaryLightColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
@@ -60,7 +60,7 @@
         android:layout_marginEnd="16dp"
         android:hint="John Carter"
         app:hintTextColor="@color/primaryDarkColor"
-        android:textColorHint="@color/secondaryDarkColor"
+        android:textColorHint="@color/greyColor"
         app:boxStrokeColor="@color/primaryDarkColor"
         app:layout_constraintTop_toBottomOf="@id/textView_enterName_EditProfileDetails"
         app:layout_constraintLeft_toLeftOf="parent">
@@ -89,7 +89,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/enterMobile_profileFragment"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        app:boxBackgroundColor="@color/secondaryColor"
+        app:boxBackgroundColor="@color/secondaryLightColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
@@ -98,7 +98,7 @@
         android:layout_marginEnd="16dp"
         android:hint="1234567890"
         app:hintTextColor="@color/primaryDarkColor"
-        android:textColorHint="@color/secondaryDarkColor"
+        android:textColorHint="@color/greyColor"
         app:boxStrokeColor="@color/primaryDarkColor"
         app:layout_constraintTop_toBottomOf="@id/textView_enterMobile_EditProfileDetails"
         app:layout_constraintLeft_toLeftOf="parent">
@@ -129,7 +129,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/enterAddress_profileFragment"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        app:boxBackgroundColor="@color/secondaryColor"
+        app:boxBackgroundColor="@color/secondaryLightColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
@@ -138,7 +138,7 @@
         android:layout_marginEnd="16dp"
         android:hint="village/city, sub-dist dist, state, pin code"
         app:hintTextColor="@color/primaryDarkColor"
-        android:textColorHint="@color/secondaryDarkColor"
+        android:textColorHint="@color/greyColor"
         app:boxStrokeColor="@color/primaryDarkColor"
         app:layout_constraintTop_toBottomOf="@id/textView_enterAddress_EditProfileDetails"
         app:layout_constraintLeft_toLeftOf="parent">
@@ -169,7 +169,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/enterEmail_profileFragment"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        app:boxBackgroundColor="@color/secondaryColor"
+        app:boxBackgroundColor="@color/secondaryLightColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
@@ -178,7 +178,7 @@
         android:layout_marginEnd="16dp"
         android:hint="abc123@gmail.com"
         app:hintTextColor="@color/primaryDarkColor"
-        android:textColorHint="@color/secondaryDarkColor"
+        android:textColorHint="@color/greyColor"
         app:boxStrokeColor="@color/primaryDarkColor"
         app:layout_constraintTop_toBottomOf="@id/textView_enterEmail_EditProfileDetails"
         app:layout_constraintLeft_toLeftOf="parent">

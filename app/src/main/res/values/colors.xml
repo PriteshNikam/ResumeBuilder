@@ -11,15 +11,22 @@
     //
 
     <color name="primaryBlack">#FF000000</color>
-    <color name="primaryColor">#7986cc</color>
+<!--    <color name="primaryColor">#7986cc</color>
     <color name="primaryLightColor">#abb6ff</color>
-    <color name="primaryDarkColor">#49599b</color>
+    <color name="primaryDarkColor">#49599b</color>-->
     <color name="secondaryColor">#c5cae9</color>
-    <color name="secondaryLightColor">#f8fdff</color>
-    <color name="secondaryDarkColor">#9499b7</color>
+    <color name="secondaryLightColor">#EEF7FE</color>
+    <color name="secondaryDarkColor">#EEF7FE</color>
     <color name="red">#FF0000</color>
-    <color name="offWhite">#F5F5F5</color>
+    <color name="offWhite">#F9FAFC</color>
 
+   //
 
+    <color name="primaryLightColor">#EEF7FE</color>
+    <color name="primaryColor">#2C74D6</color>
+    <color name="primaryDarkColor">#2444A4</color>
+    <color name="greyColor">#667085</color>
+<!--    <color name="grey">#667085</color>
+    <color name="light_grey">#A9A9A9</color>-->
 
 </resources>

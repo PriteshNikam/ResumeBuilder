@@ -13,7 +13,9 @@
         <entry key="app/src/main/res/drawable/delete_resume_shape.xml" value="0.2225" />
         <entry key="app/src/main/res/drawable/ic_account.xml" value="0.223" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_account.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_add.xml" value="0.2025" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_doc.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_download.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_experience.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_google_login.xml" value="0.324" />
