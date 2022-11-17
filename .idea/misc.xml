@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/drawable/ic_svg_viewer_add.xml" value="0.2025" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_doc.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_download.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_education.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_experience.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_google_login.xml" value="0.324" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_info.xml" value="0.1215" />
@@ -28,7 +29,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_dash_board.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_education_details.xml" value="0.20730407714843752" />
-        <entry key="app/src/main/res/layout/fragment_edit_experience_details.xml" value="0.16365763346354167" />
+        <entry key="app/src/main/res/layout/fragment_edit_experience_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_edit_profile_details.xml" value="0.24057128906250003" />
         <entry key="app/src/main/res/layout/fragment_edit_project_details.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_skills_details.xml" value="0.24133707682291666" />

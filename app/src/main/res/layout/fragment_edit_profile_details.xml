@@ -14,7 +14,7 @@
         android:id="@+id/textView_fillForm_EditProfileDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:fontFamily="@font/montserrat_bold"
         android:text="@string/fill_all_details"
         android:textSize="30sp"
         android:textColor="@color/primaryDarkColor"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:text="@string/enter_name"
         android:textSize="18sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/montserrat_bold"
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintTop_toBottomOf="@+id/textView_fillForm_EditProfileDetails"
@@ -69,6 +69,7 @@
             android:id="@+id/editText_enterName_EditProfileDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
             android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -80,9 +81,9 @@
         android:layout_height="wrap_content"
         android:text="@string/enter_mobile_number"
         android:textSize="18sp"
+        android:fontFamily="@font/montserrat_bold"
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="?android:textColorPrimary"
-        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/enterName_profileFragment"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -107,6 +108,7 @@
         android:id="@+id/editText_userMobileNumber_EditProfileDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_regular"
         android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -118,9 +120,9 @@
         android:layout_height="wrap_content"
         android:text="@string/enter_address"
         android:textSize="18sp"
+        android:fontFamily="@font/montserrat_bold"
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="?android:textColorPrimary"
-        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/enterMobile_profileFragment"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -147,6 +149,7 @@
             android:id="@+id/editText_userAddress_EditProfileDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
             android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -159,7 +162,7 @@
         android:layout_height="wrap_content"
         android:text="@string/enter_email"
         android:textSize="18sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/montserrat_bold"
         android:layout_marginStart="@dimen/dp_10"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintTop_toBottomOf="@id/enterAddress_profileFragment"
@@ -187,6 +190,7 @@
             android:id="@+id/editText_userEmail_EditProfileDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
             android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -197,6 +201,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/save_profile_details"
+        android:fontFamily="@font/montserrat_regular"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:background="@drawable/custom_shape_dark_button"
