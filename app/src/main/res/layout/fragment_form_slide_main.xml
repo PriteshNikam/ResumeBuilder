@@ -24,7 +24,6 @@
             style="@style/Widget.MaterialComponents.Toolbar.Primary" />
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout_formSlide"
         android:layout_width="match_parent"

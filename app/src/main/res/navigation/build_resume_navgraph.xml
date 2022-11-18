@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_homeScreenFragment_to_formSlideMainFragment"
             app:destination="@id/formSlideMainFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_loginScreenFragment"
+            app:destination="@id/loginScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/formEditorScreenFragment"

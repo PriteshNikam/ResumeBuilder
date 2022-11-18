@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BuildResume</string>
     <string name="sign_in">oogle Sign in</string>
-    <string name="easy_way_to_make_your_resume">Easy way to make your resume</string>
+    <string name="easy_way_to_create_your_resume">Easy way to create your resume</string>
     <string name="web_client_id">859830589554-05lstmu177qirp0refpc365lce88uq3g.apps.googleusercontent.com</string>
     <string name="welcome">Welcome!!</string>
     <string name="login_success">\"LOGIN SUCCESSFUL\"</string>
@@ -79,7 +79,26 @@
     <string name="download_pdf">download PDF</string>
     <string name="download">download</string>
     <string name="sign_out">sign_out</string>
-    <string name="generate_pdf">PDF geenrated</string>
+    <string name="generate_pdf">PDF genrated</string>
     <string name="not_signed_in">Not Signed In</string>
+    <string name="save_education_details">Save Education Details</string>
+    <string name="village_city_sub_dist_dist_state_pin_code">village/city, sub-dist dist, state, pin code</string>
+    <string name="_1234567890">1234567890</string>
+    <string name="john_carter">John Carter</string>
+    <string name="eg_abc">eg. Abc</string>
+    <string name="eg_1_year">eg. 1 year</string>
+    <string name="eg_4_year">eg. 4 year</string>
+    <string name="eg_web_development">eg. Web Development</string>
+    <string name="eg_android_app_development">eg. Android App Development</string>
+    <string name="eg_java_c">eg. Java, C++</string>
+    <string name="describe_your_project_in_short">Describe your project in short</string>
+    <string name="project_title">Project Title</string>
+    <string name="eg_99_99">eg. 99.99</string>
+    <string name="degree_college_name">Degree College Name</string>
+    <string name="diploma_college_name">Diploma College Name</string>
+    <string name="share">share</string>
+    <string name="share_pdf">share_pdf</string>
+    <string name="toast_share_pdf">Share PDF</string>
+    <string name="select_app_share">Share via</string>
 </resources>
 

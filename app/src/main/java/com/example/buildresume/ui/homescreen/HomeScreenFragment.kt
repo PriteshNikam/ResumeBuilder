@@ -77,6 +77,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
                         firebaseAuth = FirebaseAuth.getInstance()
                         firebaseAuth.signOut()
                         showToast(requireContext(), R.string.sign_out)
+                        findNavController().navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToLoginScreenFragment())
                     }else{
                         showToast(requireContext(),R.string.not_signed_in)
                     }

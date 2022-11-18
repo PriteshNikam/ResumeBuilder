@@ -2,7 +2,6 @@ package com.example.buildresume.ui.formeditorscreen
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,12 +12,14 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.buildresume.R
+import com.example.buildresume.UtilClass.showLog
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.databinding.FragmentFormSlideMainBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import java.io.File
+
 
 class FormSlideMainFragment : Fragment() {
 
@@ -85,7 +86,14 @@ class FormSlideMainFragment : Fragment() {
                         openPdf()
                         showToast(requireContext(),R.string.generate_pdf)
                         true
-                    }else -> false
+                    }
+                    R.id.share->{
+                        resumeViewModel.generatePdf(requireContext())
+                        sharePdf()
+                        showToast(requireContext(),R.string.toast_share_pdf)
+                         true
+                    }
+                   else -> false
                 }
             }else{
                 showToast(requireContext(),R.string.fill_all_details)
@@ -114,4 +122,26 @@ class FormSlideMainFragment : Fragment() {
         }
     }
 
+    private fun sharePdf() {
+        resumeViewModel.resume.run {
+            val pdfName = "${userName}_${resumeTime}.pdf"
+            val file = File(requireContext().getExternalFilesDir("/"), pdfName)
+            val target = Intent(Intent.ACTION_SEND)
+            val fileURI = FileProvider.getUriForFile(
+                requireContext(),
+                requireContext().applicationContext.packageName.toString() + ".provider", file
+            )
+            showLog("file: ","$file")
+            showLog("fileURI: ","$fileURI")
+            target.setDataAndType(fileURI, "application/pdf")
+            target.putExtra(Intent.EXTRA_STREAM,fileURI)
+            target.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+            val intent = Intent.createChooser(target, getString(R.string.select_app_share))
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                showToast(requireContext(), R.string.install_wps_app)
+            }
+        }
+    }
 }

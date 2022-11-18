@@ -53,6 +53,7 @@ class HomeScreenRecyclerAdapter (private val listener: IResumeAdapter) :
                 }
                 return@setOnLongClickListener true
             }
+            binding.imageVIewResumeDocumentView.visibility = View.VISIBLE
             binding.imageViewDeleteResume.visibility = View.GONE
             binding.textViewResumeUserNameHomeScreen.visibility = View.VISIBLE
             itemView.setOnClickListener {

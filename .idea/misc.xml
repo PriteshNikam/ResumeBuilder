@@ -6,6 +6,8 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/custom_button_shape.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/custom_edittext_shape.xml" value="0.126" />
+        <entry key="app/src/main/res/drawable/custom_shadow_effect.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/custom_shape_dark_button.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/custom_shape_darkbutton.xml" value="0.2195" />
         <entry key="app/src/main/res/drawable/custom_sign_in_button.xml" value="0.324" />
         <entry key="app/src/main/res/drawable/custom_view_shape.xml" value="0.151" />
@@ -13,8 +15,11 @@
         <entry key="app/src/main/res/drawable/delete_resume_shape.xml" value="0.2225" />
         <entry key="app/src/main/res/drawable/ic_account.xml" value="0.223" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_share.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_account.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_add.xml" value="0.2025" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_build_resume_app_icon.xml" value="0.197" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_delete_icon.xml" value="0.197" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_doc.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_download.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_svg_viewer_education.xml" value="0.1705" />
@@ -28,15 +33,15 @@
         <entry key="app/src/main/res/layout-v23/fragment_home_screen.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_dash_board.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/fragment_edit_education_details.xml" value="0.20730407714843752" />
-        <entry key="app/src/main/res/layout/fragment_edit_experience_details.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_edit_profile_details.xml" value="0.24057128906250003" />
+        <entry key="app/src/main/res/layout/fragment_edit_education_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_edit_experience_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_edit_profile_details.xml" value="0.30262451171875004" />
         <entry key="app/src/main/res/layout/fragment_edit_project_details.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_skills_details.xml" value="0.24133707682291666" />
         <entry key="app/src/main/res/layout/fragment_form_editor_screen.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_form_slide_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.22792262405382674" />
-        <entry key="app/src/main/res/layout/fragment_login_screen.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_login_screen.xml" value="0.25351226806640625" />
         <entry key="app/src/main/res/layout/fragment_splash_screen.xml" value="0.23891625615763548" />
         <entry key="app/src/main/res/layout/single_resume_view.xml" value="0.28125" />
         <entry key="app/src/main/res/menu/home_screen_menu.xml" value="0.30854700854700856" />

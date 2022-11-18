@@ -1,6 +1,5 @@
 package com.example.buildresume.db
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.buildresume.data.Resume
 

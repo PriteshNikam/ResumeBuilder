@@ -18,10 +18,11 @@
             android:id="@+id/topAppBar_homeScreen"
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
+            android:background="@color/primaryColor"
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/home_screen_menu"
-            app:title="BuildResume"
-            />
+            app:title="BuildResume" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -61,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/username"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/montserrat_regular"
             android:textColor="@color/primaryColor"
             android:textSize="20sp"
@@ -85,6 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/create_new_resume"
+        android:textColor="@color/primaryColor"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
