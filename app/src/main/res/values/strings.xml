@@ -55,7 +55,7 @@
     <string name="enter_project_title">Enter Project Title :</string>
     <string name="eg_project_title">eg. - Project title</string>
     <string name="enter_project_description">Enter project Description :</string>
-    <string name="eg_project_description">eg. - Project description...</string>
+    <string name="eg_project_description">eg. - Project description.</string>
     <string name="save_project_details">Save Project Details</string>
     <string name="save_skills_details">Save Skills Details</string>
     <string name="eg_web_development_sap">eg - Web development, SAP</string>
@@ -82,7 +82,7 @@
     <string name="generate_pdf">PDF genrated</string>
     <string name="not_signed_in">Not Signed In</string>
     <string name="save_education_details">Save Education Details</string>
-    <string name="village_city_sub_dist_dist_state_pin_code">village/city, sub-dist dist, state, pin code</string>
+    <string name="village_city_sub_dist_dist_state_pin_code">village/city, sub-dist, dist, state, pin code</string>
     <string name="_1234567890">1234567890</string>
     <string name="john_carter">John Carter</string>
     <string name="eg_abc">eg. Abc</string>
@@ -100,5 +100,12 @@
     <string name="share_pdf">share_pdf</string>
     <string name="toast_share_pdf">Share PDF</string>
     <string name="select_app_share">Share via</string>
+    <string name="profile">Profile</string>
+    <string name="education">Education</string>
+    <string name="skills">Skills</string>
+    <string name="project">Project</string>
+    <string name="experience">Experience</string>
+    <string name="provider">.provider</string>
+    <string name="application_pdf">application/pdf</string>
 </resources>
 

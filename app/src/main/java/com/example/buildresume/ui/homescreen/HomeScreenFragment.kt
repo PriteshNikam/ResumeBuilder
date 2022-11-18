@@ -23,13 +23,9 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
 
     private lateinit var fragmentArgs: HomeScreenFragmentArgs
     private lateinit var binding: FragmentHomeScreenBinding
-
     private lateinit var firebaseAuth:FirebaseAuth
-
     private val resumeViewModel: ResumeViewModel by activityViewModels()
-
     val homeScreenRecyclerAdapter = HomeScreenRecyclerAdapter(this)
-
     var isItemSelected = 0
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -125,6 +121,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
     override fun onClickDeleteResume(resume: Resume) {
         resumeViewModel.deleteResumeInLocal(resume)
         // binding.recyclerViewHomeScreen.recycledViewPool.clear()
+        binding.recyclerViewHomeScreen.setItemViewCacheSize(0)
         homeScreenRecyclerAdapter.deselectItem()
     }
 

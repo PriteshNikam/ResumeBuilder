@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_fillEducation_EditEducationDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             app:layout_constraintTop_toBottomOf="@id/textView_fillEducation_EditEducationDetails"
             tools:layout_editor_absoluteX="-16dp" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_schoolName_EditEducationDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_collegeName_EditEducationDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_diplomaCollegeName_EditEducationDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -236,7 +236,7 @@
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_degreeCollegeName_EditEducationDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

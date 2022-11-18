@@ -6,7 +6,7 @@
     android:background="@color/white"
     tools:context=".ui.splashscreen.SplashScreenFragment">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/build_resume_logo"

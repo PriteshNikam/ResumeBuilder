@@ -42,23 +42,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabLayout_formSlide" />
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingButton_slideFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="49dp"
-        android:clickable="true"
-        android:contentDescription="@string/download_pdf"
-        android:elevation="40dp"
-        android:layout_marginEnd="50dp"
-        android:focusable="true"
-        android:foreground="@drawable/ic_svg_viewer_download"
-        android:foregroundGravity="center"
-        android:foregroundTint="@color/white"
-        app:backgroundTint="@color/primaryDarkColor"
-        app:borderWidth="0dp"
-        app:fabCustomSize="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

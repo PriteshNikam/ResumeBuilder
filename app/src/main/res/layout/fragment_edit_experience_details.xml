@@ -36,7 +36,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView_fillDetails_editExperienceDetails"
             tools:layout_editor_absoluteX="-16dp" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_enterCompanyName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_enterCompanyExperience"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_totalYearOfExperience"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = tableName)
+@Entity(tableName = TABLE_NAME)
 data class Resume(
     var userName:String = "",
     var userMobile:String = "",
@@ -32,7 +32,7 @@ data class Resume(
     var resumeTime:String=""
     ):Parcelable {
     @PrimaryKey(autoGenerate = true)
-    var resumeId = 0
+    var resumeId = INITIAL_ID
 
     fun isFormFilled(): Boolean {
         var result = false
@@ -63,5 +63,5 @@ data class Resume(
     }
 }
 
-const val tableName = "resumes_tables"
-
+const val TABLE_NAME = "resumes_tables"
+const val INITIAL_ID = 0

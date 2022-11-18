@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 
 class SplashScreenFragment : Fragment() {
 
-    private var splashScreenDelay: Long = 2000
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,18 +27,10 @@ class SplashScreenFragment : Fragment() {
         lifecycleScope.launch {
             delay(splashScreenDelay)
             view.findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToLoginScreenFragment())
-           // view.findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToHomeScreenFragment(null))
         }
-
     }
-/*
-    override fun onStart() {
-        super.onStart()
-        (requireActivity() as AppCompatActivity?)?.supportActionBar?.hide()
+    companion object{
+        private var splashScreenDelay: Long = 2000
     }
 
-    override fun onStop() {
-        super.onStop()
-        (requireActivity() as AppCompatActivity?)?.supportActionBar?.show()
-    }*/
 }

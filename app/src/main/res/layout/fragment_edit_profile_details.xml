@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView_fillForm_EditProfileDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_fillForm_EditProfileDetails"
         tools:layout_editor_absoluteX="-16dp" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView_enterName_EditProfileDetails"
         android:layout_width="wrap_content"
         android:layout_marginTop="40dp"
@@ -55,6 +55,7 @@
         app:boxBackgroundColor="@color/secondaryLightColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:singleLine="true"
         android:scrollHorizontally="true"
         android:layout_marginStart="16dp"
@@ -75,7 +76,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView_enterMobile_EditProfileDetails"
         android:layout_width="wrap_content"
         android:layout_marginTop="40dp"
@@ -114,7 +115,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView_enterAddress_EditProfileDetails"
         android:layout_width="wrap_content"
         android:layout_marginTop="40dp"
@@ -154,7 +155,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView_enterEmail_EditProfileDetails"
         android:layout_width="wrap_content"
         android:layout_marginTop="40dp"

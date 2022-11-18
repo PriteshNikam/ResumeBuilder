@@ -15,7 +15,6 @@ class HomeScreenRecyclerAdapter (private val listener: IResumeAdapter) :
     RecyclerView.Adapter<HomeScreenRecyclerAdapter.ResumeViewHolder>() {
 
     private val resumeList by lazy { ArrayList<Resume>() }
-
     private var selectedResumePosition = -1
 
     inner class ResumeViewHolder(private val binding: SingleResumeViewBinding, val context: Context) :
@@ -32,7 +31,6 @@ class HomeScreenRecyclerAdapter (private val listener: IResumeAdapter) :
             itemView.setOnLongClickListener {
                 if (selectedResumePosition == -1) {
                     selectedResumePosition = adapterPosition
-                    Log.d("position","$adapterPosition")
                     iResumeAdapter.isItemSelected()
                     binding.apply {
                         singleResumeViewConstraint.setBackgroundResource(R.drawable.delete_resume_shape)
@@ -84,8 +82,7 @@ class HomeScreenRecyclerAdapter (private val listener: IResumeAdapter) :
     fun updateList(newList: List<Resume>) {
         resumeList.clear()
         resumeList.addAll(newList)
-        //notifyItemRangeChanged(0,newList.size+1) // crash -> invalid item position.
-        notifyDataSetChanged() // creates multiple resume in recycler view
+        notifyDataSetChanged()
     }
 
     interface IResumeAdapter {
