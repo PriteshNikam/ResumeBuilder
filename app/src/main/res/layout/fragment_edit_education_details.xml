@@ -299,7 +299,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_saveEducationDetails_EditEducationDetails"
+            android:id="@+id/button_saveEducationDetails"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"

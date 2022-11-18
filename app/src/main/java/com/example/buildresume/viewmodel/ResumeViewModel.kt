@@ -23,19 +23,19 @@ class ResumeViewModel(application: Application) : AndroidViewModel(application) 
 
     var allResumeList: LiveData<List<Resume>> = resumeRepository.allResumes
 
-    fun insertResume() {
+    fun insertResumeInLocal() {
         viewModelScope.launch(Dispatchers.IO) {
             resumeRepository.insertResume(resume)
         }
     }
 
-    fun deleteResume(resume:Resume) {
+    fun deleteResumeInLocal(resume:Resume) {
         viewModelScope.launch(Dispatchers.IO) {
             resumeRepository.deleteResume(resume)
         }
     }
 
-    fun updateResume(updatedResume:Resume) {
+    fun updateResumeInLocal(updatedResume:Resume) {
         viewModelScope.launch(Dispatchers.IO) {
             resumeRepository.updateResume(updatedResume)
         }

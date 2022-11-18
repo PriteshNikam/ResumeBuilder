@@ -20,61 +20,82 @@ class EditProfileDetailsFragment : Fragment() {
 
     private var isDataStored: Boolean = false
 
-    private val currentTime: Long by lazy{ System.currentTimeMillis() }
+    private val currentTime: Long by lazy { System.currentTimeMillis() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentEditProfileDetailsBinding.inflate(inflater, container, false)
-
-        // val viewPager = activity?.findViewById<ViewPager2>(R.id.viewpager_formSlide)
-
-        ifEditedFillForm()
-
-        binding.buttonSaveProfileDataEditProfileDetails.setOnClickListener {
-            writeToLocal()
-        }
         return binding.root
     }
 
-    private fun writeToLocal() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        ifEditedFillForm()
+        binding.buttonSaveProfileDetails.setOnClickListener {
+            saveProfileDetails()
+        }
+    }
+
+    private fun saveProfileDetails() {
         binding.run {
-            if (editTextEnterNameEditProfileDetails.text.isNullOrEmpty().not() &&
-                editTextUserMobileNumberEditProfileDetails.text.isNullOrEmpty().not() &&
-                editTextUserAddressEditProfileDetails.text.isNullOrEmpty().not() &&
-                editTextUserEmailEditProfileDetails.text.isNullOrEmpty().not()
-            ) {
+            if (isProfileFormFilled()) {
                 resumeViewModel.run {
-                    binding.run {
-                        resumeViewModel.resume.run {
-                            userName = editTextEnterNameEditProfileDetails.text.toString()
-                            userMobile = editTextUserMobileNumberEditProfileDetails.text.toString()
-                            userAddress = editTextUserAddressEditProfileDetails.text.toString()
-                            userEmail = editTextUserEmailEditProfileDetails.text.toString()
-                            resumeTime = currentTime.toString()
+                    resume.run {
+                        updateResumeObjectProfile()
+                        if (isDataStored) {
+                            if (resumeId == 0) {
+                                resumeId = allResumeList.value!!.first().resumeId
+                                updateResumeInLocal(resume)
+                            }
+                            updateResumeInLocal(resume)
+                            showToast(requireContext(), R.string.data_updated)
+                        } else {
+                            isDataStored = true
+                            insertResumeInLocal()
+                            showToast(requireContext(), R.string.data_saved)
                         }
-                    }
-                    if (isDataStored) { // logic need to try for multiple test cases.
-                        if (resume.resumeId == 0) {
-                            resume.resumeId = allResumeList.value!!.first().resumeId // first because all_List reversed in descending order.
-                            updateResume(resume)
-                        }
-                        updateResume(resume)
-                        showToast(requireContext(), R.string.data_updated)
-                    } else {
-                        isDataStored = true
-                        insertResume()
-                        showToast(requireContext(), R.string.data_saved)
                     }
                 }
             } else {
-               if(editTextEnterNameEditProfileDetails.text.isNullOrEmpty()) editTextEnterNameEditProfileDetails.error = ""
-               if(editTextUserMobileNumberEditProfileDetails.text.isNullOrEmpty())   editTextUserMobileNumberEditProfileDetails.error = ""
-                 if(  editTextUserAddressEditProfileDetails.text.isNullOrEmpty()) editTextUserAddressEditProfileDetails.error = ""
-                    if(    editTextUserEmailEditProfileDetails.text.isNullOrEmpty()) editTextUserEmailEditProfileDetails.error = ""
-                showToast(requireContext(), R.string.empty_data)
+                submitEmptyDetailsError()
             }
+        }
+    }
+
+    private fun submitEmptyDetailsError() {
+        binding.run {
+            if (editTextEnterNameEditProfileDetails.text.isNullOrEmpty())
+                editTextEnterNameEditProfileDetails.error = ""
+            if (editTextUserMobileNumberEditProfileDetails.text.isNullOrEmpty())
+                editTextUserMobileNumberEditProfileDetails.error = ""
+            if (editTextUserAddressEditProfileDetails.text.isNullOrEmpty())
+                editTextUserAddressEditProfileDetails.error = ""
+            if (editTextUserEmailEditProfileDetails.text.isNullOrEmpty())
+                editTextUserEmailEditProfileDetails.error = ""
+            showToast(requireContext(), R.string.empty_data)
+        }
+    }
+
+    private fun updateResumeObjectProfile() {
+        binding.run {
+            resumeViewModel.resume.run {
+                userName = editTextEnterNameEditProfileDetails.text.toString()
+                userMobile = editTextUserMobileNumberEditProfileDetails.text.toString()
+                userAddress = editTextUserAddressEditProfileDetails.text.toString()
+                userEmail = editTextUserEmailEditProfileDetails.text.toString()
+                resumeTime = currentTime.toString()
+            }
+        }
+    }
+
+    private fun isProfileFormFilled(): Boolean {
+        binding.run {
+            return editTextEnterNameEditProfileDetails.text.isNullOrEmpty().not() &&
+                    editTextUserMobileNumberEditProfileDetails.text.isNullOrEmpty().not() &&
+                    editTextUserAddressEditProfileDetails.text.isNullOrEmpty().not() &&
+                    editTextUserEmailEditProfileDetails.text.isNullOrEmpty().not()
         }
     }
 

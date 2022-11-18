@@ -2,7 +2,6 @@ package com.example.buildresume.ui.homescreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
@@ -12,15 +11,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.buildresume.R
-import com.example.buildresume.UtilClass.gotoScreen
-import com.example.buildresume.UtilClass.showLog
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.data.Resume
 import com.example.buildresume.databinding.FragmentHomeScreenBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
-import com.google.android.material.appbar.AppBarLayout
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -66,7 +61,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
 
         binding.run {
             textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
-            recyclerViewHomeScreen.layoutManager = GridLayoutManager(requireContext(), 2)
+            recyclerViewHomeScreen.layoutManager = GridLayoutManager(requireContext(), CELLS_PER_ROW)
             recyclerViewHomeScreen.adapter = homeScreenRecyclerAdapter
         }
 
@@ -128,7 +123,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
     }
 
     override fun onClickDeleteResume(resume: Resume) {
-        resumeViewModel.deleteResume(resume)
+        resumeViewModel.deleteResumeInLocal(resume)
         // binding.recyclerViewHomeScreen.recycledViewPool.clear()
         homeScreenRecyclerAdapter.deselectItem()
     }
@@ -136,5 +131,9 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
     override fun isItemSelected() {
         isItemSelected = 1
     }
+
+   companion object{
+       const val CELLS_PER_ROW = 2
+   }
 
 }

@@ -17,10 +17,7 @@ class EditProjectDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentEditProjectDetailsBinding
     private val resumeViewModel: ResumeViewModel by activityViewModels()
-
-    private val currentTime: Long by lazy{ System.currentTimeMillis() }
-
-
+    private val currentTime: Long by lazy { System.currentTimeMillis() }
     private var isDataStored: Boolean = false
 
     override fun onCreateView(
@@ -28,64 +25,81 @@ class EditProjectDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentEditProjectDetailsBinding.inflate(inflater, container, false)
-
-        ifEditedFillForm()
-        binding.buttonSaveProjectDetails.setOnClickListener {
-            writeToLocal()
-        }
         return binding.root
     }
 
-    private fun writeToLocal() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        ifEditedFillForm()
+        binding.buttonSaveProjectDetails.setOnClickListener {
+            saveProjectDetails()
+        }
+    }
+
+    private fun saveProjectDetails() {
         binding.run {
-            if (editTextProjectTitle.text.isNullOrEmpty().not() &&
-                editTextProjectDescription.text.isNullOrEmpty().not()
-            ) {
-                resumeViewModel.run {
-                    resume.run {
-                        projectTitle = editTextProjectTitle.text.toString()
-                        projectDescription = editTextProjectDescription.text.toString()
-                        resumeTime = currentTime.toString()
-                    }
-                    if (isDataStored) { // logic need to try for multiple test cases.
-                        if (resume.resumeId == 0) {
-                            resume.resumeId =
-                                allResumeList.value!!.first().resumeId // 0 because all_List reversed in descending order.
-                            updateResume(resume)
-                        }
-                        updateResume(resume)
-                        showToast(requireContext(), R.string.data_updated)
-                    } else {
-                        isDataStored = true
-                        insertResume()
-                        showToast(requireContext(), R.string.data_saved)
-                    }
-                }
-            } else {
-                if (editTextProjectTitle.text.isNullOrEmpty().not() ||
-                    editTextProjectDescription.text.isNullOrEmpty().not()
-                ) {
-                    if (editTextProjectTitle.text.isNullOrEmpty()) editTextProjectTitle.error =
-                        ""
-                    if (editTextProjectDescription.text.isNullOrEmpty()) editTextProjectDescription.error =
-                        ""
-                } else {
-                    if (resumeViewModel.resume.projectTitle.isEmpty().not() &&
-                        resumeViewModel.resume.projectDescription.isEmpty().not()
-                    ) {
-                        resumeViewModel.run {
-                            resume.run {
-                                projectTitle = editTextProjectTitle.text.toString()
-                                projectDescription = editTextProjectDescription.text.toString()
+            resumeViewModel.run {
+                resume.run {
+                    if (isProjectFormFilled()) {
+                        updateResumeObjectProject()
+                        if (isDataStored) { // logic need to try for multiple test cases.
+                            if (resumeId == 0) {
+                                resumeId =
+                                    allResumeList.value!!.first().resumeId // 0 because all_List reversed in descending order.
+                                updateResumeInLocal(resume)
                             }
-                            updateResume(resume)
-                            showToast(requireContext(), R.string.remove_project_details)
+                            updateResumeInLocal(resume)
+                            showToast(requireContext(), R.string.data_updated)
+                        } else {
+                            isDataStored = true
+                            insertResumeInLocal()
+                            showToast(requireContext(), R.string.data_saved)
                         }
-                    } else{
-                        showToast(requireContext(),R.string.fill_details)
+                    } else {
+                        if (editTextProjectTitle.text.isNullOrEmpty().not() ||
+                            editTextProjectDescription.text.isNullOrEmpty().not()
+                        ) {
+                            submitEmptyDetails()
+                        } else {
+                            if (projectTitle.isEmpty().not() &&
+                                projectDescription.isEmpty().not()
+                            ) {
+                                updateResumeObjectProject()
+                                updateResumeInLocal(resume)
+                                showToast(requireContext(), R.string.remove_project_details)
+                            } else {
+                                showToast(requireContext(), R.string.fill_details)
+                            }
+                        }
                     }
                 }
             }
+        }
+    }
+
+    private fun submitEmptyDetails() {
+        binding.run {
+            if (editTextProjectTitle.text.isNullOrEmpty())
+                editTextProjectTitle.error = ""
+            if (editTextProjectDescription.text.isNullOrEmpty())
+                editTextProjectDescription.error = ""
+        }
+    }
+
+    private fun updateResumeObjectProject() {
+        binding.run {
+            resumeViewModel.resume.run {
+                projectTitle = editTextProjectTitle.text.toString()
+                projectDescription = editTextProjectDescription.text.toString()
+                resumeTime = currentTime.toString()
+            }
+        }
+    }
+
+    private fun isProjectFormFilled(): Boolean {
+        binding.run {
+            return editTextProjectTitle.text.isNullOrEmpty().not() &&
+                    editTextProjectDescription.text.isNullOrEmpty().not()
         }
     }
 
