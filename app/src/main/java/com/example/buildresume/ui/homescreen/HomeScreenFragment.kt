@@ -10,7 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
+import androidx.recyclerview.widget.OrientationHelper
 import com.example.buildresume.R
+import com.example.buildresume.UtilClass.showLog
 import com.example.buildresume.UtilClass.showToast
 import com.example.buildresume.data.Resume
 import com.example.buildresume.databinding.FragmentHomeScreenBinding
@@ -27,6 +30,9 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
     private val resumeViewModel: ResumeViewModel by activityViewModels()
     val homeScreenRecyclerAdapter = HomeScreenRecyclerAdapter(this)
     var isItemSelected = 0
+
+
+    private lateinit var gridLayoutManager : GridLayoutManager
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -56,9 +62,26 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         binding.run {
-            textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
-            recyclerViewHomeScreen.layoutManager = GridLayoutManager(requireContext(), CELLS_PER_ROW)
+         //   textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
+
+            gridLayoutManager = GridLayoutManager(requireContext(), CELLS_PER_ROW)
+
+            gridLayoutManager.spanSizeLookup = object : SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    showLog("home position: ","$position")
+                    return when (homeScreenRecyclerAdapter.getItemViewType(position)) {
+                        WELCOME_CARD_LAYOUT -> 2
+                        else -> 1
+                    }
+                }
+            }
+
+            recyclerViewHomeScreen.layoutManager = gridLayoutManager
+
+         //  recyclerViewHomeScreen.layoutManager = GridLayoutManager(requireContext(), OrientationHelper.VERTICAL,false)
+
             recyclerViewHomeScreen.adapter = homeScreenRecyclerAdapter
+
         }
 
         binding.topAppBarHomeScreen.setOnMenuItemClickListener { menuItem ->
@@ -99,7 +122,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
             resumeViewModel.allResumeList.observe(requireActivity()) {
                 if (it.isNotEmpty()) {
                     recyclerViewHomeScreen.visibility = View.VISIBLE
-                    textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
+               //     textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
                     textViewEmptyTextHomeScreen.visibility = View.INVISIBLE
                     imageViewEmptyDocHomeScreen.visibility = View.INVISIBLE
                     homeScreenRecyclerAdapter.updateList(it)
@@ -131,6 +154,8 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
 
    companion object{
        const val CELLS_PER_ROW = 2
+       const val WELCOME_CARD_LAYOUT = 1
+
    }
 
 }

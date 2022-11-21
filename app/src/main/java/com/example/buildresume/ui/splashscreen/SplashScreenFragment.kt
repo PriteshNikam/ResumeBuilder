@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 
 class SplashScreenFragment : Fragment() {
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
