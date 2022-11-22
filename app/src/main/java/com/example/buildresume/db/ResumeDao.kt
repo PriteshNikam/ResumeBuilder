@@ -1,10 +1,7 @@
 package com.example.buildresume.db
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
-import com.example.buildresume.data.DataModel
 import com.example.buildresume.data.Resume
 
 @Dao

@@ -4,11 +4,8 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.buildresume.data.DataModel
 import com.example.buildresume.data.Resume
-import com.example.buildresume.data.WelcomeCard
 import com.example.buildresume.db.ResumeDatabase
 import com.example.buildresume.db.ResumeRepository
 import com.example.generatepdf.GeneratePdf
@@ -30,13 +27,13 @@ class ResumeViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    fun deleteResumeInLocal(resume:Resume) {
+    fun deleteResumeInLocal(resume: Resume) {
         viewModelScope.launch(Dispatchers.IO) {
             resumeRepository.deleteResume(resume)
         }
     }
 
-    fun updateResumeInLocal(updatedResume:Resume) {
+    fun updateResumeInLocal(updatedResume: Resume) {
         viewModelScope.launch(Dispatchers.IO) {
             resumeRepository.updateResume(updatedResume)
         }
@@ -72,10 +69,9 @@ class ResumeViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    fun setRecyclerViewResume(resume:Resume){
+    fun setRecyclerViewResume(resume: Resume) {
         this.resume = resume
     }
-
 
 
 }

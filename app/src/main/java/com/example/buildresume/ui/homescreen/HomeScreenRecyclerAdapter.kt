@@ -123,7 +123,7 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(holder){
+        when (holder) {
             is WelcomeViewHolder -> {
                 val viewHolder = holder as WelcomeViewHolder
                 viewHolder.bind()
@@ -131,14 +131,14 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
             is ResumeViewHolder -> {
                 val currentResume = resumeList[position] as Resume
                 val viewHolder = holder as ResumeViewHolder
-                viewHolder.bind(currentResume,iResumeAdapter = listener)
+                viewHolder.bind(currentResume, iResumeAdapter = listener)
             }
 
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when(resumeList[position]) {
+        return when (resumeList[position]) {
             is WelcomeCard -> R.layout.homescreen_welcome_view
             else -> R.layout.single_resume_view
         }

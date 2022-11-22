@@ -1,8 +1,6 @@
 package com.example.buildresume.db
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.buildresume.data.DataModel
 import com.example.buildresume.data.Resume
 
 class ResumeRepository(private var resumeDao:ResumeDao) {
