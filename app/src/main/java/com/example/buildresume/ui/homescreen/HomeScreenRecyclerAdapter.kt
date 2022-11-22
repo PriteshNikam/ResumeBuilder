@@ -8,14 +8,16 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buildresume.R
 import com.example.buildresume.UtilClass.showLog
+import com.example.buildresume.data.DataModel
 import com.example.buildresume.data.Resume
+import com.example.buildresume.data.WelcomeCard
 import com.example.buildresume.databinding.HomescreenWelcomeViewBinding
 import com.example.buildresume.databinding.SingleResumeViewBinding
 
 class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val resumeList by lazy { ArrayList<Resume>() }
+    private val resumeList by lazy { ArrayList<DataModel>() }
     private var selectedResumePosition = -1
 
     inner class WelcomeViewHolder(
@@ -78,8 +80,8 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         showLog("viewType", "$viewType")
-         when (viewType) {
-            WELCOME_CARD_LAYOUT -> {
+        when (viewType) {
+            R.layout.homescreen_welcome_view -> {
                 val welcomeViewBinding = HomescreenWelcomeViewBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -87,7 +89,7 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
                 )
                 return WelcomeViewHolder(welcomeViewBinding, parent.context)
             }
-            RECYCLERVIEW_LAYOUT -> {
+            R.layout.single_resume_view -> {
                 val recyclerViewBinding = SingleResumeViewBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -121,26 +123,26 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (getItemViewType(position) == 1) {
-            val viewHolder = holder as WelcomeViewHolder
-            viewHolder.bind()
-        } else {
-            val currentResume = resumeList[position-1]
-            val viewHolder = holder as ResumeViewHolder
-            viewHolder.bind(currentResume, iResumeAdapter = listener)
+        when(holder){
+            is WelcomeViewHolder -> {
+                val viewHolder = holder as WelcomeViewHolder
+                viewHolder.bind()
+            }
+            is ResumeViewHolder -> {
+                val currentResume = resumeList[position] as Resume
+                val viewHolder = holder as ResumeViewHolder
+                viewHolder.bind(currentResume,iResumeAdapter = listener)
+            }
+
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when(position){
-            0 ->  WELCOME_CARD_LAYOUT
-            else -> RECYCLERVIEW_LAYOUT
+        return when(resumeList[position]) {
+            is WelcomeCard -> R.layout.homescreen_welcome_view
+            else -> R.layout.single_resume_view
         }
     }
 
-    companion object{
-         const val WELCOME_CARD_LAYOUT = 1
-         const val RECYCLERVIEW_LAYOUT = 2
-    }
 
 }

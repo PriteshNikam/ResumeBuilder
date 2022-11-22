@@ -2,12 +2,13 @@ package com.example.buildresume.viewmodel
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.buildresume.data.DataModel
 import com.example.buildresume.data.Resume
+import com.example.buildresume.data.WelcomeCard
 import com.example.buildresume.db.ResumeDatabase
 import com.example.buildresume.db.ResumeRepository
 import com.example.generatepdf.GeneratePdf

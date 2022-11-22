@@ -30,9 +30,10 @@ data class Resume(
     var companyExperienceYear:String = "",
     var totalExperience:String ="",
     var resumeTime:String=""
-    ):Parcelable {
+    ): DataModel,Parcelable {
     @PrimaryKey(autoGenerate = true)
-    var resumeId = INITIAL_ID
+     var resumeId = INITIAL_ID
+
 
     fun isFormFilled(): Boolean {
         var result = false

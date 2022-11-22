@@ -11,7 +11,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
-import androidx.recyclerview.widget.OrientationHelper
 import com.example.buildresume.R
 import com.example.buildresume.UtilClass.showLog
 import com.example.buildresume.UtilClass.showToast
@@ -30,7 +29,6 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
     private val resumeViewModel: ResumeViewModel by activityViewModels()
     val homeScreenRecyclerAdapter = HomeScreenRecyclerAdapter(this)
     var isItemSelected = 0
-
 
     private lateinit var gridLayoutManager : GridLayoutManager
 
@@ -58,11 +56,18 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         binding.run {
-         //   textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
+            //   textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
+
+            updateHomeScreenView()
+            createResume()
 
             gridLayoutManager = GridLayoutManager(requireContext(), CELLS_PER_ROW)
 
@@ -70,7 +75,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
                 override fun getSpanSize(position: Int): Int {
                     showLog("home position: ","$position")
                     return when (homeScreenRecyclerAdapter.getItemViewType(position)) {
-                        WELCOME_CARD_LAYOUT -> 2
+                        R.layout.homescreen_welcome_view -> 2
                         else -> 1
                     }
                 }
@@ -78,7 +83,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
 
             recyclerViewHomeScreen.layoutManager = gridLayoutManager
 
-         //  recyclerViewHomeScreen.layoutManager = GridLayoutManager(requireContext(), OrientationHelper.VERTICAL,false)
+            //  recyclerViewHomeScreen.layoutManager = GridLayoutManager(requireContext(), OrientationHelper.VERTICAL,false)
 
             recyclerViewHomeScreen.adapter = homeScreenRecyclerAdapter
 
@@ -100,13 +105,6 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
             }
         }
 
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        updateHomeScreenView()
-        createResume()
     }
 
     private fun createResume() {
@@ -154,7 +152,6 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
 
    companion object{
        const val CELLS_PER_ROW = 2
-       const val WELCOME_CARD_LAYOUT = 1
 
    }
 
