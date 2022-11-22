@@ -5,7 +5,9 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.buildresume.data.DataModel
 import com.example.buildresume.data.Resume
+import com.example.buildresume.data.WelcomeCard
 import com.example.buildresume.db.ResumeDatabase
 import com.example.buildresume.db.ResumeRepository
 import com.example.generatepdf.GeneratePdf
@@ -16,6 +18,8 @@ class ResumeViewModel(application: Application) : AndroidViewModel(application) 
 
     private val dao = ResumeDatabase.getDatabase(application).getResumeDao()
     private val resumeRepository = ResumeRepository(dao)
+
+    var signInUser:String = ""
 
     var resume = Resume()
 
@@ -73,5 +77,13 @@ class ResumeViewModel(application: Application) : AndroidViewModel(application) 
         this.resume = resume
     }
 
+    fun setDefaultList(resumeList:List<DataModel>):MutableList<DataModel>{
+        val defaultList = mutableListOf<DataModel>()
+        defaultList.add(0, WelcomeCard(""))
+        defaultList.addAll(resumeList)
+       // defaultList.add(3,WelcomeCard(""))
+       // defaultList.add(6,WelcomeCard(""))
+        return defaultList
+    }
 
 }

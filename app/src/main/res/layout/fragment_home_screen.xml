@@ -25,52 +25,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-<!--    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayout_homeScreen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
-        android:background="@drawable/custom_view_shape"
-        android:elevation="25dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:outlineProvider="bounds"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBar_homeScreen">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageView_profile_homeScreen"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_svg_viewer_account"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textView_welcomeText_homeScreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/welcome"
-            android:textColor="@color/primaryColor"
-            android:textSize="24sp"
-            android:fontFamily="@font/montserrat_bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView_profile_homeScreen" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textView_userName_homeScreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/username"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/montserrat_regular"
-            android:textColor="@color/primaryColor"
-            android:textSize="20sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_welcomeText_homeScreen" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>-->
-
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView_emptyDoc_HomeScreen"
         android:layout_width="200dp"

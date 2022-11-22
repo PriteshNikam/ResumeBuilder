@@ -110,7 +110,7 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
         selectedResumePosition = -1
     }
 
-    fun updateList(newList: List<Resume>) {
+    fun updateList(newList: List<DataModel>) {
         resumeList.clear()
         resumeList.addAll(newList)
         notifyDataSetChanged()
@@ -133,7 +133,6 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
                 val viewHolder = holder as ResumeViewHolder
                 viewHolder.bind(currentResume, iResumeAdapter = listener)
             }
-
         }
     }
 

@@ -1,6 +1,7 @@
 package com.example.buildresume.ui.homescreen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,9 @@ import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.example.buildresume.R
 import com.example.buildresume.UtilClass.showLog
 import com.example.buildresume.UtilClass.showToast
+import com.example.buildresume.data.DataModel
 import com.example.buildresume.data.Resume
+import com.example.buildresume.data.WelcomeCard
 import com.example.buildresume.databinding.FragmentHomeScreenBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -64,7 +67,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         binding.run {
-            //   textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
+            resumeViewModel.signInUser = fragmentArgs.user?.displayName.toString()
 
             updateHomeScreenView()
             createResume()
@@ -104,7 +107,6 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
                 }else -> false
             }
         }
-
     }
 
     private fun createResume() {
@@ -118,17 +120,18 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
     private fun updateHomeScreenView() {
         binding.apply {
             resumeViewModel.allResumeList.observe(requireActivity()) {
+                val defaultList = resumeViewModel.setDefaultList(it)
                 if (it.isNotEmpty()) {
                     recyclerViewHomeScreen.visibility = View.VISIBLE
                //     textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
                     textViewEmptyTextHomeScreen.visibility = View.INVISIBLE
                     imageViewEmptyDocHomeScreen.visibility = View.INVISIBLE
-                    homeScreenRecyclerAdapter.updateList(it)
+                    homeScreenRecyclerAdapter.updateList(defaultList)
                 } else {
-                    recyclerViewHomeScreen.visibility = View.INVISIBLE
+                  //  recyclerViewHomeScreen.visibility = View.INVISIBLE
                     textViewEmptyTextHomeScreen.visibility = View.VISIBLE
                     imageViewEmptyDocHomeScreen.visibility = View.VISIBLE
-                    homeScreenRecyclerAdapter.updateList(it)
+                    homeScreenRecyclerAdapter.updateList(defaultList)
                 }
             }
         }
