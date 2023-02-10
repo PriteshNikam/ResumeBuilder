@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.formeditorscreen.EditProjectDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_fillForm_EditProjectDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/fill_all_details"
+            android:textColor="@color/primaryDarkColor"
+            android:textSize="30sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider_1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="95dp"
+            android:layout_marginEnd="95dp"
+            android:background="@color/primaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_fillForm_EditProjectDetails"
+            tools:layout_editor_absoluteX="-16dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_EnterProjectTitle_EditProjectDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/enter_project_title"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_fillForm_EditProjectDetails" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/projectTitle_projectFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/project_title"
+            android:textColorHint="@color/greyColor"
+            app:boxBackgroundColor="@color/secondaryLightColor"
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:hintTextColor="@color/primaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_EnterProjectTitle_EditProjectDetails">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_projectTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_ProjectDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/enter_project_description"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/projectTitle_projectFragment" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/projectDescription_projectFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/describe_your_project_in_short"
+            android:textColorHint="@color/greyColor"
+            app:boxBackgroundColor="@color/secondaryLightColor"
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:hintTextColor="@color/primaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_ProjectDescription">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_projectDescription"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="start"
+                android:maxLength="350"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_saveProjectDetails"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="55dp"
+            android:background="@drawable/custom_shape_dark_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/save_project_details"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/projectDescription_projectFragment" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/custom_button_shape.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/custom_edittext_shape.xml" value="0.126" />
+        <entry key="app/src/main/res/drawable/custom_shadow_effect.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/custom_shape_dark_button.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/custom_shape_darkbutton.xml" value="0.2195" />
+        <entry key="app/src/main/res/drawable/custom_sign_in_button.xml" value="0.324" />
+        <entry key="app/src/main/res/drawable/custom_view_shape.xml" value="0.151" />
+        <entry key="app/src/main/res/drawable/custome_view_shape.xml" value="0.223" />
+        <entry key="app/src/main/res/drawable/delete_resume_shape.xml" value="0.2225" />
+        <entry key="app/src/main/res/drawable/ic_account.xml" value="0.223" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_share.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_account.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_add.xml" value="0.2025" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_build_resume_app_icon.xml" value="0.197" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_delete_icon.xml" value="0.197" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_doc.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_download.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_education.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_experience.xml" value="0.1215" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_google_login.xml" value="0.324" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_info.xml" value="0.1215" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_sign_out.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/ic_svg_viewer_skills.xml" value="0.1215" />
+        <entry key="app/src/main/res/drawable/single_view_shape.xml" value="0.136" />
+        <entry key="app/src/main/res/drawable/tab_selector.xml" value="0.1005" />
+        <entry key="app/src/main/res/layout-v23/fragment_home_screen.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_dash_board.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_edit_education_details.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_edit_experience_details.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_edit_profile_details.xml" value="0.30262451171875004" />
+        <entry key="app/src/main/res/layout/fragment_edit_project_details.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_edit_skills_details.xml" value="0.24133707682291666" />
+        <entry key="app/src/main/res/layout/fragment_form_editor_screen.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_form_slide_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.22792262405382674" />
+        <entry key="app/src/main/res/layout/fragment_login_screen.xml" value="0.25351226806640625" />
+        <entry key="app/src/main/res/layout/fragment_splash_screen.xml" value="0.23891625615763548" />
+        <entry key="app/src/main/res/layout/homescreen_welcome_cardview.xml" value="0.3076923076923077" />
+        <entry key="app/src/main/res/layout/homescreen_welcome_view.xml" value="0.31495726495726495" />
+        <entry key="app/src/main/res/layout/single_resume_view.xml" value="0.28125" />
+        <entry key="app/src/main/res/menu/home_screen_menu.xml" value="0.30854700854700856" />
+        <entry key="app/src/main/res/menu/slide_form_menu.xml" value="0.30854700854700856" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1215" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_build_resume_icon.xml" value="0.1745" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1215" />
+        <entry key="app/src/main/res/xml/preference_path.xml" value="0.1799145299145299" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

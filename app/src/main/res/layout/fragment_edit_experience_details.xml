@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.formeditorscreen.EditExperienceDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_fillDetails_editExperienceDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/fill_all_details"
+            android:textColor="@color/primaryDarkColor"
+            android:textSize="30sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider_1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="95dp"
+            android:layout_marginEnd="95dp"
+            android:background="@color/primaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_fillDetails_editExperienceDetails"
+            tools:layout_editor_absoluteX="-16dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_enterCompanyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/enter_company_name"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_fillDetails_editExperienceDetails" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/companyName_ExperienceFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/eg_abc"
+            android:textColorHint="@color/greyColor"
+            app:boxBackgroundColor="@color/secondaryLightColor"
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:hintTextColor="@color/primaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_enterCompanyName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_enterCompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_enterCompanyExperience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/enter_year_of_experience_in_company"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/companyName_ExperienceFragment" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/companyExperience_ExperienceFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/eg_1_year"
+            android:textColorHint="@color/greyColor"
+            app:boxBackgroundColor="@color/secondaryLightColor"
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:hintTextColor="@color/primaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_enterCompanyExperience">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_companyExperience"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_totalYearOfExperience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/enter_total_year_of_experience"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/companyExperience_ExperienceFragment" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/totalExperience_ExperienceFragment"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/eg_4_year"
+            android:textColorHint="@color/greyColor"
+            app:boxBackgroundColor="@color/secondaryLightColor"
+            app:boxStrokeColor="@color/primaryDarkColor"
+            app:hintTextColor="@color/primaryDarkColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_totalYearOfExperience">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_totalYearOfExperience"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_saveExperienceDetails"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="55dp"
+            android:background="@drawable/custom_shape_dark_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/save_experience_details"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/totalExperience_ExperienceFragment" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

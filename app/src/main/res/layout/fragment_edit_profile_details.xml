@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.formeditorscreen.EditProfileDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView_fillForm_EditProfileDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/fill_all_details"
+        android:textSize="30sp"
+        android:textColor="@color/primaryDarkColor"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="@dimen/dp_10" />
+
+    <View
+        android:id="@+id/divider_1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginStart="95dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@+id/textView_fillForm_EditProfileDetails"
+        tools:layout_editor_absoluteX="-16dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView_enterName_EditProfileDetails"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_name"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:layout_marginStart="@dimen/dp_10"
+        android:textColor="?android:textColorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/textView_fillForm_EditProfileDetails"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/enterName_profileFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxBackgroundColor="@color/secondaryLightColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:singleLine="true"
+        android:scrollHorizontally="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/john_carter"
+        app:hintTextColor="@color/primaryDarkColor"
+        android:textColorHint="@color/greyColor"
+        app:boxStrokeColor="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@id/textView_enterName_EditProfileDetails"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_enterName_EditProfileDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView_enterMobile_EditProfileDetails"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_mobile_number"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:layout_marginStart="@dimen/dp_10"
+        android:textColor="?android:textColorPrimary"
+        app:layout_constraintTop_toBottomOf="@id/enterName_profileFragment"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/enterMobile_profileFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxBackgroundColor="@color/secondaryLightColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:scrollHorizontally="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/_1234567890"
+        app:hintTextColor="@color/primaryDarkColor"
+        android:textColorHint="@color/greyColor"
+        app:boxStrokeColor="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@id/textView_enterMobile_EditProfileDetails"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editText_userMobileNumber_EditProfileDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_regular"
+        android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView_enterAddress_EditProfileDetails"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_address"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:layout_marginStart="@dimen/dp_10"
+        android:textColor="?android:textColorPrimary"
+        app:layout_constraintTop_toBottomOf="@id/enterMobile_profileFragment"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/enterAddress_profileFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxBackgroundColor="@color/secondaryLightColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:scrollHorizontally="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/village_city_sub_dist_dist_state_pin_code"
+        app:hintTextColor="@color/primaryDarkColor"
+        android:textColorHint="@color/greyColor"
+        app:boxStrokeColor="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@id/textView_enterAddress_EditProfileDetails"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_userAddress_EditProfileDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView_enterEmail_EditProfileDetails"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_email"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:layout_marginStart="@dimen/dp_10"
+        android:textColor="?android:textColorPrimary"
+        app:layout_constraintTop_toBottomOf="@id/enterAddress_profileFragment"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/enterEmail_profileFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxBackgroundColor="@color/secondaryLightColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:scrollHorizontally="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/abc123_gmail_com"
+        app:hintTextColor="@color/primaryDarkColor"
+        android:textColorHint="@color/greyColor"
+        app:boxStrokeColor="@color/primaryDarkColor"
+        app:layout_constraintTop_toBottomOf="@id/textView_enterEmail_EditProfileDetails"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_userEmail_EditProfileDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_saveProfileDetails"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:clickable="true"
+        app:backgroundTint="@null"
+        android:layout_marginBottom="55dp"
+        android:focusable="true"
+        android:text="@string/save_profile_details"
+        android:fontFamily="@font/montserrat_regular"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_shape_dark_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enterEmail_profileFragment"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
