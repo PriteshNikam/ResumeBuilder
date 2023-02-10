@@ -1,7 +1,6 @@
 package com.example.buildresume.ui.homescreen
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.example.buildresume.R
-import com.example.buildresume.UtilClass.showLog
-import com.example.buildresume.UtilClass.showToast
-import com.example.buildresume.data.DataModel
 import com.example.buildresume.data.Resume
-import com.example.buildresume.data.WelcomeCard
 import com.example.buildresume.databinding.FragmentHomeScreenBinding
 import com.example.buildresume.viewmodel.ResumeViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -26,12 +21,13 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter {
 
-    private lateinit var fragmentArgs: HomeScreenFragmentArgs
+   // private lateinit var fragmentArgs: HomeScreenFragmentArgs
     private lateinit var binding: FragmentHomeScreenBinding
     private lateinit var firebaseAuth:FirebaseAuth
     private val resumeViewModel: ResumeViewModel by activityViewModels()
     val homeScreenRecyclerAdapter = HomeScreenRecyclerAdapter(this)
     var isItemSelected = 0
+    private var signInUserName = ""
 
     private lateinit var gridLayoutManager : GridLayoutManager
 
@@ -49,7 +45,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        fragmentArgs = HomeScreenFragmentArgs.fromBundle(requireArguments())
+      //  fragmentArgs = HomeScreenFragmentArgs.fromBundle(requireArguments())
         requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
     }
@@ -67,7 +63,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         binding.run {
-            resumeViewModel.signInUser = fragmentArgs.user?.displayName.toString()
+           // signInUserName = fragmentArgs.user?.displayName.toString()
 
             updateHomeScreenView()
             createResume()
@@ -76,23 +72,20 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
 
             gridLayoutManager.spanSizeLookup = object : SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
-                    showLog("home position: ","$position")
                     return when (homeScreenRecyclerAdapter.getItemViewType(position)) {
                         R.layout.homescreen_welcome_view -> 2
                         else -> 1
                     }
                 }
             }
-
             recyclerViewHomeScreen.layoutManager = gridLayoutManager
-
             //  recyclerViewHomeScreen.layoutManager = GridLayoutManager(requireContext(), OrientationHelper.VERTICAL,false)
-
             recyclerViewHomeScreen.adapter = homeScreenRecyclerAdapter
 
         }
 
-        binding.topAppBarHomeScreen.setOnMenuItemClickListener { menuItem ->
+        //sign out button
+/*        binding.topAppBarHomeScreen.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.sign_out -> {
                     if(fragmentArgs.user!=null) {
@@ -106,7 +99,7 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
                     true
                 }else -> false
             }
-        }
+        }*/
     }
 
     private fun createResume() {
@@ -120,18 +113,17 @@ class HomeScreenFragment : Fragment(), HomeScreenRecyclerAdapter.IResumeAdapter 
     private fun updateHomeScreenView() {
         binding.apply {
             resumeViewModel.allResumeList.observe(requireActivity()) {
-                val defaultList = resumeViewModel.setDefaultList(it)
+                val resumeList = resumeViewModel.setDefaultList(signInUserName,it)
                 if (it.isNotEmpty()) {
                     recyclerViewHomeScreen.visibility = View.VISIBLE
-               //     textViewUserNameHomeScreen.text = fragmentArgs.user?.displayName
                     textViewEmptyTextHomeScreen.visibility = View.INVISIBLE
                     imageViewEmptyDocHomeScreen.visibility = View.INVISIBLE
-                    homeScreenRecyclerAdapter.updateList(defaultList)
+                    homeScreenRecyclerAdapter.updateList(resumeList)
                 } else {
                   //  recyclerViewHomeScreen.visibility = View.INVISIBLE
                     textViewEmptyTextHomeScreen.visibility = View.VISIBLE
                     imageViewEmptyDocHomeScreen.visibility = View.VISIBLE
-                    homeScreenRecyclerAdapter.updateList(defaultList)
+                    homeScreenRecyclerAdapter.updateList(resumeList)
                 }
             }
         }

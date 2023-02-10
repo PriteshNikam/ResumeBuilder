@@ -10,7 +10,7 @@
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/build_resume_logo2"
+        android:src="@drawable/build_resume_logo"
         android:layout_gravity="center" />
 
 </FrameLayout>

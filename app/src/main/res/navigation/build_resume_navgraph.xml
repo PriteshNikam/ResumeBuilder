@@ -39,13 +39,13 @@
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen" >
 
-        <argument
+    <!--    <argument
             android:name="user"
             app:argType="com.google.firebase.auth.FirebaseUser"
-            app:nullable="true"/>
-        <action
+            app:nullable="true"/>-->
+<!--        <action
             android:id="@+id/action_homeScreenFragment_to_formEditorScreenFragment"
-            app:destination="@id/formEditorScreenFragment" />
+            app:destination="@id/formEditorScreenFragment" />-->
         <action
             android:id="@+id/action_homeScreenFragment_to_formSlideMainFragment"
             app:destination="@id/formSlideMainFragment" />
@@ -53,7 +53,7 @@
             android:id="@+id/action_homeScreenFragment_to_loginScreenFragment"
             app:destination="@id/loginScreenFragment" />
     </fragment>
-    <fragment
+<!--    <fragment
         android:id="@+id/formEditorScreenFragment"
         android:name="com.example.buildresume.ui.formeditorscreen.FormEditorScreenFragment"
         android:label="fragment_form_editor_screen"
@@ -72,12 +72,12 @@
             app:destination="@id/editExperienceDetailsFragment" />
         <action
             android:id="@+id/action_formEditorScreenFragment_to_editProjectDetailsFragment"
-            app:destination="@id/editProjectDetailsFragment" />
+            app:destination="@id/editProjectDetailsFragment" />-->
 <!--        <argument
             android:name="resume"
             app:argType="com.example.buildresume.data.Resume"
-            />-->
-    </fragment>
+            />
+    </fragment>-->
     <fragment
         android:id="@+id/editProfileDetailsFragment"
         android:name="com.example.buildresume.ui.formeditorscreen.EditProfileDetailsFragment"

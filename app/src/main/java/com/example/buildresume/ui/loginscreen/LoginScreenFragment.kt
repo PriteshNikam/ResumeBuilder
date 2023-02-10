@@ -48,7 +48,7 @@ class LoginScreenFragment : Fragment() {
                                     val currentUser = firebaseAuth.currentUser
                                     findNavController().navigate(
                                         LoginScreenFragmentDirections.actionLoginScreenFragmentToHomeScreen(
-                                            currentUser
+                                           // currentUser
                                         )
                                     )
                                 } else {
@@ -110,7 +110,7 @@ class LoginScreenFragment : Fragment() {
             view?.findNavController()
                 ?.navigate(
                     LoginScreenFragmentDirections.actionLoginScreenFragmentToHomeScreen(
-                        firebaseAuth.currentUser
+                    //    firebaseAuth.currentUser
                     )
                 )
         }

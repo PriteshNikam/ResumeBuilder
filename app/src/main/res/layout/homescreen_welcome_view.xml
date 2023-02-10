@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_margin="@dimen/dp_10"
         android:background="@drawable/custom_view_shape"
-        android:elevation="25dp"
+        android:elevation="15dp"
         android:gravity="center"
         android:orientation="vertical"
         android:outlineProvider="bounds"

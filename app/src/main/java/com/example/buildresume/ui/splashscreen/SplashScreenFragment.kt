@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.buildresume.R
+import com.google.firebase.firestore.auth.User
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -25,7 +26,8 @@ class SplashScreenFragment : Fragment() {
 
         lifecycleScope.launch {
             delay(splashScreenDelay)
-            view.findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToLoginScreenFragment())
+           // view.findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToLoginScreenFragment())
+            view.findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToHomeScreenFragment())
         }
     }
     companion object{

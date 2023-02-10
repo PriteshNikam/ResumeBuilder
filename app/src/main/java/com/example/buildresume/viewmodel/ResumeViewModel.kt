@@ -19,8 +19,6 @@ class ResumeViewModel(application: Application) : AndroidViewModel(application) 
     private val dao = ResumeDatabase.getDatabase(application).getResumeDao()
     private val resumeRepository = ResumeRepository(dao)
 
-    var signInUser:String = ""
-
     var resume = Resume()
 
     var allResumeList: LiveData<List<Resume>> = resumeRepository.allResumes
@@ -77,12 +75,12 @@ class ResumeViewModel(application: Application) : AndroidViewModel(application) 
         this.resume = resume
     }
 
-    fun setDefaultList(resumeList:List<DataModel>):MutableList<DataModel>{
+    fun setDefaultList(signInUserName:String,resumeList:List<DataModel>):MutableList<DataModel>{
         val defaultList = mutableListOf<DataModel>()
-        defaultList.add(0, WelcomeCard(""))
+        defaultList.add(0, WelcomeCard(signInUserName))
         defaultList.addAll(resumeList)
-       // defaultList.add(3,WelcomeCard(""))
-       // defaultList.add(6,WelcomeCard(""))
+       //defaultList.add(3,WelcomeCard("Ujwal"))
+      // defaultList.add(6,WelcomeCard("Neeraj"))
         return defaultList
     }
 

@@ -18,14 +18,14 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val resumeList by lazy { ArrayList<DataModel>() }
-    private var selectedResumePosition = -1
+    private var selectedResumePosition = notSelected
 
     inner class WelcomeViewHolder(
         private val binding: HomescreenWelcomeViewBinding,
         val context: Context
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind() {
-            binding.textViewUserNameSingleView.text = "Tony stark"
+        fun bind(currentResume: WelcomeCard) {
+            binding.textViewUserNameSingleView.text = currentResume.userName
         }
     }
 
@@ -43,7 +43,7 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
                 imageViewDeleteResume.visibility = View.GONE
             }
             itemView.setOnLongClickListener {
-                if (selectedResumePosition == -1) {
+                if (selectedResumePosition == notSelected) {
                     selectedResumePosition = adapterPosition
                     iResumeAdapter.isItemSelected()
                     binding.apply {
@@ -57,7 +57,7 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
                             imageVIewResumeDocumentView.visibility = View.VISIBLE
                             imageViewDeleteResume.visibility = View.GONE
                             iResumeAdapter.onClickDeleteResume(currentResume)
-                            selectedResumePosition = -1
+                            selectedResumePosition = notSelected
                         }
                     }
                 } else {
@@ -98,7 +98,7 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
                 return ResumeViewHolder(recyclerViewBinding, parent.context)
             }
             else -> {
-                throw IllegalArgumentException("Invalid ViewType Provider")
+                throw IllegalArgumentException(parent.context.getString(R.string.invalid_viewtype_provider))
             }
         }
     }
@@ -125,13 +125,12 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is WelcomeViewHolder -> {
-                val viewHolder = holder as WelcomeViewHolder
-                viewHolder.bind()
+                val currentResume = resumeList[position] as WelcomeCard
+                holder.bind(currentResume)
             }
             is ResumeViewHolder -> {
                 val currentResume = resumeList[position] as Resume
-                val viewHolder = holder as ResumeViewHolder
-                viewHolder.bind(currentResume, iResumeAdapter = listener)
+                holder.bind(currentResume, iResumeAdapter = listener)
             }
         }
     }
@@ -143,5 +142,8 @@ class HomeScreenRecyclerAdapter(private val listener: IResumeAdapter) :
         }
     }
 
+    companion object{
+        const val notSelected = -1
+    }
 
 }
