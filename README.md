@@ -1,4 +1,15 @@
-# ResumeBuilder
+# ResumeBuilder - Your Personal Resume Generator
+
+**ResumeBuilder** is a user-friendly Android application that simplifies the process of creating resumes.
+
+## Key Features:
+- **Easy Data Entry**: Input your personal and professional information with ease through our intuitive interface.
+- **PDF Generation**: Used my custom library to instantly convert data into a downloadable PDF resume.
+- **Local Database**: Used local database to store resume data.
+
+## My custom library to generate pdf : 
+         implementation 'com.github.pritesh-coditas:GeenratePDF:cdd59313ac'
+
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
     <img src="https://github.com/PriteshNikam/ResumeBuilder/assets/83751098/c1bec5e3-3a96-4802-86c7-a28887775d6f" width="30%" />
